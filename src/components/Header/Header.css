@@ -1,0 +1,32 @@
+.header{
+    position: relative;
+    background-color:  #8E3A52;
+    height: 5rem;
+    display: flex;
+    /* space between se apart hojata hai  */
+    /* justify-content: space-between; */
+    align-items: center;
+ 
+    
+}
+.logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12rem;
+
+    margin-left: 7rem;
+  }
+  
+  .logo img {
+    max-height: 140px;
+    max-width: 140px;
+  }
+
+  .search{
+    display: flex;
+  }
+  input{
+    outline: none;
+  }
