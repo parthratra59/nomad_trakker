@@ -2,14 +2,18 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Maps.css';
 
-const Maps = () => {
-  const properties = {
-    center: {
-      lat: 26.2183,
-      lng: 78.1828,
-    },
-    zoom: 14,
-  };
+const Maps = ({setcoordinates,setbounds,coordinates}) => {
+
+
+  // properties hata do hmko bs test krna tha isliye 
+  // isliye static liya tha ab hm props se lerhe jo app se arha hai
+  // const properties = {
+  //   center: {
+  //     lat: 26.2183,
+  //     lng: 78.1828,
+  //   },
+  //   zoom: 14,
+  // };
 
   const mapOptions = {
     zoomControl: true,
@@ -22,17 +26,24 @@ const Maps = () => {
       <GoogleMapReact
         // props 
         bootstrapURLKeys={{ key: "AIzaSyAdQB6my0NBM8B0Hmwsi25J_MKs5bI8yw0" }}
-        defaultCenter={properties.center}
-        center={properties.center}
-        defaultZoom={properties.zoom}
+        defaultCenter={coordinates}
+        center={coordinates}
+        defaultZoom={14}
         // hr chiij ek baar mai chl gyi mapoptions
         options={mapOptions}
-        onChange={""}
+        onChange={(e)=>{
+         setcoordinates({lat:e.center.lat,lng:e.center.lng})
+         setbounds({ne:e.marginBounds.ne,sw:e.marginBounds.sw})
+        }}
         onChildClick={""}
-        // margin={[50,50,50,50]}
+        margin={[50,50,50,50]}
       />
     </div>
   );
 };
 
 export default Maps;
+
+
+
+// So, the marginBounds in this context refers to the visible boundaries of the map within the current viewport, and you can use it to track and update the map's center and boundaries based on user interaction.

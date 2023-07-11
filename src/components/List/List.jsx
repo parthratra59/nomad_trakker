@@ -2,35 +2,35 @@ import React, { useState } from 'react'
 import { Grid} from '@mui/material'
 import './List.css'
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
-const List = () => {
+const List = ({places}) => {
   const[type,settype]=useState("Restaurants")
   const[rating,setrating]=useState('')
-  const places=[{
-    name:"parth"
-  },
-  {
-    name:"harsh"
-  },
-  {
-    name:"jiyan"
-  },
-  {
-    name:'vijay'
-  },
-  {
-    name:'hello'
-  },
-  {
-    name:'kseeseho'
-  },
-  {
-    name:'vijay'
-  },
-  {
-    name:'kyahallhe'
-  }
+//   const places=[{
+//     name:"parth"
+//   },
+//   {
+//     name:"harsh"
+//   },
+//   {
+//     name:"jiyan"
+//   },
+//   {
+//     name:'vijay'
+//   },
+//   {
+//     name:'hello'
+//   },
+//   {
+//     name:'kseeseho'
+//   },
+//   {
+//     name:'vijay'
+//   },
+//   {
+//     name:'kyahallhe'
+//   }
     
-]
+// ]
   return (
 
     <>
@@ -73,7 +73,8 @@ const List = () => {
       <Grid container spacing={3} className='griding'>
       {places?.map((kuchbhi,index)=>{
           return (
-            <><Grid item key={index} xs={12}>
+            <>
+            <Grid item key={index} xs={12}>
             <PlaceDetails hello={kuchbhi}/>
         </Grid>
         </>
