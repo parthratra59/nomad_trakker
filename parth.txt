@@ -1,0 +1,29 @@
+
+Reason why 
+   bl->bottomleft
+   tr:->topright
+
+
+      the reason "why there is  not top_left and bottom_right latitude and longitude ?
+          it covers all the expect of map
+
+
+                  top
+      +----------------------------+
+      |                            |
+      |                            |
+      |                            |
+      |                            |
+left  |                            | right
+      |                            |
+      |                            |
+      |                            |
+      +----------------------------+
+                bottom
+In the diagram above, we have a rectangular area defined by the top, bottom, left, and right boundaries. The API expects you to provide the latitude and longitude values for the bottom left and top right corners of this rectangle.
+
+The bottom left corner corresponds to the lower-left point of the rectangle. It is defined by a specific latitude and longitude.
+The top right corner corresponds to the upper-right point of the rectangle. It is also defined by a specific latitude and longitude.
+By specifying the latitude and longitude values for the bottom left and top right corners, you're essentially defining the rectangular area within which you want to search for restaurant data.
+
+The API assumes that the area you want to search is rectangular, and the provided latitude and longitude values determine the shape and size of that rectangle. Therefore, there's no need to specify separate parameters for the top left and bottom right corners since they can be inferred from the bottom left and top right corners.
