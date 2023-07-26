@@ -1,0 +1,4 @@
+Cannot read properties of undefined (reading 'replace')  "fix this error
+isko aise shi it krtw
+ternary operator se
+hello.ranking? hello.ranking.replace(/#/g, '') : ''
