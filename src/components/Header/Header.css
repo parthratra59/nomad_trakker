@@ -1,32 +1,48 @@
-.header{
-    position: relative;
-    background-color:  #8E3A52;
-    height: 5rem;
-    display: flex;
-    /* space between se apart hojata hai  */
-    /* justify-content: space-between; */
-    align-items: center;
- 
+.toolbar{
     
+  display: flex;
+  justify-content: space-between;
+  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
 }
-.logo {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 12rem;
-
-    margin-left: 7rem;
-  }
+.search {
+  background-color: white;
+  padding: 0px 10px;
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* Add this line to vertically center flex items */
+  gap: 20px;
+ /* text pointer will disable when click outside the text button */
+  user-select: none;
   
-  .logo img {
-    max-height: 140px;
-    max-width: 140px;
-  }
+}
 
-  .search{
-    display: flex;
+.inputBase::placeholder {
+  color: #8e3a52;
+}
+
+.avatar{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+
+
+@media screen and (max-width: 650px) {
+ 
+
+  .typo{
+    display: none;
+    font-size: 12px;
   }
-  input{
-    outline: none;
-  }
+}
+  
