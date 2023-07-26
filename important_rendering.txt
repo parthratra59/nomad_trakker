@@ -1,0 +1,21 @@
+it means is we want to use the prop in the component we have to fistly pass them into component?
+
+phele apko us me paas krna pdta dusri file mai vo prop fir hm use kr pate
+
+Yes, that's correct. In order to use props in a component, you need to pass them to the component when it is being rendered. By passing props to a component, you provide the necessary data or functionality that the component needs to render or perform its tasks.
+
+To pass props to a component, you use the component syntax with the props specified as attributes. For example:
+
+
+<ComponentName prop1={value1} prop2={value2} />
+In the above example, ComponentName is the name of the component, and prop1 and prop2 are the props being passed with their corresponding values value1 and value2.
+
+Inside the component, you can access the props using the props object. For example:
+
+
+const ComponentName = (props) => {
+  // Access props using props.prop1, props.prop2, etc.
+  // Use the props to render or perform necessary tasks
+  return <div>{props.prop1}</div>;
+};
+By passing props to a component, you enable it to receive and utilize the provided data or functionality, allowing for dynamic rendering and customization based on the props received.
