@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './Header.css';
 import { FcSearch } from 'react-icons/fc';
 import { Autocomplete } from '@react-google-maps/api';
