@@ -91,6 +91,13 @@ const App = () => {
     // console.log(coordinates,bounds)
 
     // starting mai type mai restaurant tha vo update hoga list mai jakr
+// bounds hoga tbhi toh kr paege agr hmare paas lat longitude nhi hog toh  kaise krege
+// agr hmne bounds tk hi chor diya toh problem hme hai ki bounds starting mai null hai toh 
+// jb hmne bounds daal diya toh vo render hua and bounds null hai toh error aega
+// aur jb jb hm autocomplete feature k use kr rhe honge toh vo pkdega nhi
+// isliye bounds.sw and bounds.ne daal rhe hai
+// ab vapis switch back nhi hoga starting vale pr jgh change krege toh 
+    if(bounds.sw && bounds.ne){
     setloading(true)
      Getplacesdata(type, bounds.sw, bounds.ne)
       .then((data) => {
@@ -100,14 +107,17 @@ const App = () => {
         // jb bhi re render hotoh vapis empty hojae pr ajae filter
         setfilteredplaces([])
         setloading(false);
-      });
+      });}
  
   // yh dependency array hai jb mai [] paas krta it means empty dependency array hai 
   // it means yh ek baar hi render hoga ab dikt isme yh hai ki hm agr jgh change bhi kre toh yh nhi aega dursi baar
   // {data: Array(33), filters: {…}, filters_v2: {…}, restaurant_availability_options: {…}, paging: {…}} nhi bnega 
   // isliye hm coordinates and bounds daal rhe dependency array mai jis se jb jb change kre toh 
   // vo re render ho
-  }, [type,coordinates,bounds])
+
+  // coordinates ab hata do nhi toh do baar render horha load ke baad isliye vapis gwalior pr pauch rha hai
+  // map vale mai bhi coordinate render horha and list vale mai isliye hm header mai change kr rhe na us  se map mai bhi horha and places mai bhi horha 
+  }, [type,bounds])
   return (
     // bs isme daldo jo bnaya hai and ab koi prop use krne ki jrurt nhi jaise lifting state up mai paas bhui krna pdta isme jrurt nhi
 

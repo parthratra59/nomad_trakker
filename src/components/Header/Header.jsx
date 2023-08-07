@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './Header.css';
 import { FcSearch } from 'react-icons/fc';
 import { Autocomplete } from '@react-google-maps/api';
@@ -9,43 +9,44 @@ import { InputBase } from '@mui/material';
 
 const Header = ({ setcoordinating }) => {
   const [Autocompleting, setAutocomplete] = useState(null);
-  const [inputValue, setInputValue] = useState('');
-  const [selectedPlace, setSelectedPlace] = useState('');
+  // const [inputValue, setInputValue] = useState('');
+  // const [selectedPlace, setSelectedPlace] = useState('');
 
-  const onloading = (badiya) => {
-    return setAutocomplete(badiya);
-  };
+
+  const onloading = (autoC) => {
+    setAutocomplete(autoC);
+  }
+ 
 
   const handlePlaceSelected = () => {
-    if (selectedPlace === '') {
-      setcoordinating(null);
-    } else {
+  
+
       const place = Autocompleting.getPlace();
       if (place && place.geometry) {
         const lat = place.geometry.location.lat();
         const lng = place.geometry.location.lng();
-        setcoordinating({ lat, lng, placeName: selectedPlace });
-      }
+        setcoordinating({ lat, lng, });
+
     }
   };
 
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'Enter') {
-        handlePlaceSelected();
-      }
-    };
+  // useEffect(() => {
+  //   const handleKeyPress = (e) => {
+  //     if (e.key === 'Enter') {
+  //       handlePlaceSelected();
+  //     }
+  //   };
 
-    document.addEventListener('keydown', handleKeyPress);
+  //   document.addEventListener('keydown', handleKeyPress);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [selectedPlace]);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyPress);
+  //   };
+  // }, [selectedPlace]);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setInputValue(e.target.value);
+  // };
 
   return (
     <>
@@ -63,8 +64,7 @@ const Header = ({ setcoordinating }) => {
               <InputBase
                 className='inputBase'
                 placeholder='Search......'
-                value={selectedPlace !== '' ? selectedPlace : inputValue}
-                onChange={handleInputChange}
+            
               />
             </Autocomplete>
           </Box>
