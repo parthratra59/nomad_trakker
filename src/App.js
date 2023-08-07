@@ -149,6 +149,7 @@ const App = () => {
       </Grid>
 
       {/* <Footer/> */}
+      
 
    </>
    </GlobalContext.Provider>
