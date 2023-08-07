@@ -1,9 +1,12 @@
 
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Box, Button, Card, CardActions, CardContent,CardMedia ,Chip,Typography,Rating} from '@mui/material'
 import './PlaceDetails.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
 const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
@@ -37,6 +40,40 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
 // jo maine map mai kiya hai
 //  {/* paper tb use kro jb random card dalne ho aur agr chaiye ek ke niche ek chaiye ho toh material ui se hojata */}
+const[liked,setLiked]=useState([])
+const handler=()=>{
+    if(liked.includes(hello.id))
+    {
+        // filter ek array return krta iska mtlb yh hai filter ke andr se vohi japaega jiski id books.id nhi hogi jiski books.id hogyi vo nhi ja paega 
+        // image hai likedfilter.png usme dekho
+        setLiked(liked.filter((elementid)=>elementid!==hello.id))
+        toast.warning("Like removed")
+
+    }
+    else{
+        // agr mera abhi empty array hai
+        if(liked.length===0)
+        {
+            // yh vali id insert krdi
+            setLiked([hello.id])
+        }
+        else
+        {
+            // abhi non empty hai tb bhi aur muje insert krni hai
+            // purane vale elements spread operator se daaal diye 
+            setLiked((puravale_elements)=>[...puravale_elements,hello.id])
+
+        }
+        toast.success("Liked Successfully")
+    }
+}
+
+
+
+
+
+
+
 
   return (
    <>
@@ -80,13 +117,18 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
         
        </Typography>
        </Box>
-       <Box marginTop={'20px'} >
-       <Typography gutterBottom variant="subtitle2" color="textSecondary"  className='addressing' >
-      
-            <PhoneIcon />{hello?.phone}
-        
-       </Typography>
-       </Box>
+       <Box marginTop={'20px'} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center',position:'relative' }}>
+  <Typography gutterBottom variant="subtitle2" color="textSecondary" className='addressing'>
+    <PhoneIcon />{hello?.phone}
+  
+    <div style={{ position: 'absolute', top: '50%', right: '10px',transform: 'translateY(-50%)' }}>
+    <div onClick={handler}>
+     
+      {liked.includes(hello.id) ? <FcLike size={"2.0rem"} /> : <FcLikePlaceholder size={"2.0rem"} />}
+    </div>
+    </div>
+  </Typography>
+</Box>
 
 
 
