@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, {  useState, useContext } from 'react';
 import './Header.css';
 import { FcSearch } from 'react-icons/fc';
 import { Autocomplete } from '@react-google-maps/api';
@@ -6,18 +6,21 @@ import { AppBar, Toolbar, Typography, Box, Badge, Avatar } from '@mui/material';
 import { SiYourtraveldottv } from 'react-icons/si';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { InputBase } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../components2/Home'
+import { toast } from 'react-hot-toast'
 
 const Header = ({ setcoordinating }) => {
   const [Autocompleting, setAutocomplete] = useState(null);
   // const [inputValue, setInputValue] = useState('');
   // const [selectedPlace, setSelectedPlace] = useState('');
-
+  const{setlogin}=useContext(GlobalContext)
 
   const onloading = (autoC) => {
     setAutocomplete(autoC);
   }
  
-
+  const {login}=useContext(GlobalContext)
   const handlePlaceSelected = () => {
   
 
@@ -50,29 +53,92 @@ const Header = ({ setcoordinating }) => {
 
   return (
     <>
+    
       <AppBar position='static' style={{ backgroundColor: '#8E3A52', userSelect: 'none' }}>
-        <Toolbar className='toolbar'>
+      {/* dekh vohi pattern bhar vala color ke liye  */}
+        <Toolbar className='toolbar justify-between items-center '>
+        <Link to='/'>
           <Box className='logo'>
+          
             <SiYourtraveldottv style={{ fontSize: '40px' }} />
             <Typography className='typo' fontSize={'20px'}>
               Nomad_Trakker
             </Typography>
+           
           </Box>
-          <Box className='search'>
-            <FcSearch style={{ cursor: 'auto', fontSize: '30px' }} />
-            <Autocomplete onLoad={onloading} onPlaceChanged={handlePlaceSelected}>
-              <InputBase
-                className='inputBase'
-                placeholder='Search......'
-            
-              />
-            </Autocomplete>
+           </Link>
+          
+                      <Box className='search'>
+
+          <FcSearch style={{ cursor: 'auto', fontSize: '30px' }} />
+          <Autocomplete onLoad={onloading} onPlaceChanged={handlePlaceSelected}>
+            <InputBase
+              className='inputBase'
+              placeholder='Search......'
+
+            />
+          </Autocomplete>
           </Box>
           <Box className='avatar'>
-            <Badge badgeContent={3} color='error'>
+                  <ul className='flex items-center gap-x-4 '>
+                  {!login && 
+                    <li>
+                      <Link to='/login'>
+                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
+                          // setlogin(false)
+                        // toast.success("loged in ")
+                      }}>
+                      Login
+                      </button>
+                      </Link>
+                    </li>
+                  }
+                  {/* login jb hai toh logout dikhega usko click krke login false hojaega */}
+                  {login && 
+                    <li>
+                      <Link to='/login'>
+                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700" onClick={()=>{
+                         setlogin(false);
+                        toast.success("Logout Sucessfully");
+                      }}>
+                      Logout
+                      </button>
+                      </Link>
+                    </li>
+                  }
+                  {/* { login &&
+                    <li>
+                      <Link to='/dashboard'>
+                      <button  className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
+                      Dashboard
+                      </button>
+                      </Link>
+                    </li>
+                  } */}
+                  
+                    { !login &&
+                   
+                    <li>
+                    {/* app.js mai signup name se tha toh match kr gya route krdiya */}
+                      <Link to='/signup'>
+
+                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
+                        
+                        toast.success("Sign Up Successfully!!")
+
+                      
+
+                      }}>
+                      Sign up
+                      </button>
+                      </Link>
+                    </li>
+                    }
+                  </ul>
+            {/* <Badge badgeContent={3} color='error'>
               <BsFillHeartFill color='success' style={{ fontSize: '25px' }} />
             </Badge>
-            <Avatar sx={{ height: '40px', width: '40px' }}>PR</Avatar>
+            <Avatar sx={{ height: '40px', width: '40px' }}>PR</Avatar> */}
           </Box>
         </Toolbar>
       </AppBar>

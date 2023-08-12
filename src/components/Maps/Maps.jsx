@@ -2,7 +2,10 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Maps.css';
 
+import { GlobalContext } from '../../components2/Home';
+
 const Maps = ({setcoordinates,setbounds,coordinates}) => {
+
 
 
   // properties hata do hmko bs test krna tha isliye 
