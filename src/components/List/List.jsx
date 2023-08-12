@@ -3,7 +3,7 @@ import {Grid,InputLabel,Select,MenuItem } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import './List.css'
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
-import { GlobalContext } from '../../App'
+import { GlobalContext } from '../../components2/Home';
 const List = ({places,  loadinghorhi}) => {
 
 

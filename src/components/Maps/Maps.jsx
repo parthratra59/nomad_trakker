@@ -5,7 +5,7 @@ import { Typography,Paper, Rating} from '@mui/material';
 // import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import './Maps.css'
 
-import { GlobalContext } from '../../App';
+import { GlobalContext } from '../../components2/Home';
 
 
 const Maps = ({setcoordinates,setbounds,coordinates,places}) => {

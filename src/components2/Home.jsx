@@ -1,11 +1,14 @@
 import React, { useEffect, useState, createContext } from 'react';
-import Header from './components/Header/Header'
-import Maps from './components/Maps/Maps'
-import Getplacesdata from './api/api'
-import List from './components/List/List'
+import Header from '../components/Header/Header';
+import Maps from '../components/Maps/Maps'
+import Getplacesdata from '../api/api';
+import List from '../components/List/List'
 
-import './App.css'
+// import './index.css'
+
+// import './App.css'
 import { Grid } from '@mui/material'
+import Navbar from './Navbar';
 
 
 
@@ -14,7 +17,7 @@ import { Grid } from '@mui/material'
 // maine places api se idhr hi mnagwali then ab mai parent se child mai bhej rha chijke ek sath manage horhi chije
 export const GlobalContext = createContext({});
 
-const App = () => {
+const Home = () => {
 
   // hm useeffect ka use krte jab kbhi api ke sath kaam kr rhe hote
   // and render ke liye map fucntion use krna hota then usestate ka use krte 
@@ -39,6 +42,12 @@ const App = () => {
   // ab mai list mai jarha  because filter udhr hi hai na ab list.jsx mai iska answer hai
 
   const[filtered,setfilteredplaces]=useState([])
+
+
+
+
+  // login not login concept
+  // const[login,setlogin]=useState(false)
   // {} yh bhi chlega
   // array bhi kr skte nhi toh object bhi kr skte
 
@@ -127,6 +136,7 @@ const App = () => {
 
    {/* places toh same hi jarhi hai  filter ke baad bbhi vo bhi apni place bdl rhi */}
       <Header setcoordinating={setcoordinates}/>
+     {/* <Header/> */}
       <Grid container spacing={3} style={{ width: '100%' }}>
       <Grid item xs={12} md={4}>
       {/*  */}
@@ -141,6 +151,8 @@ const App = () => {
                 //  filteredplaces ki array ki length hua toh filtered vala data aega nhi toh places vala 
                 places={filtered.length?filtered:places}
                 loadinghorhi={isloading}
+
+            
                 
             />
           </Grid>
@@ -150,6 +162,41 @@ const App = () => {
 
       {/* <Footer/> */}
       
+    
+
+
+
+
+
+    {/* routes */}
+
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    </>
    </GlobalContext.Provider>
@@ -157,4 +204,4 @@ const App = () => {
   )
 }
 
-export default App  
+export default  Home
