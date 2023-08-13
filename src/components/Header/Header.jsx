@@ -7,20 +7,21 @@ import { SiYourtraveldottv } from 'react-icons/si';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { InputBase } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'
-import { GlobalContext } from '../../components2/Home'
+import { GlobalContext2 } from '../../App'
 import { toast } from 'react-hot-toast'
 
 const Header = ({ setcoordinating }) => {
   const [Autocompleting, setAutocomplete] = useState(null);
   // const [inputValue, setInputValue] = useState('');
   // const [selectedPlace, setSelectedPlace] = useState('');
-  const{setlogin}=useContext(GlobalContext)
+  // const{setlogin}=useContext(GlobalContext)
 
   const onloading = (autoC) => {
     setAutocomplete(autoC);
   }
  
-  const {login}=useContext(GlobalContext)
+  const {isLoggedIn,setIsLoggedIn}=useContext(GlobalContext2)
+
   const handlePlaceSelected = () => {
   
 
@@ -81,7 +82,7 @@ const Header = ({ setcoordinating }) => {
           </Box>
           <Box className='avatar'>
                   <ul className='flex items-center gap-x-4 '>
-                  {!login && 
+                  {!isLoggedIn &&
                     <li>
                       <Link to='/login'>
                       <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
@@ -94,11 +95,11 @@ const Header = ({ setcoordinating }) => {
                     </li>
                   }
                   {/* login jb hai toh logout dikhega usko click krke login false hojaega */}
-                  {login && 
+                  {isLoggedIn && 
                     <li>
                       <Link to='/login'>
                       <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700" onClick={()=>{
-                         setlogin(false);
+                         setIsLoggedIn(false)
                         toast.success("Logout Sucessfully");
                       }}>
                       Logout
@@ -116,7 +117,7 @@ const Header = ({ setcoordinating }) => {
                     </li>
                   } */}
                   
-                    { !login &&
+                    { !isLoggedIn &&
                    
                     <li>
                     {/* app.js mai signup name se tha toh match kr gya route krdiya */}
@@ -124,7 +125,7 @@ const Header = ({ setcoordinating }) => {
 
                       <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
                         
-                        toast.success("Sign Up Successfully!!")
+                        // toast.success("Sign Up Successfully!!")
 
                       
 
@@ -135,10 +136,11 @@ const Header = ({ setcoordinating }) => {
                     </li>
                     }
                   </ul>
-            {/* <Badge badgeContent={3} color='error'>
+            <Badge badgeContent={3} color='error'>
+            
               <BsFillHeartFill color='success' style={{ fontSize: '25px' }} />
             </Badge>
-            <Avatar sx={{ height: '40px', width: '40px' }}>PR</Avatar> */}
+           
           </Box>
         </Toolbar>
       </AppBar>
