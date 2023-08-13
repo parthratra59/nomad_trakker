@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 // import { GlobalContext } from './Home'
-import { GlobalContext } from './Home';
+import { GlobalContext2 } from '../App';
 // import Header from './components/Header/Header';
 
 const Loginform = () => {
     const[formdata,setformdata]=useState({email:'',password:''})
-    const {setlogin} =useContext(GlobalContext)
+    const {setIsLoggedIn} =useContext(GlobalContext2)
 
     const navigate=useNavigate()
     const handleinput=(e)=>{
@@ -22,7 +22,7 @@ const Loginform = () => {
 
     const submitting=(e)=>{
         e.preventDefault();
-        setlogin(true)
+        setIsLoggedIn(true)
         navigate('/')
         console.log(formdata)
     }
