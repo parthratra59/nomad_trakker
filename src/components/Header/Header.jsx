@@ -6,10 +6,11 @@ import { AppBar, Toolbar, Typography, Box, Badge, Avatar } from '@mui/material';
 import { SiYourtraveldottv } from 'react-icons/si';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { InputBase } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate,NavLink } from 'react-router-dom'
 import { GlobalContext2 } from '../../App'
 import { toast } from 'react-hot-toast'
-
+import {  useSelector } from 'react-redux'
+import {FaShoppingCart} from 'react-icons/fa'
 const Header = ({ setcoordinating }) => {
   const [Autocompleting, setAutocomplete] = useState(null);
   // const [inputValue, setInputValue] = useState('');
@@ -21,7 +22,7 @@ const Header = ({ setcoordinating }) => {
   }
  
   const {isLoggedIn,setIsLoggedIn}=useContext(GlobalContext2)
-
+  const like = useSelector((state) => state.like);
   const handlePlaceSelected = () => {
   
 
@@ -140,6 +141,16 @@ const Header = ({ setcoordinating }) => {
             
               <BsFillHeartFill color='success' style={{ fontSize: '25px' }} />
             </Badge>
+
+            <NavLink to='/cart'>
+                    {/* kisi bhi chij ko overlapp krana hota toh bhar vale ko relative andr vale ko absolute dete */}
+                    <div className='relative'>
+                    <FaShoppingCart className='text-2xl'/>
+                    {/* nhi toh 0 bhi show hoga */}
+                    {like.length>0
+                    && <span className='absolute -top-1 -right-2 bg-green-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>{like.length}</span>}
+                      </div>
+                    </NavLink> 
            
           </Box>
         </Toolbar>

@@ -4,9 +4,11 @@ import { Box, Button, Card, CardActions, CardContent,CardMedia ,Chip,Typography,
 import './PlaceDetails.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+import { useDispatch, useSelector } from 'react-redux'
+import { add,remove } from '../../redux/slices/Likeslice'
 
 const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
@@ -15,6 +17,25 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
       refprop.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [selectkiya, refprop]);
+
+
+  const like = useSelector((state) => state.like);
+  // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
+  const dispatch=useDispatch()
+
+  const addtocart=()=>{
+      // yh cart ke andr item add krta hai
+      dispatch(add(hello))
+      console.log(hello.id)
+      toast.success("items added to cart")
+  }
+  const removefromcart=()=>{
+      // yh remove krta cart mai se item
+      // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
+      dispatch(remove(hello.id))
+      console.log(hello.id)
+      toast.error("Items removed from Cart")
+  }
 
   
   // console.log(hello)
@@ -40,33 +61,33 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
 // jo maine map mai kiya hai
 //  {/* paper tb use kro jb random card dalne ho aur agr chaiye ek ke niche ek chaiye ho toh material ui se hojata */}
-const[liked,setLiked]=useState([])
-const handler=()=>{
-    if(liked.includes(hello.id))
-    {
-        // filter ek array return krta iska mtlb yh hai filter ke andr se vohi japaega jiski id books.id nhi hogi jiski books.id hogyi vo nhi ja paega 
-        // image hai likedfilter.png usme dekho
-        setLiked(liked.filter((elementid)=>elementid!==hello.id))
-        toast.warning("Like removed")
+// const[liked,setLiked]=useState([])
+// const handler=()=>{
+//     if(liked.includes(hello.id))
+//     {
+//         // filter ek array return krta iska mtlb yh hai filter ke andr se vohi japaega jiski id books.id nhi hogi jiski books.id hogyi vo nhi ja paega 
+//         // image hai likedfilter.png usme dekho
+//         setLiked(liked.filter((elementid)=>elementid!==hello.id))
+//         toast.warning("Like removed")
 
-    }
-    else{
-        // agr mera abhi empty array hai
-        if(liked.length===0)
-        {
-            // yh vali id insert krdi
-            setLiked([hello.id])
-        }
-        else
-        {
-            // abhi non empty hai tb bhi aur muje insert krni hai
-            // purane vale elements spread operator se daaal diye 
-            setLiked((puravale_elements)=>[...puravale_elements,hello.id])
+//     }
+//     else{
+//         // agr mera abhi empty array hai
+//         if(liked.length===0)
+//         {
+//             // yh vali id insert krdi
+//             setLiked([hello.id])
+//         }
+//         else
+//         {
+//             // abhi non empty hai tb bhi aur muje insert krni hai
+//             // purane vale elements spread operator se daaal diye 
+//             setLiked((puravale_elements)=>[...puravale_elements,hello.id])
 
-        }
-        toast.success("Liked Successfully")
-    }
-}
+//         }
+//         toast.success("Liked Successfully")
+//     }
+// }
 
 
 
@@ -122,10 +143,25 @@ const handler=()=>{
     <PhoneIcon />{hello?.phone}
   
     <div style={{ position: 'absolute', top: '50%', right: '10px',transform: 'translateY(-50%)' }}>
-    <div onClick={handler}>
-     
-      {liked.includes(hello.id) ? <FcLike size={"2.0rem"} /> : <FcLikePlaceholder size={"2.0rem"} />}
-    </div>
+     {
+                
+                like.some((current)=>current.id===hello.id)? (
+                    
+                <button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+          text-[12px] p-1 px-2  uppercase 
+          hover:bg-gray-700
+          hover:text-white transition duration-300 ease-in"
+                onClick={removefromcart}>
+                    Remove Item
+                </button>):
+                (<button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+          text-[12px] p-1 px-3 uppercase 
+          hover:bg-gray-700
+          hover:text-white transition duration-300 ease-in" 
+                 onClick={addtocart}>
+                    Add Item
+                </button>)
+               }
     </div>
   </Typography>
 </Box>

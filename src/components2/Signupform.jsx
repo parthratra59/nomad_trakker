@@ -3,9 +3,9 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 // import { GlobalContext } from './Home';
-import { GlobalContext } from './Home';
+import { GlobalContext2 } from '../App';
 const Signupform = () => {
-    const{setlogin}=useContext(GlobalContext)
+    const{setIsLoggedIn}=useContext(GlobalContext2)
     const navigate=useNavigate()
     const [formData, setformdata] = useState({
         firstName: "",
@@ -35,8 +35,9 @@ const Signupform = () => {
         else{
             // setlogin(true)
             toast.success("Account Created")
+            setIsLoggedIn(true)
             console.log(formData)
-            navigate('/login')
+            navigate('/')
         }
     }
 
