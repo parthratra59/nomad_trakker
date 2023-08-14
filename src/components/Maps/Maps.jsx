@@ -54,7 +54,7 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
     <Paper className='google'  xs={12}  style={{ height: '90vh', width: '100%'}}>
       <GoogleMapReact
         // props 
-        bootstrapURLKeys={{ key: "AIzaSyAdQB6my0NBM8B0Hmwsi25J_MKs5bI8yw0" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
