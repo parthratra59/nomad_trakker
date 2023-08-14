@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import Mapstyles from './Mapstyles';
-import { Typography,Paper, Rating} from '@mui/material';
-// import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import './Maps.css'
+import './Maps.css';
 
 import { GlobalContext } from '../../components2/Home';
 
+const Maps = ({setcoordinates,setbounds,coordinates}) => {
 
-const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
 
-  // agr vo photos dekhini ho toh atleast 600px expand cahiye vrna cursor dikhega
 
   // const isDesktop=useMediaQuery('(min-width:700px)');
   const {sendkrega}=useContext(GlobalContext)
@@ -43,15 +39,13 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
   // };
 
   const mapOptions = {
-    disableDefaultUI: true,
     zoomControl: true,
     fullscreenControl: true,
-    // mapTypeControl: true,
-    styles: Mapstyles// Assign the sty prop directly to styles
+    mapTypeControl: true,
   };
 
   return (
-    <Paper className='google'  xs={12}  style={{ height: '90vh', width: '100%'}}>
+    <div className='Googlemap' style={{ height: '100vh', width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
       <GoogleMapReact
         // props 
         bootstrapURLKeys={{ key: "AIzaSyAdQB6my0NBM8B0Hmwsi25J_MKs5bI8yw0" }}
@@ -64,15 +58,7 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
          setcoordinates({lat:e.center.lat,lng:e.center.lng})
          setbounds({ne:e.marginBounds.ne,sw:e.marginBounds.sw})
         }}
-
-
-        // yh onchild click ek event listener hai hm crd/paper pr click kre toh left side mai 
-        // means List mai vo pauch jaye usi hotel/restaurnat mai
-        // aur yh hoGA lifting state up se
-        // when parallel component kaam kar rhe ho ek sath tb yh use hota hai 
-        
-
-        onChildClick={(bhai)=>sendkrega(bhai)}
+        onChildClick={""}
         margin={[50,50,50,50]}
       >
 
@@ -130,13 +116,10 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
           <Rating size='small' value={Number(jagah.rating)} readOnly></Rating>
         </Paper>
       }
+
+      />
+
     </div>
-  );
-  
-})}
-{/* /google map ke andr hi toh krunga */}
-</GoogleMapReact>
-    </Paper>
   );
 };
 
