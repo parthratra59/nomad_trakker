@@ -48,7 +48,7 @@ const Maps = ({setcoordinates,setbounds,coordinates}) => {
     <div className='Googlemap' style={{ height: '100vh', width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
       <GoogleMapReact
         // props 
-        bootstrapURLKeys={{ key: "AIzaSyAdQB6my0NBM8B0Hmwsi25J_MKs5bI8yw0" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
