@@ -137,18 +137,16 @@ const Header = ({ setcoordinating }) => {
                     </li>
                     }
                   </ul>
-            <Badge badgeContent={3} color='error'>
-            
-              <BsFillHeartFill color='success' style={{ fontSize: '25px' }} />
-            </Badge>
+
 
             <NavLink to='/cart'>
                     {/* kisi bhi chij ko overlapp krana hota toh bhar vale ko relative andr vale ko absolute dete */}
+                   
                     <div className='relative'>
-                    <FaShoppingCart className='text-2xl'/>
+                    <BsFillHeartFill className='text-2xl'/>
                     {/* nhi toh 0 bhi show hoga */}
                     {like.length>0
-                    && <span className='absolute -top-1 -right-2 bg-green-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>{like.length}</span>}
+                    && <span className='absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>{like.length}</span>}
                       </div>
                     </NavLink> 
            
