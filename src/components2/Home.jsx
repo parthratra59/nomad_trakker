@@ -8,7 +8,7 @@ import List from '../components/List/List'
 
 // import './App.css'
 import { Grid } from '@mui/material'
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 
 
 
@@ -82,7 +82,7 @@ const Home = () => {
   const filtered = places.filter((place) => place.rating > ratekro);
   // Set the filtered places to the state
   setfilteredplaces(filtered)
-  },[ratekro])
+  },[places,ratekro])
 // jb rating bdle tb bhi yh kaam mai aye
 
   useEffect(() => {

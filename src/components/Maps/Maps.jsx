@@ -14,7 +14,7 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
 
   // const isDesktop=useMediaQuery('(min-width:700px)');
   const {sendkrega}=useContext(GlobalContext)
-
+// eslint-disable-next-line
   const[restaurant,setrestaurant]=useState("")
   useEffect(()=>{
     randomimage()
@@ -114,7 +114,7 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
         <LocationOnOutlinedIcon color="" fontSize="large" />
       ) : ( */}
     {
-        <Paper elevation={3} className="papering" FcCursor>
+        <Paper elevation={3} className="papering" >
           <Typography variant="subtitle2" gutterBottom>
             {jagah.name}
           </Typography>

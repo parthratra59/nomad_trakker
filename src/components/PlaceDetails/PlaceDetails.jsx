@@ -1,5 +1,5 @@
 
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import { Box, Button, Card, CardActions, CardContent,CardMedia ,Chip,Typography,Rating} from '@mui/material'
 import './PlaceDetails.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -20,22 +20,24 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
 
   const like = useSelector((state) => state.like);
+  
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
   const dispatch=useDispatch()
 
+ 
   const addtocart=()=>{
-      // yh cart ke andr item add krta hai
-      dispatch(add(hello))
-      console.log(hello.id)
-      toast.success("items added to cart")
-  }
-  const removefromcart=()=>{
-      // yh remove krta cart mai se item
-      // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
-      dispatch(remove(hello.id))
-      console.log(hello.id)
-      toast.error("Items removed from Cart")
-  }
+    // yh cart ke andr item add krta hai
+    dispatch(add(hello))
+    console.log(hello)
+    toast.success("Items added to Wishlist")
+}
+const removefromcart=()=>{
+    // yh remove krta cart mai se item
+    // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
+    dispatch(remove(hello.location_id))
+    // console.log(hello)
+    toast.error("Items removed from Wishlist")
+}
 
   
   // console.log(hello)
@@ -145,23 +147,28 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
     <div style={{ position: 'absolute', top: '50%', right: '10px',transform: 'translateY(-50%)' }}>
      {
                 
-                like.some((current)=>current.id===hello.id)? (
+    
+  
+                
+      like.some((current)=>current.location_id===hello.location_id)? (
                     
-                <button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
-          text-[12px] p-1 px-2  uppercase 
-          hover:bg-gray-700
-          hover:text-white transition duration-300 ease-in"
-                onClick={removefromcart}>
-                    Remove Item
-                </button>):
-                (<button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
-          text-[12px] p-1 px-3 uppercase 
-          hover:bg-gray-700
-          hover:text-white transition duration-300 ease-in" 
-                 onClick={addtocart}>
-                    Add Item
-                </button>)
-               }
+                    <button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+              text-[12px] p-1 px-2  uppercase 
+              hover:bg-gray-700
+              hover:text-white transition duration-300 ease-in"
+                    onClick={removefromcart}>
+                        Remove Item
+                    </button>):
+                    (<button  className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
+              text-[12px] p-1 px-3 uppercase 
+              hover:bg-gray-700
+              hover:text-white transition duration-300 ease-in" 
+                     onClick={addtocart}>
+                        Add Item
+                    </button>)
+      }
+     
+     
     </div>
   </Typography>
 </Box>

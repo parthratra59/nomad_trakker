@@ -10,7 +10,8 @@ import { createSlice } from "@reduxjs/toolkit"
         add:(state,action)=>{
             // action.payload mai jo hm paas krte na 
             // jo bhi hm input parameter send kiya hai na usko hm action.payload se access kr skte
-            state.push(action.payload)
+           state.push(action.payload)
+        //    console.log(action.payload)
         },
         remove:(state,action)=>{
             // remove mai toh hm filtering krna chate hai  
@@ -20,7 +21,10 @@ import { createSlice } from "@reduxjs/toolkit"
             // action.payload mai vo hai jo udhr pass kiya hai 
             // Productitem mai
             // action.payload mai id hi arhi hai toh action.payload.id likhne ki need nhi
-            return state.filter((item)=>item.id!==action.payload)
+            console.log(action.payload)
+            return state.filter((item)=>item.location_id!==action.payload)
+           
+
 
         }
     }
