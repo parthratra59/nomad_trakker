@@ -6,7 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
-import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+// import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux'
 import { add,remove } from '../../redux/slices/Likeslice'
 
@@ -18,7 +18,7 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
     }
   }, [selectkiya, refprop]);
 
-
+// likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
   const like = useSelector((state) => state.like);
   
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte

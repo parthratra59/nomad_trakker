@@ -135,6 +135,7 @@ const Home = () => {
    <>
 
    {/* places toh same hi jarhi hai  filter ke baad bbhi vo bhi apni place bdl rhi */}
+   
       <Header setcoordinating={setcoordinates}/>
      {/* <Header/> */}
       <Grid container spacing={3} style={{ width: '100%' }}>

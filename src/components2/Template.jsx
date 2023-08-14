@@ -3,7 +3,7 @@ import Signupform from './Signupform'
 import Loginform from './Loginform'
 import photo from './assets/frame.png'
 // import Login from '../pages/Login'
-import { FcGoogle } from "react-icons/fc"; 
+// import { FcGoogle } from "react-icons/fc"; 
 import Header from '../components/Header/Header';
 
 const Template = ({title,desc1,desc2,image,formType}) => {
@@ -14,7 +14,10 @@ const Template = ({title,desc1,desc2,image,formType}) => {
   return (
     <>
         <div className='bg-newpink h-[100vh]'>
+        <div className='sticky top-0'>
         <Header/>
+        </div>
+
         {/* iski width navbar jaisi hai toh usme jo kiya vohi */}
             <div className="flex w-11/12 max-w-[1160px] py-12 gap-y-0 mx-auto gap-x-12 justify-between">
 

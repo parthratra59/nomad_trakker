@@ -10,7 +10,7 @@ import { createSlice } from "@reduxjs/toolkit"
         add:(state,action)=>{
             // action.payload mai jo hm paas krte na 
             // jo bhi hm input parameter send kiya hai na usko hm action.payload se access kr skte
-           state.push(action.payload)
+            return [...state, action.payload];
         //    console.log(action.payload)
         },
         remove:(state,action)=>{
