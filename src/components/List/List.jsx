@@ -38,6 +38,7 @@ const List = ({places,  loadinghorhi}) => {
     // usually yh nhi krte hm 
     setref(refs)
     // jab kbhi places change ho toh yh render ho
+    // eslint-disable-next-line
   },[places])
 
 
@@ -136,12 +137,15 @@ const List = ({places,  loadinghorhi}) => {
       same chij */}
       {/* grid ke items mai ab mapping strt hogi images vgrh ki */}
       {places?.map((kuchbhi,index)=>{
+         
           return (
             <>
-            <Grid ref={startingref[index]} item key={index} xs={12}>
+            <Grid ref={startingref[index]} item key={[kuchbhi]} xs={12}>
             {/* hme kuch bhi prop use krne se phele vo component ku likhna pdta uska reason important_rendering.txt file mai hai */}
             <PlaceDetails 
             hello={kuchbhi}
+          
+            
             // hm chate na right side se click kre aur yh scroll hojae toh iska mtlb yh hai 
             // like usne 35 pr click kiya toh index dekhega 35 kha hai aur match krlega 
             selectkiya={Number(receivekrega)===index} 

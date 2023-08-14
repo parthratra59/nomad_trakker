@@ -2,11 +2,11 @@ import React, {  useState, useContext } from 'react';
 import './Header.css';
 import { FcSearch } from 'react-icons/fc';
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, Box, Badge, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Badge } from '@mui/material';
 import { SiYourtraveldottv } from 'react-icons/si';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { InputBase } from '@mui/material';
-import { Link, useNavigate,NavLink } from 'react-router-dom'
+import { Link,NavLink } from 'react-router-dom'
 import { GlobalContext2 } from '../../App'
 import { toast } from 'react-hot-toast'
 import {  useSelector } from 'react-redux'
