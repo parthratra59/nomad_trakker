@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 // import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux'
-import { add,remove } from '../../redux/slices/Likeslice'
+import {add,remove} from "../../redux/slices/Likeslice"
 
 const PlaceDetails = ({hello,refprop,selectkiya}) => {
 
@@ -19,25 +19,25 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
   }, [selectkiya, refprop]);
 
 // likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
-  const like = useSelector((state) => state.like);
+  // const like = useSelector((state) => state.like);
   
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
 
  
-  const addtocart=()=>{
-    // yh cart ke andr item add krta hai
-    dispatch(add(hello))
-    console.log(hello)
-    toast.success("Items added to Wishlist")
-}
-const removefromcart=()=>{
-    // yh remove krta cart mai se item
-    // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
-    dispatch(remove(hello.location_id))
-    // console.log(hello)
-    toast.error("Items removed from Wishlist")
-}
+//   const addtocart=()=>{
+//     // yh cart ke andr item add krta hai
+//     dispatch(add(hello))
+//     console.log(hello)
+//     toast.success("Items added to Wishlist")
+// }
+// const removefromcart=()=>{
+//     // yh remove krta cart mai se item
+//     // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
+//     dispatch(remove(hello.location_id))
+//     // console.log(hello)
+//     toast.error("Items removed from Wishlist")
+// }
 
   
   // console.log(hello)
@@ -144,7 +144,7 @@ const removefromcart=()=>{
   <Typography gutterBottom variant="subtitle2" color="textSecondary" className='addressing'>
     <PhoneIcon />{hello?.phone}
   
-    <div style={{ position: 'absolute', top: '50%', right: '10px',transform: 'translateY(-50%)' }}>
+    {/* <div style={{ position: 'absolute', top: '50%', right: '10px',transform: 'translateY(-50%)' }}>
      {
                 
     
@@ -169,7 +169,7 @@ const removefromcart=()=>{
       }
      
      
-    </div>
+    </div> */}
   </Typography>
 </Box>
 

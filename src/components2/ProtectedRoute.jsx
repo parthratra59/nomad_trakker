@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, {  } from 'react';
 // import { GlobalContext } from '../App';
 
-import { Navigate } from 'react-router-dom';
+
 
 const ProtectedRoute = () => {
   // const { login } = useContext(GlobalContext);
