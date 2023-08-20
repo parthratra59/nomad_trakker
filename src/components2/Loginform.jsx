@@ -34,7 +34,7 @@ const Loginform = () => {
   return (
    <>
         
-         <form onSubmit={submitting}   className="flex flex-col w-full gap-y-4 mt-6">
+         <form onSubmit={submitting}   className="flex flex-col w-full gap-y-4 mt-8">
          <label htmlFor='email' className="w-full">
                 <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
                     Email Address
@@ -89,7 +89,7 @@ const Loginform = () => {
             <button className="">Sign In</button>
             </Link> */}
 
-            <button className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900">Sign In</button>
+            <button  className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900" type='submit'>Sign In</button>
 
 
 

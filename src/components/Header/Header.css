@@ -12,7 +12,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center; /* Add this line to vertically center flex items */
-  gap: 20px;
+  gap: 10px;
  /* text pointer will disable when click outside the text button */
   user-select: none;
   

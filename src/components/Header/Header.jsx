@@ -1,28 +1,37 @@
-import React, {  useState, useContext } from 'react';
+import React, {  useState } from 'react';
 import './Header.css';
 import { FcSearch } from 'react-icons/fc';
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, Box, Badge } from '@mui/material';
+import { Typography, Box, } from '@mui/material';
 import { SiYourtraveldottv } from 'react-icons/si';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { InputBase } from '@mui/material';
-import { Link,NavLink } from 'react-router-dom'
-import { GlobalContext2 } from '../../App'
-import { toast } from 'react-hot-toast'
-import {  useSelector } from 'react-redux'
-import {FaShoppingCart} from 'react-icons/fa'
-const Header = ({ setcoordinating }) => {
-  const [Autocompleting, setAutocomplete] = useState(null);
-  // const [inputValue, setInputValue] = useState('');
-  // const [selectedPlace, setSelectedPlace] = useState('');
-  // const{setlogin}=useContext(GlobalContext)
+import { Link } from 'react-router-dom'
 
+
+import {  useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom';
+
+const Header = ({ setcoordinating }) => {
+
+
+  // importing reducers
+  const {token}= useSelector((hello) => hello.auth);
+  const {totalItems}= useSelector((hello) => hello.like);
+
+
+
+  const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
     setAutocomplete(autoC);
   }
+
+
+  // conditional rendering of Search bar
+  const location = useLocation();
+  const isHomeRoute = location.pathname === '/';
  
-  const {isLoggedIn,setIsLoggedIn}=useContext(GlobalContext2)
-  const like = useSelector((state) => state.like);
+  
   const handlePlaceSelected = () => {
   
 
@@ -35,126 +44,163 @@ const Header = ({ setcoordinating }) => {
     }
   };
 
-  // useEffect(() => {
-  //   const handleKeyPress = (e) => {
-  //     if (e.key === 'Enter') {
-  //       handlePlaceSelected();
-  //     }
-  //   };
+  const handleClickSearch = () => {
+    // DOM MANUPLATION
+    let inputElement= document.getElementById('input');
+    if (inputElement) {
+      inputElement.click();
+    }
+   
 
-  //   document.addEventListener('keydown', handleKeyPress);
+    
+  };
 
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress);
-  //   };
-  // }, [selectedPlace]);
 
-  // const handleInputChange = (e) => {
-  //   setInputValue(e.target.value);
-  // };
 
   return (
     <>
-    
-      <AppBar position='static' style={{ backgroundColor: '#8E3A52', userSelect: 'none' }}>
-      {/* dekh vohi pattern bhar vala color ke liye  */}
-        <Toolbar className='toolbar justify-between items-center '>
-        <Link to='/'>
-          <Box className='logo'>
+        <div className='bg-newpink h-14 '>
+          <div className='flex justify-between w-11/12 max-w-maxContent items-center m-auto  p-2 '>
+          <Link to='/'>
+          <Box className='flex items-center gap-x-2 ml-6'>
           
-            <SiYourtraveldottv style={{ fontSize: '40px' }} />
-            <Typography className='typo' fontSize={'20px'}>
-              Nomad_Trakker
-            </Typography>
+          <SiYourtraveldottv style={{ fontSize: '40px' ,color:"white" }} />
+          <Typography className='typo' style={{color:"white"}} fontSize={'20px'}>
+            Nomad_Trakker
+          </Typography>
            
-          </Box>
-           </Link>
-          
-                      <Box className='search'>
+         </Box>
+         </Link>
+        {/* flex mtlb ek hi row mai krdo flex column ek ke niche ek */}
 
-          <FcSearch style={{ cursor: 'auto', fontSize: '30px' }} />
-          <Autocomplete onLoad={onloading} onPlaceChanged={handlePlaceSelected}>
-            <InputBase
-              className='inputBase'
-              placeholder='Search......'
+        { isHomeRoute && 
+         <div className='search '>
+      
 
-            />
-          </Autocomplete>
-          </Box>
-          <Box className='avatar'>
-                  <ul className='flex items-center gap-x-4 '>
-                  {!isLoggedIn &&
-                    <li>
-                      <Link to='/login'>
-                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
-                          // setlogin(false)
-                        // toast.success("loged in ")
-                      }}>
-                      Login
-                      </button>
-                      </Link>
-                    </li>
-                  }
-                  {/* login jb hai toh logout dikhega usko click krke login false hojaega */}
-                  {isLoggedIn && 
-                    <li>
-                      <Link to='/login'>
-                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700" onClick={()=>{
-                         setIsLoggedIn(false)
-                        toast.success("Logout Sucessfully");
-                      }}>
-                      Logout
-                      </button>
-                      </Link>
-                    </li>
-                  }
-                  {/* { login &&
-                    <li>
-                      <Link to='/dashboard'>
-                      <button  className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
-                      Dashboard
-                      </button>
-                      </Link>
-                    </li>
-                  } */}
-                  
-                    { !isLoggedIn &&
-                   
-                    <li>
-                    {/* app.js mai signup name se tha toh match kr gya route krdiya */}
-                      <Link to='/signup'>
-
-                      <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700"  onClick={()=>{
-                        
-                        // toast.success("Sign Up Successfully!!")
-
-                      
-
-                      }}>
-                      Sign up
-                      </button>
-                      </Link>
-                    </li>
-                    }
-                  </ul>
+      
+      <label htmlFor='input' onClick={handleClickSearch}>
+        <FcSearch style={{ cursor: 'pointer', fontSize: '30px' }} />
+      </label>
+      <Autocomplete onLoad={onloading} onPlaceChanged={handlePlaceSelected}>
+        <InputBase
+          className='inputBase'
+          placeholder='Search......'
+          style={{ color: 'black' }}
+          id='input'
+         
+        />
+      </Autocomplete>
+      
+    </div>
+        }
+      
+ 
 
 
-            <NavLink to='/cart'>
-                    {/* kisi bhi chij ko overlapp krana hota toh bhar vale ko relative andr vale ko absolute dete */}
-                   
-                    <div className='relative'>
-                    <BsFillHeartFill className='text-2xl'/>
-                    {/* nhi toh 0 bhi show hoga */}
-                    {like.length>0
-                    && <span className='absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>{like.length}</span>}
+
+{/**********cart /LOGIN/LOGOUT/DELTEBUTTON */ }
+       
+    <div>
+      <ul  className='flex items-center gap-x-4 '>
+        {
+            token===null &&(
+            <li>
+            <Link to='/login'>
+            <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-md border border-richblack-700">
+              Login
+              </button>
+              </Link>
+            </li>
+        )}
+        {
+          (token===null) &&(
+            <li >
+            <Link to='/signup'>
+            <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">Signup</button>
+            </Link>
+            </li>
+          )}
+          {
+            token!==null &&(
+              <li>
+              <Link to='/wishlist'>
+              <div className='relative'>
+                 <BsFillHeartFill className='text-2xl'/>
+               {/* nhi toh 0 bhi show hoga */}
+                  {totalItems.length>0
+                    && <span className='absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white'>{totalItems.length}</span>}
                       </div>
-                    </NavLink> 
-           
-          </Box>
-        </Toolbar>
-      </AppBar>
+              </Link>
+              </li>
+
+            )
+
+          }
+          </ul>
+          </div>
+
+          </div>
+        </div>
     </>
-  );
-};
+  )
+}
 
 export default Header;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // const [inputValue, setInputValue] = useState('');
+  // const [selectedPlace, setSelectedPlace] = useState('');
+  // const{setlogin}=useContext(GlobalContext)

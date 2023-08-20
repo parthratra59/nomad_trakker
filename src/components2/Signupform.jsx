@@ -2,11 +2,20 @@ import React,{useContext, useState} from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast";
-// import { GlobalContext } from './Home';
-import { GlobalContext2 } from '../App';
+import { useDispatch } from "react-redux"
+import { setSignupData } from "../redux/slices/Authslice"
+import {sendOtp} from "../services/operations/authApi"
+import {setProgress} from "../redux/slices/Progress"
 const Signupform = () => {
-    const{setIsLoggedIn}=useContext(GlobalContext2)
+    
     const navigate=useNavigate()
+    const dispatch = useDispatch()
+
+// when we sending data to the server then there is no need of useeffect right because we are not fetching 
+    const[showpassword,setshowpassword]=useState(false)
+    const[showpassword2,setshowpassword2]=useState(false)
+
+    
     const [formData, setformdata] = useState({
         firstName: "",
         lastName: "",
@@ -14,6 +23,8 @@ const Signupform = () => {
         createPassword: "",
         confirmPassword: "",
       });
+
+
       const handleinput=(e)=>{
         
         setformdata((prev)=>{
@@ -24,6 +35,8 @@ const Signupform = () => {
         })
     }
 
+   
+
     const submitting=(e)=>{
         e.preventDefault();
         if(formData.createPassword!==formData.confirmPassword)
@@ -32,22 +45,33 @@ const Signupform = () => {
             return;
 
         }
-        else{
-            // setlogin(true)
-            toast.success("Account Created")
-            setIsLoggedIn(true)
-            console.log(formData)
-            navigate('/')
+        const fullData = {
+          ...formData,
         }
+
+        // pura data setSignupdata mai bs uske baad operations mai jakr ek function lgaege us se backend mai chle jaega agr yh nhi krege toh database mai jaega kese
+        dispatch(setSignupData(fullData))
+
+        // hme email chaiye and navigate hi toh chaiye hme usme apne aap loading ke baad write otp vale function page pr redirect krna
+        dispatch(sendOtp(formData.email, navigate))
+
+
+
+        // reset krdo  
+        setformdata({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        })
     }
 
-    const[showpassword,setshowpassword]=useState(false)
-    const[showpassword2,setshowpassword2]=useState(false)
-
+   
   return (
     // isme toh form hi bnaega baki color vgrh ka kaam Template component mai horha hai
     <>
-        <form onSubmit={submitting}>
+        <form onSubmit={submitting} >
 
             <div className="flex gap-x-4">
             <label htmlFor='firstName' className="w-full">
@@ -143,7 +167,7 @@ const Signupform = () => {
 
 
 
-            <button className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full">
+            <button type='submit' onClick={dispatch(setProgress(60))} className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full">
           Create Account
         </button>
 
