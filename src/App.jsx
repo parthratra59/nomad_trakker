@@ -4,7 +4,7 @@ import Login from './components2/Login'
 import Signup from './components2/Signup'
 import {Routes,Route}  from 'react-router-dom'
 import Cart from './components2/Cart'
-import Header from './components/Header/Header'
+
 export const GlobalContext2 =createContext({});
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
