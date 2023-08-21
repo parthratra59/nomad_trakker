@@ -25,7 +25,9 @@ module.exports = {
         yellow: {
           50: "#FFD60A",
         },
-        newpink:"#8E3A52"
+        newpink:"#8E3A52",
+        slightPink:"#AD5D6F"
+
       },
     },
   },

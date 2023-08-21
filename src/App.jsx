@@ -4,6 +4,9 @@ import Login from './components2/Login'
 import Signup from './components2/Signup'
 import {Routes,Route}  from 'react-router-dom'
 import Cart from './components2/Cart'
+import Forgotpassword from './components2/important_pages/Forgotpassword'
+import Error from "./components2/important_pages/Errror"
+import Resetpassword from './components2/important_pages/Resetpassword'
 
 export const GlobalContext2 =createContext({});
 const App = () => {
@@ -19,6 +22,10 @@ const App = () => {
         <Route path='/login' element={<Login/>} ></Route>
         <Route path='/signup' element={<Signup/>} ></Route>
         <Route path='/wishlist' element={<Cart/>} ></Route>
+        <Route path="/Forgotpassword" element={<Forgotpassword/>}></Route>
+        <Route path='*' element={<Error/>}></Route>
+        <Route path='/resetpassword/:_id' element={<Resetpassword/>}></Route>
+
     </Routes>
     </GlobalContext2.Provider>
   )
