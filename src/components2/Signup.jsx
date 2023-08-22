@@ -5,9 +5,8 @@ const Signup = () => {
   return (
     <>
       <Template
-        title="Join the millions learning to code with StudyNotion for free"
-        desc1="Build skills for today, tomorrow, and beyond."
-        desc2="Education to future-proof your career."
+        title="Guiding Your Footsteps: Your Personal Travel Charmer Awaits!!"
+        desc1="Trailblazing Memories: Your Custom Odyssey Begins Now!"
         image={signupImg}
         formType="signup"
       />

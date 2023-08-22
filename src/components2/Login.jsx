@@ -6,9 +6,8 @@ const Login = () => {
     // mai template mai data bhejunga vo apne aap krdega jo use krna hai
     <>
       <Template
-        title="Welcome Back"
-        desc1="Build skills for today, tomorrow, and beyond."
-        desc2="Education to future-proof your career."
+        title="Welcome Back!!"
+        desc1="Forget the Ordinary, Embrace the Extraordinary – Login to Your Travel Realm."
         image={loginImg}
         formType="login"
       />

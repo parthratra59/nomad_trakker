@@ -1,27 +1,25 @@
-.griding{
-    height: 75vh;
-    /* is se vo vala section aya ki jb ek particular section hi scroll hua */
-    /* auto means apne hisab se dekhle kya kr skta scroll hai scroll krde hidden hai toh hidden krde */
-    /* horizontal scroll bar bhi ajati hai overflow scroll mai auto mai nhi ati */
-    /* agr height ka hota vo apne dekhleta overflow mai */
-    overflow: auto;
- }
- .loading{
-    
-        height: 600px;
-         display: flex; 
-         justify-content: center;
-         align-items:center;
-  
- }
- .heading{
-    font-weight:'bold';
-    font-size:'26px';
- }
+.griding {
+  height: 75vh;
+  /* is se vo vala section aya ki jb ek particular section hi scroll hua */
+  /* auto means apne hisab se dekhle kya kr skta scroll hai scroll krde hidden hai toh hidden krde */
+  /* horizontal scroll bar bhi ajati hai overflow scroll mai auto mai nhi ati */
+  /* agr height ka hota vo apne dekhleta overflow mai */
+  overflow: auto;
+}
+.loading {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  font-weight: "bold";
+  font-size: "26px";
+}
 
- @media screen and (max-width: 1200px) {
-    .heading{
-        font-weight:bold;
-        font-size:20px;
-     }
- }
+@media screen and (max-width: 1200px) {
+  .heading {
+    font-weight: bold;
+    font-size: 20px;
+  }
+}

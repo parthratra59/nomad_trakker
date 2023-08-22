@@ -125,7 +125,7 @@ const Resetpassword = () => {
                           />
                         </label>
                         <span
-                          onClick={() => setShowPassword((prev) => !prev)}
+                          onClick={() => setShowPassword(!showPassword)}
                           className="absolute right-3 top-9 z-[10] cursor-pointer"
                         >
                           {!showPassword ? (

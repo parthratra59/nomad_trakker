@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../../components/Header/Header";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getPasswordToken } from "../../services/operations/authApi";
 import "./Spinner.css";

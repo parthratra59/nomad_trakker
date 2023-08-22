@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../redux/slices/Authslice";
-import { sendOTP } from "../services/operations/authApi";
+import { sendotp } from "../services/operations/authApi";
 import "./Signupform.css";
 
 const Signupform = () => {
@@ -14,19 +14,19 @@ const Signupform = () => {
   const [showpassword, setshowpassword] = useState(false);
   const [showpassword2, setshowpassword2] = useState(false);
 
-  const [formData, setformdata] = useState({
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    createPassword: "",
+    password: "",
     confirmPassword: "",
   });
 
-  const { firstName, lastName, email, createPassword, confirmPassword } =
+  const { firstName, lastName, email, password, confirmPassword } =
     formData;
 
   const handleinput = (e) => {
-    setformdata((prev) => {
+    setFormData((prev) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -48,7 +48,7 @@ const Signupform = () => {
     const passwordRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
-    if (!createPassword.match(passwordRegex)) {
+    if(!password.match(passwordRegex)){
       return toast.error(
         <div className="error-message">
           <p>
@@ -65,31 +65,28 @@ const Signupform = () => {
       );
     }
 
-    if (formData.createPassword !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
-    const fullData = {
-      ...formData,
-    };
+   
 
     // pura data setSignupdata mai bs uske baad operations mai jakr ek function lgaege us se backend mai chle jaega agr yh nhi krege toh database mai jaega kese
-    dispatch(setSignupData(fullData));
+    dispatch(setSignupData({firstName, lastName, email, password, confirmPassword}));
 
     // hme email chaiye and navigate hi toh chaiye hme usme apne aap loading ke baad write otp vale function page pr redirect krna
-    dispatch(sendOTP(formData.email, navigate));
+    dispatch(sendotp(formData.email, navigate));
 
     // reset krdo
-    setformdata({
-      firstName: "",
-      lastName: "",
-      email: "",
-      createPassword: "",
-      confirmPassword: "",
-    });
-    setshowpassword2(false);
-    setshowpassword(false);
+   
+   
   };
+
+  
+
+
+
+  
 
   return (
     // isme toh form hi bnaega baki color vgrh ka kaam Template component mai horha hai
@@ -159,11 +156,11 @@ const Signupform = () => {
             <input
               type={showpassword ? "text" : "password"}
               required
-              id="createPassword"
+              id="password"
               placeholder="Create Password"
               onChange={handleinput}
-              value={formData.createPassword}
-              name="createPassword"
+              value={formData.password}
+              name="password"
               className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
             />
             <span
