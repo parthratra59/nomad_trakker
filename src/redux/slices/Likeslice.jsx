@@ -6,7 +6,7 @@ const initialState = {
     : 0,
 };
 
-export const Likeslice = createSlice({
+export const likeSlice = createSlice({
   name: "like",
   initialState: initialState,
   reducers: {
@@ -38,6 +38,6 @@ export const Likeslice = createSlice({
   },
 });
 // destructure krlia
-export const { add, remove, settotalItems } = Likeslice.actions;
+export const { add, remove, settotalItems } = likeSlice.actions;
 
-export default Likeslice.reducer;
+export default likeSlice.reducer;
