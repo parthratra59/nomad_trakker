@@ -1,0 +1,2 @@
+pre middlware se nodemailer
+user came->data enter(signup vala)->mail aega pre middleware jo database mai entry se phele aega  se mail pr jake mai ek page pr route hugna then otp dalunga->submit krunga-> db mai entry create hogi

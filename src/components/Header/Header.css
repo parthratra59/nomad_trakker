@@ -1,0 +1,47 @@
+.toolbar {
+  display: flex;
+
+  font-family:
+    BlinkMacSystemFont,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+.search {
+  background-color: white;
+  padding: 0px 10px;
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /* Add this line to vertically center flex items */
+  gap: 10px;
+  /* text pointer will disable when click outside the text button */
+  user-select: none;
+}
+
+.inputBase::placeholder {
+  color: #8e3a52;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .typo {
+    display: none;
+    font-size: 12px;
+  }
+}
