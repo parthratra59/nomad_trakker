@@ -16,36 +16,24 @@ const Authslice = createSlice({
   reducers: {
     // jo token arha hai daldo state mai
     setSignupData:(state, action)=> {
-     return {
+      state.signupData = action.payload;
+      console.log("signupData= ",state.signupData);
 
-        ...state,
-        signupData: action.payload,
-     }
-      // console.log(state.signupData);
-      // return action.payload;
-
-    }
-    ,
-    //   bich mai loading horhi hai isliye loading bhi daldo
+     },
+ 
     setLoading:(state, action)=> {
-     return {
-        ...state,
-        loading: action.payload,
-
+     state.loading = action.payload;
+     console.log("loading= ",state.loading);
      }
-      
-      // return action.payload
-    },
-    //   data arha hai vo jo hm bhej rhe signup mai daldo backend mai signup se data arha hai
+      ,
+
     setToken:(state,action)=>{
-      return {
-        ...state,
-        token: action.payload,
-      }
-      // return action.payload
+     state.token = action.payload;// return action.payload
+      console.log("token= ",state.token);
   }
-  },
-});
+}}
+
+);
 
 export const { setToken, setLoading, setSignupData } = Authslice.actions;
 export default Authslice.reducer;
