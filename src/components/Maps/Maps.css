@@ -39,15 +39,12 @@
 
 /* Media query for smaller screens */
 
-
 /* Add the following CSS inside your Maps.css file or your style block */
-
 
 /* Optionally, you can adjust the height for smaller screens */
 
-
 @media screen and (max-width: 650px) {
-  .google{
+  .google {
     display: flex;
     justify-content: center;
     align-items: center;

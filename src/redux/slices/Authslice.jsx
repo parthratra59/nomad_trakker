@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // bina local staoarge ke bhi chlega usme initial state mai null daldo
 const initialState = {
   // jb tk data nhi aya hoga loading hota rhega backend se data arha hai toh loading true hoga
-  loading: false,
   signupData: null,
+  loading: false,
   token: localStorage.getItem("token")
     ? JSON.parse(localStorage.getItem("token"))
     : null,
@@ -15,19 +15,25 @@ const Authslice = createSlice({
   initialState: initialState,
   reducers: {
     // jo token arha hai daldo state mai
-    setToken: (state, action) => {
-      state.token = action.payload;
-    },
-    //   bich mai loading horhi hai isliye loading bhi daldo
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
-    //   data arha hai vo jo hm bhej rhe signup mai daldo backend mai signup se data arha hai
-    setSignupData: (state, action) => {
+    setSignupData:(state, action)=> {
       state.signupData = action.payload;
-    },
-  },
-});
+      console.log("signupData= ",state.signupData);
+
+     },
+ 
+    setLoading:(state, action)=> {
+     state.loading = action.payload;
+     console.log("loading= ",state.loading);
+     }
+      ,
+
+    setToken:(state,action)=>{
+     state.token = action.payload;// return action.payload
+      console.log("token= ",state.token);
+  }
+}}
+
+);
 
 export const { setToken, setLoading, setSignupData } = Authslice.actions;
 export default Authslice.reducer;

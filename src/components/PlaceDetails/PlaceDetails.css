@@ -1,24 +1,19 @@
 .chip {
-    margin: 5px 5px 5px 0;
-    
-  }
-
-.addressing{
-        display: flex;
-        align-items: center; 
-        
-        
-
+  margin: 5px 5px 5px 0;
 }
 
-.media{
-    display:flex;
-    justify-content:space-between
+.addressing {
+  display: flex;
+  align-items: center;
+}
+
+.media {
+  display: flex;
+  justify-content: space-between;
 }
 @media screen and (max-width: 900px) {
-    .media{
-        display:flex;
-        justify-content:space-between;
-       
-    }
+  .media {
+    display: flex;
+    justify-content: space-between;
+  }
 }

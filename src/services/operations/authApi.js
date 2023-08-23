@@ -21,7 +21,10 @@ const {
 
 // post ke baad url uske baad body data
 
-export const sendOTP = (email, navigate) => {
+
+// flow of authentication phele signup bhrege then otp  usme se email lega and navigate krega otp vale page maik then verify krega then signup krega vo backend pr jaega then backend pr jane ke baad dispactch ab dispatch kya hai vo redux store mai jake state ko update krta hai aur vo trigger krta hai backend ko ki data arha hai aur backend se data arha hai toh loading true krdo aur loading true krne se spinner chlega aur backend se data arha hai toh loading false krdo aur spinner band krdo aur data arha hai toh toast success krdo aur navigate krdo login page pr aur login page pr jaega toh login bhrege aur login bhrege toh backend pr jaega aur backend pr jaega toh dispatch hoga aur dispatch hoga toh loading true hoga aur loading true hoga toh spinner chlega aur backend se data arha hai toh loading false krdo aur spinner band krdo aur data arha hai toh toast success krdo 
+
+export const sendotp = (email, navigate) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
     // setLoading true se spinner dikhne lg jaega
@@ -50,22 +53,22 @@ export const sendOTP = (email, navigate) => {
     } catch (error) {
       console.log("SENDOTP API ERROR............", error);
       // error?.response agr maine .data frontend se dekho  maine yh likha hua hai toh ?. ke baad vala chlega message backend mai likha
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "Could not send OTP");
       // progrees pura kr lo 100 hojaeaga toh error ajaega
     }
     dispatch(setLoading(false));
   };
 };
 
-export function signUp(
+export const signup=(
   firstName,
   lastName,
   email,
-  createPassword,
+  password,
   confirmPassword,
   otp,
   navigate
-) {
+) =>{
   return async (dispatch) => {
     const toastId = toast.loading("Loading...");
     dispatch(setLoading(true));
@@ -75,13 +78,13 @@ export function signUp(
         firstName,
         lastName,
         email,
-        createPassword,
+        password,
         confirmPassword,
         otp,
       });
-
+      
       console.log("SIGNUP API RESPONSE............", response);
-
+     
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
@@ -128,6 +131,33 @@ export const getPasswordToken = (email, setEmailsent) => {
   };
 };
 
+export const login = (email, password, navigate) => {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+    // setLoading true se spinner dikhne lg jaega
+    try {
+      const response = await apiConnector("POST", LOGIN_API, {
+        email,
+        password,
+      });
+       
+      console.log("LOGIN API RESPONSE............", response);
+
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      toast.success("Login Successful");
+      navigate("/");
+    } catch (error) {
+      console.log("LOGIN API ERROR............", error);
+      toast.error("Login Failed");
+    }
+    toast.dismiss(toastId);
+    dispatch(setLoading(false));
+  };
+};
 
 
 export const resetPassword =(password,confirmPassword,token,setresetComplete)=>{
