@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import ProfileDown from "../ProfileDown/ProfileDown";
 
 const Header = ({ setcoordinating}) => {
   // importing reducers
@@ -107,7 +108,7 @@ const Header = ({ setcoordinating}) => {
                 <li>
                   <Link to="/wishlist">
                     <div className="relative">
-                      <BsFillHeartFill className="text-2xl" />
+                      <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
                       {/* {totalItems.length > 0 && (
                         <span className="absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white">
@@ -117,6 +118,11 @@ const Header = ({ setcoordinating}) => {
                     </div>
                   </Link>
                 </li>
+              )}
+              {token !== null && (
+                    <div >
+                    <ProfileDown/>
+                      </div>
               )}
             </ul>
           </div>

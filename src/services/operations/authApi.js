@@ -3,6 +3,7 @@ import { endpoints } from "../apiservice";
 import { apiConnector } from "../apiconnector";
 import { setLoading, setToken } from "../../redux/slices/Authslice";
 import { setProgress } from "../../redux/slices/Progress";
+import Cookies from "js-cookie";
 
 // destructure krlia
 
@@ -151,8 +152,24 @@ export const login = (email, password, navigate) => {
       dispatch(setProgress(100))
       toast.success("Login Successful");
       // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header 
+
+      const expirationDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+      // 10 years same use kro jo backend mai expire time lagaya hai
+      Cookies.set("token", response.data.token, { expires: expirationDate });
+
+      // bugs laskta hai token dono jgh store kr rhe hai ek mai kro se
+      // localStorage.setItem("token",JSON.stringify(response.data.token))
+      // ek hi chij use kro best hai cookies
+
       
+
       dispatch(setToken(response.data.token))
+
+      // reload hone ke baad bhi data rhega and jb tk token expire nhi hua and delete nhi kiya vo login rhega
+      
+      
+
+
       // example 
       // instance mai yh hota 
       // method,url,data,header,params

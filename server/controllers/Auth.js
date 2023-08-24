@@ -362,7 +362,10 @@ const {mailSender} = require('../utils/mailsender');
             // chalo ab cookie generate krte hai
             // cookie ke andr 3 paramter insert krne pdte hai
             // cookie name,cookie data,options jo hm banege
-
+            // jo name idhr rkge usi se fronend maai bulana pdeaga
+            // agr ratraparth hai toh frontend mai bhi ratraparth se bulana pdega 
+            // res.cookie("ratraparth",token,options).status(200).
+            // isliye token rhk do vo convention bhi hai
 
             const options={
                    // 10year mai kya hoga  10 * 365 days* 24hours*60 min *60 sec*1000miilisec
@@ -372,7 +375,7 @@ const {mailSender} = require('../utils/mailsender');
             }
 
 
-            return res.cookie("ratraparth",token,options).status(200).json({
+            return res.cookie("token",token,options).status(200).json({
                 success:true,
                 message:"User logged in successfully",
                 existingUser,
