@@ -74,7 +74,7 @@ const {mailSender} = require('../utils/mailsender');
         console.log("otp generator",otp)
 
         // check otp is unique or not
-        const result =await OTP.findOne({otp:otp})
+        let result =await OTP.findOne({otp:otp})
         // agr usko mil gya db mai aisa otp 
         // toh hm jb generate hone ke baad bhi kya pta aiasa otp phele kbhi db mai aya ho
         // toh hm jb tk code generate krege ki jb tk koi nya nhi mil jae
@@ -210,7 +210,7 @@ const {mailSender} = require('../utils/mailsender');
             const recentotp=await OTP.findOne({email}).sort({createdAt:-1}).limit(1)
             console.log(recentotp)
             // validate otp
-            if(recentotp.length==0)
+            if(recentotp.length===0)
             {
                 // otp not found
                 return res.status(400).json({

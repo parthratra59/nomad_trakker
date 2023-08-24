@@ -11,10 +11,12 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-const Header = ({ setcoordinating }) => {
+const Header = ({ setcoordinating}) => {
   // importing reducers
-  const { token } = useSelector((hello) => hello.auth);
-  const { totalItems } = useSelector((hello) => hello.like);
+
+  const { token } = useSelector((state) => state.auth);
+  console.log("token at header",token)
+  // const { totalItems } = useSelector((state) => state.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
@@ -107,11 +109,11 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {totalItems.length > 0 && (
+                      {/* {totalItems.length > 0 && (
                         <span className="absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white">
                           {totalItems.length}
                         </span>
-                      )}
+                      )} */}
                     </div>
                   </Link>
                 </li>
