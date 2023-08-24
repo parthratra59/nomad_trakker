@@ -19,6 +19,7 @@
     "generate": "^0.14.0",
     "google-map-react": "^2.2.1",
     "immer": "^10.0.2",
+    "js-cookie": "^3.0.5",
     "net": "^1.0.2",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "path-browserify": "^1.0.1",
