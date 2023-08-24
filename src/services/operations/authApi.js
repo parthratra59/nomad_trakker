@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { endpoints } from "../apiservice";
 import { apiConnector } from "../apiconnector";
-import { setLoading } from "../../redux/slices/Authslice";
+import { setLoading, setToken } from "../../redux/slices/Authslice";
 import { setProgress } from "../../redux/slices/Progress";
 
 // destructure krlia
@@ -34,7 +34,7 @@ export const sendotp = (email, navigate) => {
         email,
         checkUserPresent: true,
       });
-
+      dispatch(setProgress(100));
       console.log("SENDOTP API RESPONSE............", response);
       // sb backend mai jo hmne api bnai hai uske according .status likh likh kr
 
@@ -55,6 +55,7 @@ export const sendotp = (email, navigate) => {
       // error?.response agr maine .data frontend se dekho  maine yh likha hua hai toh ?. ke baad vala chlega message backend mai likha
       toast.error(error?.response?.data?.message || "Could not send OTP");
       // progrees pura kr lo 100 hojaeaga toh error ajaega
+      dispatch(setProgress(100));
     }
     dispatch(setLoading(false));
   };
@@ -147,12 +148,22 @@ export const login = (email, password, navigate) => {
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-
+      dispatch(setProgress(100))
       toast.success("Login Successful");
+      // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header 
+      
+      dispatch(setToken(response.data.token))
+      // example 
+      // instance mai yh hota 
+      // method,url,data,header,params
+
+      // response.data krte means ab hm data pr agye fir hmne jo backend pr uska data likha databody usko access krte
+     
       navigate("/");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
       toast.error("Login Failed");
+      dispatch(setProgress(100))
     }
     toast.dismiss(toastId);
     dispatch(setLoading(false));

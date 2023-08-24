@@ -10,6 +10,7 @@ import "./Signupform.css";
 
 const Signupform = () => {
   const navigate = useNavigate();
+  // store mai data bhej rha hu function ke through then receive krega backend and jo state chnage hoga jb vo hoga authapi mai staate change hoga
   const dispatch = useDispatch();
 
   const [showpassword, setshowpassword] = useState(false);
