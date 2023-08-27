@@ -12,11 +12,11 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import ProfileDown from "../ProfileDown/ProfileDown";
 
-const Header = ({ setcoordinating}) => {
+const Header = ({ setcoordinating }) => {
   // importing reducers
 
   const { token } = useSelector((state) => state.auth);
-  console.log("token at header",token)
+  console.log("token at header", token);
   // const { totalItems } = useSelector((state) => state.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
@@ -120,9 +120,9 @@ const Header = ({ setcoordinating}) => {
                 </li>
               )}
               {token !== null && (
-                    <div >
-                    <ProfileDown/>
-                      </div>
+                <div className="flex items-center">
+                  <ProfileDown />
+                </div>
               )}
             </ul>
           </div>

@@ -1,2 +1,53 @@
 pre middlware se nodemailer
 user came->data enter(signup vala)->mail aega pre middleware jo database mai entry se phele aega  se mail pr jake mai ek page pr route hugna then otp dalunga->submit krunga-> db mai entry create hogi
+
+
+
+.save ho ya .create dono mai mai phele body se fetch toh krna hai pdeaga rrq.body vrna kaam kese krege
+
+.save() Method:
+jb phele hi object bnalet hai 
+
+
+Used when you have already created an instance of your Mongoose model (object) and want to save it to the database.
+This method is especially useful when you want to perform additional operations, validations, or modifications on the object before saving it.
+
+complex data ke save ke liye use krskte hai
+You have more control over the content and properties of the object before it's saved.
+
+
+code:-
+const newUser = new User({
+  firstName,
+  lastName,
+  email,
+  password: hashedPassword,
+  image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+});
+
+// Modify the newUser object if needed
+
+await newUser.save();
+
+
+
+
+
+
+
+creeate mai object ke sath sath create krte
+create jb use krte jb apko koi jyada complxity nhi hai data mai ki bich bich mai kuch krna hai
+toh direct use krdo
+
+
+Used when you want to create a new object instance and immediately save it to the database in a single step.
+This method simplifies the process of creating and saving by combining both steps into one.
+You typically use this method when you don't need to perform extensive modifications or custom logic on the object before saving.
+
+const newUser = await User.create({
+  firstName,
+  lastName,
+  email,
+  password: hashedPassword,
+  image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+});

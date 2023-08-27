@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setProgress } from "../redux/slices/Progress"
-import {login} from "../services/operations/authApi"
+import { setProgress } from "../redux/slices/Progress";
+import { login } from "../services/operations/authApi";
 // import { setToken } from "../redux/slices/Authslice";
-
 
 // import { GlobalContext } from './Home'
 
 // import Header from './components/Header/Header';
 
 const Loginform = () => {
-
   // store mai data bhej rha hu function ke through then receive krega backend and jo state chnage hoga jb vo hoga authapi mai staate change hoga
   const dispatch = useDispatch();
-  const navigate =useNavigate()
-  
+  const navigate = useNavigate();
+
   const [formdata, setformdata] = useState({ email: "", password: "" });
 
   // const navigate=useNavigate()
@@ -30,8 +28,7 @@ const Loginform = () => {
     });
   };
 
-  
-  const {token} = useSelector((prev)=>prev.auth)
+  const { token } = useSelector((state) => state.auth);
   // const submitting=(e)=>{
   //     e.preventDefault();
   //     navigate('/')
@@ -41,12 +38,14 @@ const Loginform = () => {
   const [showpassword, setshowpassword] = useState(false);
 
   const handleOnSubmit = (e) => {
-    e.preventDefault()
-    dispatch(login(formdata.email, formdata.password, navigate))
-    console.log("elements",token)
-  }
-
- 
+    e.preventDefault();
+    dispatch(login(formdata.email, formdata.password, navigate));
+    console.log("elements", token);
+    console.log(
+      "hello",
+      dispatch(login(formdata.email, formdata.password, navigate))
+    );
+  };
 
   // setformdata({
   //     email: "",
@@ -54,13 +53,14 @@ const Loginform = () => {
   //   })
   //  setshowpassword(false)
 
-
-
   // jb ap label ke andr daldete input tag ko toh id ki jrurt nhi hoti iska mtlb hi
   // hota ki input us se conect hogay hai
   return (
     <>
-      <form onSubmit={handleOnSubmit} className="flex flex-col w-full gap-y-4 mt-8">
+      <form
+        onSubmit={handleOnSubmit}
+        className="flex flex-col w-full gap-y-4 mt-8"
+      >
         <label htmlFor="email" className="w-full">
           <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
             Email Address
@@ -123,7 +123,10 @@ const Loginform = () => {
             <button className="">Sign In</button>
             </Link> */}
 
-        <button onClick={()=>{dispatch(setProgress(60))}}
+        <button
+          onClick={() => {
+            dispatch(setProgress(60));
+          }}
           className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
           type="submit"
         >

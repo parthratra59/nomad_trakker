@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import GoogleMapReact from 'google-map-react';
-import Mapstyles from './Mapstyles';
-import { Typography,Paper, Rating} from '@mui/material';
+import React, { useContext, useEffect, useState } from "react";
+import GoogleMapReact from "google-map-react";
+import Mapstyles from "./Mapstyles";
+import { Typography, Paper, Rating } from "@mui/material";
 // import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import './Maps.css'
+import "./Maps.css";
 
 import { GlobalContext } from "../../components2/Home";
 
-
-const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
-
+const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
   // agr vo photos dekhini ho toh atleast 600px expand cahiye vrna cursor dikhega
 
   // const isDesktop=useMediaQuery('(min-width:700px)');
@@ -48,11 +46,11 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
     zoomControl: true,
     fullscreenControl: true,
     // mapTypeControl: true,
-    styles: Mapstyles// Assign the sty prop directly to styles
+    styles: Mapstyles, // Assign the sty prop directly to styles
   };
 
   return (
-    <Paper className='google'  xs={12}  style={{ height: '90vh', width: '100%'}}>
+    <Paper className="google -z-10" xs={12} style={{ height: "90vh", width: "100%" }}>
       <GoogleMapReact
         // props
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
@@ -65,16 +63,13 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
           setcoordinates({ lat: e.center.lat, lng: e.center.lng });
           setbounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-
-
-        // yh onchild click ek event listener hai hm crd/paper pr click kre toh left side mai 
+        // yh onchild click ek event listener hai hm crd/paper pr click kre toh left side mai
         // means List mai vo pauch jaye usi hotel/restaurnat mai
         // aur yh hoGA lifting state up se
-        // when parallel component kaam kar rhe ho ek sath tb yh use hota hai 
-        
+        // when parallel component kaam kar rhe ho ek sath tb yh use hota hai
 
-        onChildClick={(bhai)=>sendkrega(bhai)}
-        margin={[50,50,50,50]}
+        onChildClick={(bhai) => sendkrega(bhai)}
+        margin={[50, 50, 50, 50]}
       >
         {/* there will be two syntax with return without return 
     with return there is a curly braces
@@ -112,29 +107,28 @@ const Maps = ({setcoordinates,setbounds,coordinates,places}) => {
               {/* {!isDesktop ? (
         <LocationOnOutlinedIcon color="" fontSize="large" />
       ) : ( */}
-    {
-        <Paper elevation={3} className="papering" >
-          <Typography variant="subtitle2" gutterBottom>
-            {jagah.name}
-          </Typography>
-          <img 
-            src={
-              jagah.photo
-                ? jagah.photo.images.large.url
-                : ""
-            }
-            className='pointer'
-            alt="Place"
-          />
-          <Rating size='small' value={Number(jagah.rating)} readOnly></Rating>
-        </Paper>
-      }
-    </div>
-  );
-  
-})}
-{/* /google map ke andr hi toh krunga */}
-</GoogleMapReact>
+              {
+                <Paper elevation={3} className="papering">
+                  <Typography variant="subtitle2" gutterBottom>
+                    {jagah.name}
+                  </Typography>
+                  <img
+                    src={jagah.photo ? jagah.photo.images.large.url : ""}
+                    className="pointer"
+                    alt="Place"
+                  />
+                  <Rating
+                    size="small"
+                    value={Number(jagah.rating)}
+                    readOnly
+                  ></Rating>
+                </Paper>
+              }
+            </div>
+          );
+        })}
+        {/* /google map ke andr hi toh krunga */}
+      </GoogleMapReact>
     </Paper>
   );
 };
