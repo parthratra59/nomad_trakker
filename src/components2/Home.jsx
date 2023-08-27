@@ -64,10 +64,11 @@ const Home = () => {
   useEffect(() => {
     // aise jb function ke andr function likh rhe hote toh vo call back function hota
     // Filter places based on rating
+    // const filtered = places.filter((place) => place.rating > ratekro);
+
     const filtered = places.filter((place) => place.rating > ratekro);
-    // Set the filtered places to the state
     setfilteredplaces(filtered);
-  }, [places, ratekro]);
+  }, [ratekro]);
   // jb rating bdle tb bhi yh kaam mai aye
 
   useEffect(() => {

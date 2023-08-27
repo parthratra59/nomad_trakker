@@ -3,7 +3,10 @@ import { endpoints } from "../apiservice";
 import { apiConnector } from "../apiconnector";
 import { setLoading, setToken } from "../../redux/slices/Authslice";
 import { setProgress } from "../../redux/slices/Progress";
+import { setUser } from "../../redux/slices/Profileslice";
+import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+
 
 // destructure krlia
 
@@ -153,17 +156,28 @@ export const login = (email, password, navigate) => {
       toast.success("Login Successful");
       // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header 
 
-      const expirationDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+      const userImage = response.data?.user?.image
+      ? response.data.user.image
+      : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
+    dispatch(setUser({ ...response.data.user, image: userImage }))
+
+      // const expirationDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
       // 10 years same use kro jo backend mai expire time lagaya hai
-      Cookies.set("token", response.data.token, { expires: expirationDate });
+      // Cookies.set("token", JSON.stringify(response.data.token), { expires: expirationDate });
+
+      // "user" module se arha hai "Usermodule.js se"
+      // Cookies.set("user", JSON.stringify(response.data.user), { expires: expirationDate });
+
+      // "token bhi module se arha hai "user" vale store hogya hai na 
+
 
       // bugs laskta hai token dono jgh store kr rhe hai ek mai kro se
-      // localStorage.setItem("token",JSON.stringify(response.data.token))
+      localStorage.setItem("token",JSON.stringify(response.data.token))
+      localStorage.setItem("user",JSON.stringify(response.data.user))
       // ek hi chij use kro best hai cookies
 
-      
-
       dispatch(setToken(response.data.token))
+     
 
       // reload hone ke baad bhi data rhega and jb tk token expire nhi hua and delete nhi kiya vo login rhega
       
@@ -221,4 +235,19 @@ export const resetPassword =(password,confirmPassword,token,setresetComplete)=>{
     dispatch(setLoading(false))
 
   }
+}
+
+
+export const logout=(navigate)=>{
+
+  return (dispatch)=>{
+    dispatch(setToken(null))
+    dispatch(setUser(null))
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    toast.success("Logged Out")
+    navigate("/login")
+  }
+
+
 }

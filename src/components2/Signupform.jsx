@@ -1,11 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../redux/slices/Authslice";
 import { sendotp } from "../services/operations/authApi";
-import { setProgress } from "../redux/slices/Progress"
+import { setProgress } from "../redux/slices/Progress";
 import "./Signupform.css";
 
 const Signupform = () => {
@@ -24,8 +24,7 @@ const Signupform = () => {
     confirmPassword: "",
   });
 
-  const { firstName, lastName, email, password, confirmPassword } =
-    formData;
+  const { firstName, lastName, email, password, confirmPassword } = formData;
 
   const handleinput = (e) => {
     setFormData((prev) => {
@@ -50,7 +49,7 @@ const Signupform = () => {
     const passwordRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
-    if(!password.match(passwordRegex)){
+    if (!password.match(passwordRegex)) {
       return toast.error(
         <div className="error-message">
           <p>
@@ -71,24 +70,21 @@ const Signupform = () => {
       toast.error("Passwords do not match");
       return;
     }
-   
 
     // pura data setSignupdata mai bs uske baad operations mai jakr ek function lgaege us se backend mai chle jaega agr yh nhi krege toh database mai jaega kese
-    dispatch(setSignupData({firstName, lastName, email, password, confirmPassword}));
-
+    dispatch(
+      setSignupData({ firstName, lastName, email, password, confirmPassword })
+    );
+    console.log(
+      dispatch(
+        setSignupData({ firstName, lastName, email, password, confirmPassword })
+      )
+    );
     // hme email chaiye and navigate hi toh chaiye hme usme apne aap loading ke baad write otp vale function page pr redirect krna
     dispatch(sendotp(formData.email, navigate));
 
     // reset krdo
-   
-   
   };
-
-  
-
-
-
-  
 
   return (
     // isme toh form hi bnaega baki color vgrh ka kaam Template component mai horha hai
@@ -212,7 +208,8 @@ const Signupform = () => {
         <button
           type="submit"
           className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
-          onClick={()=>{dispatch(setProgress(60))
+          onClick={() => {
+            dispatch(setProgress(60));
           }}
         >
           Create Account

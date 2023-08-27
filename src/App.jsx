@@ -8,8 +8,7 @@ import Forgotpassword from "./components2/important_pages/Forgotpassword";
 import Error from "./components2/important_pages/Errror";
 import Resetpassword from "./components2/important_pages/Resetpassword";
 
-
-import VerifyOTP from  "./components2/important_pages/VerifyOTP"
+import VerifyOTP from "./components2/important_pages/VerifyOTP";
 
 export const GlobalContext2 = createContext({});
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
 
   return (
     <GlobalContext2.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-    
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>

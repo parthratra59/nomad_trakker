@@ -39,7 +39,10 @@ const initialState ={
 
 
 // code local storage hta do cookies se kr rhe hai vo bbhi vohi kaam faltu mai bugs aye 
-token: Cookies.get("token") || null,
+
+// token:Cookies.get("token") || null,
+token:localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")):null,
+
      signupData: null,
   loading: false,
 }
@@ -51,6 +54,7 @@ const authSlice =createSlice({
     reducers:{
         setSignupData:(state, value)=> {
             state.signupData = value.payload;
+            console.log(state.signupData);
           },
           setLoading:(state, value)=> {
             state.loading = value.payload;
@@ -58,14 +62,15 @@ const authSlice =createSlice({
         setToken:(state,value)=>{
             state.token=value.payload
             console.log("Updated state with token:", state);
-            // set vala kaam mai auth.js mai kr diya hai
+            // set vala kaam mai auth.js mai kr diya hai expires vgrh kb hoga sb daal diya hai
             // cookies set accept 3 para 
             // Cookies.set("token",value.payload,{expires:10 * 365 * 24 * 60 * 60 * 1000})
 
            
-        }
+        },
+        
     }
 });
 
-export const {setToken,setLoading,setSignupData}=authSlice.actions;
+export const {setToken,setLoading,setSignupData,setUser}=authSlice.actions;
 export default authSlice.reducer;
