@@ -7,15 +7,15 @@ import useOnClickOutside from "../ProfileDown/UseOncllickoutside";
 import { logout } from "../../services/operations/authApi";
 const ProfileDown = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.profile);
+  const { hey } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   // dom manuplation ke liye use ref use krege ku ki open close horha hai vo dom manuplation hi hai
   const ref = useRef(null);
 
-  if (!user) {
+  if (!hey) {
     console.log("no user");
-    return localStorage.setItem("token", null);
+    return localStorage.setItem("tokenpara", null);
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -26,8 +26,8 @@ const ProfileDown = () => {
       <button className="relative" onClick={() => setOpen(true)}>
         <div className="flex items-center gap-x-1">
           <img
-            src={user?.image}
-            alt={`profile-${user?.firstName}`}
+            src={hey?.image}
+            alt={`profile-${hey?.firstName}`}
             className="aspect-square w-[30px] rounded-full object-cover"
           />
           <AiOutlineCaretDown className="text-sm text-richblack-100" />

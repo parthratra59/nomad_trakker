@@ -15,8 +15,10 @@ import ProfileDown from "../ProfileDown/ProfileDown";
 const Header = ({ setcoordinating }) => {
   // importing reducers
 
-  const { token } = useSelector((state) => state.auth);
-  console.log("token at header", token);
+
+
+  const { tokenpara} = useSelector((state) => state.auth);
+  console.log("tokenpara ehich is token at header", tokenpara);
   // const { totalItems } = useSelector((state) => state.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
@@ -86,7 +88,7 @@ const Header = ({ setcoordinating }) => {
 
           <div>
             <ul className="flex items-center gap-x-4 ">
-              {token === null && (
+              {tokenpara === null && (
                 <li>
                   <Link to="/login">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-md border border-richblack-700">
@@ -95,7 +97,7 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
-              {token === null && (
+              {tokenpara === null && (
                 <li>
                   <Link to="/signup">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
@@ -104,7 +106,7 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
-              {token !== null && (
+              {tokenpara !== null && (
                 <li>
                   <Link to="/wishlist">
                     <div className="relative">
@@ -119,7 +121,7 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
-              {token !== null && (
+              {tokenpara !== null && (
                 <div className="flex items-center">
                   <ProfileDown />
                 </div>
