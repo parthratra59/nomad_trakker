@@ -50,7 +50,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
   };
 
   return (
-    <Paper className="google -z-10" xs={12} style={{ height: "90vh", width: "100%" }}>
+    <Paper className="google z-10 " xs={12} style={{  height: '90vh', width: "100vw" }}>
       <GoogleMapReact
         // props
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}

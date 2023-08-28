@@ -4,8 +4,6 @@ const initialState ={
     // module se arha hai "usermodule.js" se
     // user:Cookies.get("user") || null,
     user:localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")):null,
-    
-
     loading:false,
 }
 

@@ -11,7 +11,7 @@ export const endpoints = {
   LOGIN_API: BASE_URL + "/auth/login",
   RESETPASSTOKEN_API: BASE_URL + "/auth/resetpasswordtoken",
   RESETPASSWORD_API: BASE_URL + "/auth/resetpassword",
-  CHANGEPASSWORD_API: BASE_URL + "/auth/changepassword/:_id",
+  // CHANGEPASSWORD_API: BASE_URL + "/auth/changepassword/:_id",
 };
 
 // SETTINGS PAGE API

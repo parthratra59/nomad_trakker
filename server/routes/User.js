@@ -39,10 +39,10 @@ router.post("/changepassword/:_id", changePassword);
 // ********************************************************************************************************
 
 // Route for generating a reset password token
-router.post("/reset-password-token", resetPasswordToken);
+router.post("/resetpasswordtoken", resetPasswordToken);
 
 // Route for resetting user's password after verification
-router.post("/reset-password", resetPassword);
+router.post("/resetpassword", resetPassword);
 
 // ********************************************************************************************************
 //                                      Delete Account routes
