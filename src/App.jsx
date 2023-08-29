@@ -3,14 +3,16 @@ import Home from "./components2/Home";
 import Login from "./components2/Login";
 import Signup from "./components2/Signup";
 import { Routes, Route } from "react-router-dom";
-import Cart from "./components2/Cart";
+import Cart from "./components/Dashboard/Cart/Cart";
 import Forgotpassword from "./components2/important_pages/Forgotpassword";
 import Error from "./components2/important_pages/Errror";
 import Resetpassword from "./components2/important_pages/Resetpassword";
 
 import VerifyOTP from "./components2/important_pages/VerifyOTP";
-import Dashboard from "./components/Dashboard/Dashboard";
+
 import Myprofile from "./components/Dashboard/Myprofile";
+import ProtectedRoute from "./components2/ProtectedRoute";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 export const GlobalContext2 = createContext({});
 const App = () => {
@@ -27,8 +29,16 @@ const App = () => {
         <Route path="*" element={<Error />}></Route>
         <Route path="/resetpassword/:_id" element={<Resetpassword />}></Route>
         <Route path="/verify-email" element={<VerifyOTP />}></Route>
-        <Route path="/dashboard" element={<Dashboard/>}></Route>
-        <Route path="/dashboard/my-profile" element={<Myprofile/>}></Route>
+        <Route 
+      element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      }
+    >
+      <Route path="dashboard/my-profile" element={<Myprofile />} />
+        </Route>
+        
       </Routes>
     </GlobalContext2.Provider>
   );

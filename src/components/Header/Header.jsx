@@ -15,9 +15,12 @@ import ProfileDown from "../ProfileDown/ProfileDown";
 const Header = ({ setcoordinating }) => {
   // importing reducers
 
-  const { token } = useSelector((state) => state.auth);
-  console.log("token at header", token);
+
+
+  const { tokenpara} = useSelector((state) => state.auth);
+  console.log("tokenpara ehich is token at header", tokenpara);
   // const { totalItems } = useSelector((state) => state.like);
+  const like =useSelector((state)=>state.like)
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
@@ -86,7 +89,7 @@ const Header = ({ setcoordinating }) => {
 
           <div>
             <ul className="flex items-center gap-x-4 ">
-              {token === null && (
+              {tokenpara === null && (
                 <li>
                   <Link to="/login">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-md border border-richblack-700">
@@ -95,7 +98,7 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
-              {token === null && (
+              {tokenpara === null && (
                 <li>
                   <Link to="/signup">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
@@ -104,22 +107,22 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
-              {token !== null && (
+              {tokenpara !== null && (
                 <li>
                   <Link to="/wishlist">
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {/* {totalItems.length > 0 && (
+                      {like.length > 0 && (
                         <span className="absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white">
-                          {totalItems.length}
+                          {like.length}
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </Link>
                 </li>
               )}
-              {token !== null && (
+              {tokenpara !== null && (
                 <div className="flex items-center">
                   <ProfileDown />
                 </div>

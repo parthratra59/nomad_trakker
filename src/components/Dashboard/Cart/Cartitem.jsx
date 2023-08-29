@@ -13,7 +13,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { remove } from "../redux/slices/Likeslice";
+import { remove } from "../../../redux/slices/Likeslice";
 
 const Cartitem = ({ item }) => {
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const Cartitem = ({ item }) => {
           className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
               text-[12px] p-1 px-2  uppercase 
               hover:bg-gray-700 max-w-max
-              hover:text-white transition duration-300 ease-in"
+              hover:bg-gray-700 transition duration-300 ease-in"
           onClick={removefromcart}
         >
           Remove Item

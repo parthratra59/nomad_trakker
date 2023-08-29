@@ -169,8 +169,8 @@ export const login = (email, password, navigate) => {
       // "token bhi module se arha hai "user" vale store hogya hai na
 
       // bugs laskta hai token dono jgh store kr rhe hai ek mai kro se
-      localStorage.setItem("token", JSON.stringify(response.data.token));
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("tokenpara", JSON.stringify(response.data.token));
+      localStorage.setItem("hey", JSON.stringify(response.data.user));
       // ek hi chij use kro best hai cookies
 
       dispatch(setToken(response.data.token));
@@ -233,7 +233,7 @@ export const logout = (navigate) => {
     dispatch(setUser(null));
     dispatch(setLoading(true));
     const toastId = toast.loading("Loading...");
-    localStorage.removeItem("token");
+    localStorage.removeItem("tokenpara");
     localStorage.removeItem("user");
     toast.success("Logged Out");
     dispatch(setLoading(false));
