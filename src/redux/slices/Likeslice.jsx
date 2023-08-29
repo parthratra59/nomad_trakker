@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  totalItems: localStorage.getItem("totalItems")
-    ? JSON.parse(localStorage.getItem("totalItems"))
-    : 0,
-};
+
 
 export const likeSlice = createSlice({
   name: "like",
-  initialState: initialState,
+  initialState: [],
   reducers: {
     // reducer function 2 chije lete argument mai
     // state,action
@@ -21,7 +17,7 @@ export const likeSlice = createSlice({
     add: (state, action) => {
       // action.payload mai jo hm paas krte na
       // jo bhi hm input parameter send kiya hai na usko hm action.payload se access kr skte
-      return [...state, action.payload];
+      state.push(action.payload)
       //    console.log(action.payload)
     },
     remove: (state, action) => {
@@ -32,8 +28,8 @@ export const likeSlice = createSlice({
       // action.payload mai vo hai jo udhr pass kiya hai
       // Productitem mai
       // action.payload mai id hi arhi hai toh action.payload.id likhne ki need nhi
-      console.log(action.payload);
-      return state.filter((item) => item.location_id !== action.payload);
+      console.log(action.payload)
+      return state.filter((item)=>item.location_id!==action.payload)
     },
   },
 });

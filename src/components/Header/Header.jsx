@@ -20,6 +20,7 @@ const Header = ({ setcoordinating }) => {
   const { tokenpara} = useSelector((state) => state.auth);
   console.log("tokenpara ehich is token at header", tokenpara);
   // const { totalItems } = useSelector((state) => state.like);
+  const like =useSelector((state)=>state.like)
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
@@ -112,11 +113,11 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {/* {totalItems.length > 0 && (
+                      {like.length > 0 && (
                         <span className="absolute -top-1 -right-2 bg-red-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white">
-                          {totalItems.length}
+                          {like.length}
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </Link>
                 </li>

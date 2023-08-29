@@ -1,10 +1,19 @@
 import React from "react";
-// import { GlobalContext } from '../App';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Dashboard from "../components/Dashboard/Dashboard";
+import Home from "./Home";
 
 const ProtectedRoute = () => {
-  // const { login } = useContext(GlobalContext);
+  const dispatch = useDispatch();
+  const { tokenpara } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
-  return <>{/* {login ? <Dashboard /> : <Navigate to='/login' />} */}</>;
+  if (tokenpara === null) {
+    navigate("/home");
+  } else {
+    return <Dashboard />;
+  }
 };
 
 export default ProtectedRoute;
