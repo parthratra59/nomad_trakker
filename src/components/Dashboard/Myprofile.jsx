@@ -15,7 +15,7 @@ const Myprofile = () => {
   const onDeleteAccount = async() => {
     if (window.confirm("Are you sure you want to delete your account?")) 
     try {
-      await deleteAccount(tokenpara, dispatch, navigate);
+      await deleteAccount(tokenpara, navigate);
     } catch (error) {
       console.log("Error deleting account:", error);
     }
