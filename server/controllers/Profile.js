@@ -69,8 +69,10 @@ exports.deleteAccount = async (req, res) => {
     // with authorization ka logic
     // logib tha toh id bhi mil gyi
     // console.log(req.user)
-    const id = req.hey.id;
-    console.log("req.user.id:-", id);
+    const id = req.user.id;
+    console.log("req.user.id:-", req.user.id);
+    console.log("req.user:-",req.user)
+    // console.log("req",req)
 
     // const {_id}=req.user yh bhi kr skte hai
     // _id mongodb mai hai
@@ -105,6 +107,8 @@ exports.Uploadphoto = async (req, res) => {
         message: "User not found",
       });
     }
+
+    // profilepciture m
     const image = req.files.profilepicture;
     if (!image) {
       return res.status(400).json({
