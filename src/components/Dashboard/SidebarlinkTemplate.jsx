@@ -1,8 +1,9 @@
 import React from "react";
-import { matchPath, NavLink, useLocation } from "react-router-dom";
-import * as Icons from "react-icons/vsc"
+import { Link, matchPath, NavLink, useLocation } from "react-router-dom";
+import * as Icons from "react-icons/vsc";
 
-const SidebarlinkTemplate = ({ link, iconName }) => {
+// yh vo hai jaise ek ek link kese dikhegi uska generic case hai like card ka hota
+const SidebarlinkTemplate = ({ link, iconName, key }) => {
   const Icon = Icons[iconName];
   const location = useLocation();
   // fetches an icon component from the Icons object based on the iconName name se icon ko fetch krta hia
@@ -12,14 +13,18 @@ const SidebarlinkTemplate = ({ link, iconName }) => {
   // match route likh rhe
 
   const matchRoute = (route) => {
-    return matchPath({path:route}, location.pathname);
-}
+    // agr shi agya toh
+    console.log("route", route);
+    console.log(location.pathname);
+    return matchPath(route, location.pathname);
+  };
+
   // link.path means jo path jai sidebarLink.jsx  mai
   return (
     <>
       <NavLink
         to={link.path}
-        className={` py-2 px-4 relative md:px-8 md:py-2 text-sm font-medium transition-all duration-300 ${
+        className={`py-2 px-4 relative md:px-8 md:py-2 text-sm font-medium transition-all duration-300 ${
           matchRoute(link.path) ? "bg-yellow-800" : "bg-opacity-0"
         }`}
       >

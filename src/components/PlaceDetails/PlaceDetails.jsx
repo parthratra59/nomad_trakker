@@ -23,7 +23,7 @@ const PlaceDetails = ({hello,refprop,selectkiya}) => {
   
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
   const dispatch=useDispatch()
-
+  const {tokenpara} = useSelector((state)=>state.auth)
  
   const addtocart=()=>{
     // yh cart ke andr item add krta hai
@@ -148,7 +148,7 @@ const removefromcart=()=>{
      {
                 
     
-  
+     
                 
       like.some((current)=>current.location_id===hello.location_id)? (
                     

@@ -7,7 +7,7 @@ import Cart from "./components/Dashboard/Cart/Cart";
 import Forgotpassword from "./components2/important_pages/Forgotpassword";
 import Error from "./components2/important_pages/Errror";
 import Resetpassword from "./components2/important_pages/Resetpassword";
-
+import Setting from "./components/Dashboard/Setting";
 import VerifyOTP from "./components2/important_pages/VerifyOTP";
 
 import Myprofile from "./components/Dashboard/Myprofile";
@@ -29,16 +29,18 @@ const App = () => {
         <Route path="*" element={<Error />}></Route>
         <Route path="/resetpassword/:_id" element={<Resetpassword />}></Route>
         <Route path="/verify-email" element={<VerifyOTP />}></Route>
-        <Route 
-      element={
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      }
-    >
-      <Route path="dashboard/my-profile" element={<Myprofile />} />
+
+        <Route
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<Myprofile />} />
+          {/* <Route path="dashboard/cart" element={<Cart />} /> */}
+          <Route path="dashboard/settings" element={<Setting />} />
         </Route>
-        
       </Routes>
     </GlobalContext2.Provider>
   );

@@ -69,7 +69,7 @@ exports.deleteAccount = async (req, res) => {
     // with authorization ka logic
     // logib tha toh id bhi mil gyi
     // console.log(req.user)
-    const id = req.user.id;
+    const id = req.hey.id;
     console.log("req.user.id:-", id);
 
     // const {_id}=req.user yh bhi kr skte hai

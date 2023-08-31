@@ -133,15 +133,7 @@ exports.signup = async (req, res) => {
       });
     }
 
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!password.match(passwordRegex)) {
-      return res.status(403).json({
-        success: false,
-        message:
-          "Password must contain at least 8 characters, including at least one lowercase letter, one uppercase letter, one digit, and one special character.",
-      });
-    }
+    
 
     // 2 password match krna
     if (password !== confirmPassword) {
@@ -214,6 +206,11 @@ exports.signup = async (req, res) => {
       password: hashedpassword,
       image: `https://api.dicebear.com/6.x/initials/svg?seed=${firstName} ${lastName}&backgroundColor=00897b,00acc1,039be5,1e88e5,3949ab,43a047,5e35b1,7cb342,8e24aa,c0ca33,d81b60,e53935,f4511e,fb8c00,fdd835,ffb300,ffd5dc,ffdfbf,c0aede,d1d4f9,b6e3f4&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-350,-340,-330,-320&fontFamily=Arial&fontWeight=600`,
     });
+
+    // arrey yh krega ki jaisi hi check hue/validate hue toh delete krde otp ko db se kuki OTP se hi arha tha na OTP vale module se isliye USer se nhi kiya ab delete hogya toh ab immedeiate delete krke account bnaunga toh new otp vala jo user mai gya hai us se validate hoga
+
+    const parth =await OTP.findOneAndDelete({ _id: recentotp._id });
+    console.log("autbhhia",parth)
 
     return res.status(200).json({
       // screenupscreen shot mai dekho iska example hai

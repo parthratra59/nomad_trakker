@@ -25,11 +25,9 @@ const Dashboard = () => {
         </div>
         <div className='flex '>
         <Sidebar />
-        <div className=' flex-1 overflow-auto '>
-            <div className='py-10'>
-                <Outlet />
-            </div>
-        </div>
+        
+       <Outlet />
+
     </div>
       </div>
     </>
