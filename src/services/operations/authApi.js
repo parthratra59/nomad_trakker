@@ -36,7 +36,7 @@ export const sendotp = (email, navigate) => {
         email,
         checkUserPresent: true,
       });
-      dispatch(setProgress(100));
+     
       console.log("SENDOTP API RESPONSE............", response);
       // sb backend mai jo hmne api bnai hai uske according .status likh likh kr
 
@@ -57,7 +57,7 @@ export const sendotp = (email, navigate) => {
       // error?.response agr maine .data frontend se dekho  maine yh likha hua hai toh ?. ke baad vala chlega message backend mai likha
       toast.error(error?.response?.data?.message || "Could not send OTP");
       // progrees pura kr lo 100 hojaeaga toh error ajaega
-      dispatch(setProgress(100));
+     
     }
     dispatch(setLoading(false));
   };
@@ -91,11 +91,11 @@ export const signup = (
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-      dispatch(setProgress(100));
+     
       toast.success("Signup Successful");
       navigate("/login");
     } catch (error) {
-      dispatch(setProgress(100));
+      
       console.log("SIGNUP API ERROR............", error);
       toast.error("Signup Failed");
       navigate("/signup");
@@ -148,9 +148,12 @@ export const login = (email, password, navigate) => {
       console.log("LOGIN API RESPONSE............", response);
 
       if (!response.data.success) {
+       
         throw new Error(response.data.message);
+       
+
       }
-      dispatch(setProgress(100));
+     
       toast.success("Login Successful");
       // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header
 
@@ -187,7 +190,7 @@ export const login = (email, password, navigate) => {
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
       toast.error("Login Failed");
-      dispatch(setProgress(100));
+    
     }
     toast.dismiss(toastId);
     dispatch(setLoading(false));

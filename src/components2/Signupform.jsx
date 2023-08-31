@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../redux/slices/Authslice";
 import { sendotp } from "../services/operations/authApi";
-import { setProgress } from "../redux/slices/Progress";
+
 import "./Signupform.css";
 
 const Signupform = () => {
@@ -208,9 +208,7 @@ const Signupform = () => {
         <button
           type="submit"
           className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
-          onClick={() => {
-            dispatch(setProgress(60));
-          }}
+         
         >
           Create Account
         </button>
