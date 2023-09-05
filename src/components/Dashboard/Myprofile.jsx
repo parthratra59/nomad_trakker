@@ -12,21 +12,19 @@ const Myprofile = () => {
   const dispatch = useDispatch();
 
   // call back funtion ga diya kro kuck dunction chalana
-  const onDeleteAccount = async() => {
-    if (window.confirm("Are you sure you want to delete your account?")) 
-    try {
-      await deleteAccount(tokenpara, navigate);
-    } catch (error) {
-      console.log("Error deleting account:", error);
-    }
-    }
+  const onDeleteAccount = () => {
+    if(window.confirm
+      ("Are you sure you want to delete your account?")){
+        deleteAccount(tokenpara,dispatch,navigate);
+      }
 
+  }
 
   const navigate = useNavigate();
   return (
     <>
       <div className="flex-1 overflow-auto">
-        <div className=" py-8 mx-auto w-11/12 max-w-[1080px] ">
+        <div className="py-6  mx-auto w-11/12 max-w-[1080px] ">
           <div>
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
               My Profile

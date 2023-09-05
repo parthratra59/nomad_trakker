@@ -8,6 +8,7 @@ const {
   updateProfile,
   deleteAccount,
   Uploadphoto,
+  updatePassword,
 } = require("../controllers/Profile"); // Update the path to Profile.js
 
 // ********************************************************************************************************
@@ -24,5 +25,9 @@ router.delete("/deleteaccount", authorization, deleteAccount);
 
 // Route for uploading user's profile photo
 router.put("/uploadphoto", authorization, Uploadphoto);
+
+
+// change password
+router.post("/updatepassword", authorization, updatePassword);
 
 module.exports = router;

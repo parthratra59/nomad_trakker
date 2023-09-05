@@ -28,7 +28,7 @@ const Loginform = () => {
     });
   };
 
-  const { tokenpara } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   // const submitting=(e)=>{
   //     e.preventDefault();
   //     navigate('/')
@@ -40,7 +40,7 @@ const Loginform = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formdata.email, formdata.password, navigate));
-    console.log("elements", tokenpara);
+    console.log("elements", token);
     console.log(
       "hello",
       dispatch(login(formdata.email, formdata.password, navigate))
