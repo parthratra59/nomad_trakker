@@ -4,17 +4,19 @@ require("dotenv").config();
 
 const User = require("../models/User");
 
+
+// Bearer space aega nhi toh token keliye jgh nhi hoga yh syntax mai hai 
 exports.authorization = async (req, res, next) => {
   try {
     const token =
       req.body.token ||
       req.cookies.token ||
-      req.header("Authorization").replace("Bearer ", "");
+      req.header("Authorisation").replace("Bearer ", "");
 
     // if token is missing
     if (!token) {
       return res.status(400).json({
-        sucess: false,
+        success: false,
         message: "Token is missing",
       });
     }
@@ -47,14 +49,14 @@ exports.authorization = async (req, res, next) => {
       req.user = decode;
     } catch (error) {
       return res.status(400).json({
-        sucess: false,
+        success: false,
         message: "Invalid Token",
       });
     }
     next();
   } catch (error) {
     return res.status(500).json({
-      sucess: false,
+      success: false,
       message: "Something went wrong while verifying token",
     });
   }

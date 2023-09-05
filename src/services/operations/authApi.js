@@ -26,6 +26,9 @@ const {
 
 // flow of authentication phele signup bhrege then otp  usme se email lega and navigate krega otp vale page maik then verify krega then signup krega vo backend pr jaega then backend pr jane ke baad dispactch ab dispatch kya hai vo redux store mai jake state ko update krta hai aur vo trigger krta hai backend ko ki data arha hai aur backend se data arha hai toh loading true krdo aur loading true krne se spinner chlega aur backend se data arha hai toh loading false krdo aur spinner band krdo aur data arha hai toh toast success krdo aur navigate krdo login page pr aur login page pr jaega toh login bhrege aur login bhrege toh backend pr jaega aur backend pr jaega toh dispatch hoga aur dispatch hoga toh loading true hoga aur loading true hoga toh spinner chlega aur backend se data arha hai toh loading false krdo aur spinner band krdo aur data arha hai toh toast success krdo
 
+// yh response.data hai na it means jo backend se aya hai jm hmne request kri thi signup verifyotp login bla bla ke time request mtlb hmne kuch bheja tha json jitna bhi hai response mai vo data us json mai success success hai ki nhi yh check kr rhe hai
+// hm response.data  ke krte it menas hm backned ke json object ki baat kr rhe hai res.data.data items us json mai jo data object hia uski baat kr rhe
+
 export const sendotp = (email, navigate) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
@@ -36,10 +39,10 @@ export const sendotp = (email, navigate) => {
         email,
         checkUserPresent: true,
       });
-     
+
       console.log("SENDOTP API RESPONSE............", response);
       // sb backend mai jo hmne api bnai hai uske according .status likh likh kr
-
+      // response.data means backend se response aya vo pura json mai jo jo jo object hai then .success usme particular success object ki baat kr rhe hai
       console.log(response.data.success);
 
       if (!response.data.success) {
@@ -57,7 +60,6 @@ export const sendotp = (email, navigate) => {
       // error?.response agr maine .data frontend se dekho  maine yh likha hua hai toh ?. ke baad vala chlega message backend mai likha
       toast.error(error?.response?.data?.message || "Could not send OTP");
       // progrees pura kr lo 100 hojaeaga toh error ajaega
-     
     }
     dispatch(setLoading(false));
   };
@@ -91,11 +93,10 @@ export const signup = (
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-     
+
       toast.success("Signup Successful");
       navigate("/login");
     } catch (error) {
-      
       console.log("SIGNUP API ERROR............", error);
       toast.error("Signup Failed");
       navigate("/signup");
@@ -148,12 +149,9 @@ export const login = (email, password, navigate) => {
       console.log("LOGIN API RESPONSE............", response);
 
       if (!response.data.success) {
-       
         throw new Error(response.data.message);
-       
-
       }
-     
+
       toast.success("Login Successful");
       // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header
 
@@ -190,7 +188,6 @@ export const login = (email, password, navigate) => {
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
       toast.error("Login Failed");
-    
     }
     toast.dismiss(toastId);
     dispatch(setLoading(false));
@@ -230,17 +227,15 @@ export const resetPassword = (
   };
 };
 
+// async and await isliye use krte hai ki jb hm koi function call krte hai toh uska response aane tk wait krte hai but isme jrurt hi nhi hai kuch aur chlana thodi hai ki dusre flow ko rokna nhi hai hme kuch wait thodi krana hai toh yh use nhi krte hai
+
 export const logout = (navigate) => {
   return (dispatch) => {
     dispatch(setToken(null));
     dispatch(setUser(null));
-    dispatch(setLoading(true));
-    const toastId = toast.loading("Loading...");
     localStorage.removeItem("tokenpara");
-    localStorage.removeItem("user");
+    localStorage.removeItem("hey");
     toast.success("Logged Out");
-    dispatch(setLoading(false));
-    toast.dismiss(toastId);
     navigate("/login");
   };
 };

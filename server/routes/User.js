@@ -30,9 +30,8 @@ router.post("/signup", signup);
 // Route for sending OTP to the user's email
 router.post("/sendOTP", sendOTP);
 
-// Route for Changing the password
-// router.post('/changepassword',changePassword)
-router.post("/changepassword/:_id", changePassword);
+
+
 
 // ********************************************************************************************************
 //                                      Reset Password routes
