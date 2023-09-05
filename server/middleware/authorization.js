@@ -4,8 +4,7 @@ require("dotenv").config();
 
 const User = require("../models/User");
 
-
-// Bearer space aega nhi toh token keliye jgh nhi hoga yh syntax mai hai 
+// Bearer space aega nhi toh token keliye jgh nhi hoga yh syntax mai hai
 exports.authorization = async (req, res, next) => {
   try {
     const token =

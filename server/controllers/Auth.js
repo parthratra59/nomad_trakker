@@ -133,8 +133,6 @@ exports.signup = async (req, res) => {
       });
     }
 
-    
-
     // 2 password match krna
     if (password !== confirmPassword) {
       return res.status(403).json({
@@ -209,8 +207,8 @@ exports.signup = async (req, res) => {
 
     // arrey yh krega ki jaisi hi check hue/validate hue toh delete krde otp ko db se kuki OTP se hi arha tha na OTP vale module se isliye USer se nhi kiya ab delete hogya toh ab immedeiate delete krke account bnaunga toh new otp vala jo user mai gya hai us se validate hoga
 
-    const parth =await OTP.findOneAndDelete({ _id: recentotp._id });
-    console.log("autbhhia",parth)
+    const parth = await OTP.findOneAndDelete({ _id: recentotp._id });
+    console.log("autbhhia", parth);
 
     return res.status(200).json({
       // screenupscreen shot mai dekho iska example hai
@@ -320,4 +318,3 @@ exports.login = async (req, res) => {
     });
   }
 };
-

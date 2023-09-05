@@ -26,8 +26,7 @@ router.delete("/deleteaccount", authorization, deleteAccount);
 // Route for uploading user's profile photo
 router.put("/uploadphoto", authorization, Uploadphoto);
 
-
 // change password
-router.post("/updatepassword", authorization, updatePassword);
+router.put("/updatepassword", authorization, updatePassword);
 
 module.exports = router;

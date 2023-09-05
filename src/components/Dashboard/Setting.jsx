@@ -5,6 +5,9 @@ import { FiUpload } from "react-icons/fi";
 import { updatePfp } from "../../services/operations/ProfileApi";
 import { update_names } from "../../services/operations/ProfileApi";
 import { toast } from "react-hot-toast";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+import { updatePassword } from "../../services/operations/ProfileApi";
 import "./Setting.css";
 
 const Setting = () => {
@@ -54,57 +57,62 @@ const Setting = () => {
     update_names(tokenpara, formData);
   };
 
-
-
   // regex
- 
-
-
-
-
 
   // password
 
-//   const [passwordFormData, passwordSetFormData] = useState({
-//     oldPassword: "",
-//     newPassword: "",
-// })
+  const [passwordFormData, passwordSetFormData] = useState({
+    oldPassword: "",
+    newPassword: "",
+  });
 
-// const regex=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+  const handleOnChangePassword = (e) => {
+    passwordSetFormData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
-// if(!passwordFormData.newPassword.match(regex)){
-//     return toast.error(
-//     <div className="error-message">
-//       <p>
-//         Password must be at least 8 characters long and must contain at
-//         least:
-//       </p>
-//       <ul>
-//         <li>atleast one uppercase letter</li>
-//         <li>atleast one lowercase letter</li>
-//         <li>atleast one number</li>
-//         <li>Special characters are allowed</li>
-//       </ul>
-//     </div>
-//   )
-// }
+  const handlePassword = (e) => {
+    e.preventDefault();
 
-// if(passwordFormData.newPassword !== passwordFormData.oldPassword){
-//     toast.error("New Password should be different");
-//     return;
-// }
+    const passwordRegex =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
+    if (!passwordFormData.newPassword.match(passwordRegex)) {
+      return toast.error(
+        <div className="error-message">
+          <p>
+            Password must be at least 8 characters long and must contain at
+            least:
+          </p>
+          <ul>
+            <li>atleast one uppercase letter</li>
+            <li>atleast one lowercase letter</li>
+            <li>atleast one number</li>
+            <li>Special characters are allowed</li>
+          </ul>
+        </div>
+      );
+    }
+    if (passwordFormData.oldPassword === passwordFormData.newPassword) {
+      toast.error("Old password and new password cannot be same");
+      return;
+    } else {
+      updatePassword(tokenpara, passwordFormData);
+    }
+  };
 
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-// const [showNewPassword, setShowNewPassword] = useState(false);
-// eslint-disable-next-line react-hooks/rules-of-hooks
-// const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showOldPassword, setShowOldPassword] = useState(false);
 
   return (
     <>
       {/* side vala flex-1 lelerha hai  */}
-      <div className=" flex-1 overflow-auto">
+      <div className=" flex-1 ">
         <div className=" py-6 mx-auto w-11/12 max-w-[1080px] ">
           <div>
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
@@ -214,15 +222,115 @@ const Setting = () => {
               </div>
             </form>
 
-
-
-
-
-
-
             {/* 3rd section */}
+            <form onSubmit={handlePassword}>
+              <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+                <h2 className="text-lg font-semibold text-richblack-5">
+                  Password
+                </h2>
 
+                <div className="flex flex-col gap-5  lg:flex-row ">
+                  {/* muje label and input ek ke niche ek rhkna */}
+                  <div className="flex flex-col gap-2 lg:w-[48%] relative">
+                    <label className="lable-style " htmlFor="oldPassword">
+                      Current Password
+                    </label>
+                    <input
+                      type={showOldPassword ? "text" : "password"}
+                      id="oldPassword"
+                      placeholder="Enter Current Password"
+                      name="oldPassword"
+                      value={passwordFormData.oldPassword}
+                      onChange={handleOnChangePassword}
+                      className="form-style outline-none"
+                      required
+                    />
 
+                    <span
+                      onClick={() =>
+                        setShowOldPassword(
+                          (showOldPassword) => !showOldPassword
+                        )
+                      }
+                      className="absolute right-3 top-11 z-[10] cursor-pointer"
+                    >
+                      {showOldPassword ? (
+                        <AiOutlineEye
+                          fontSize={24}
+                          fill="#AFB2BF"
+                          color="white"
+                        />
+                      ) : (
+                        <AiOutlineEyeInvisible
+                          fontSize={24}
+                          fill="#AFB2BF"
+                          color="white"
+                          className=""
+                        />
+                      )}
+                    </span>
+                  </div>
+
+                  {/* last name {/* muje label and input ek ke niche ek rhkna */}
+                  <div className="flex flex-col gap-2 lg:w-[48%] relative">
+                    <label className="lable-style " htmlFor="newPassword">
+                      New Password
+                    </label>
+                    <input
+                      type={showNewPassword ? "text" : "password"}
+                      id="newPassword"
+                      placeholder="Enter New Password"
+                      name="newPassword"
+                      value={passwordFormData.newPassword}
+                      className="form-style outline-none"
+                      onChange={handleOnChangePassword}
+                      required
+                    />
+
+                    <span
+                      onClick={() =>
+                        setShowNewPassword(
+                          (showNewPassword) => !showNewPassword
+                        )
+                      }
+                      className="absolute  right-3 top-11 z-[10] cursor-pointer"
+                    >
+                      {showNewPassword ? (
+                        <AiOutlineEye
+                          fontSize={24}
+                          fill="#AFB2BF"
+                          color="white"
+                        />
+                      ) : (
+                        <AiOutlineEyeInvisible
+                          fontSize={24}
+                          fill="#AFB2BF"
+                          color="white"
+                          className=""
+                        />
+                      )}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2">
+                <button
+                  className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+                  onClick={() => {
+                    navigate("/dashboard/my-profile");
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 undefined"
+                  type="submit"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

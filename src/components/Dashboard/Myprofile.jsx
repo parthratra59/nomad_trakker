@@ -13,17 +13,15 @@ const Myprofile = () => {
 
   // call back funtion ga diya kro kuck dunction chalana
   const onDeleteAccount = () => {
-    if(window.confirm
-      ("Are you sure you want to delete your account?")){
-        deleteAccount(tokenpara,dispatch,navigate);
-      }
-
-  }
+    if (window.confirm("Are you sure you want to delete your account?")) {
+      deleteAccount(tokenpara, dispatch, navigate);
+    }
+  };
 
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 ">
         <div className="py-6  mx-auto w-11/12 max-w-[1080px] ">
           <div>
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
@@ -55,7 +53,6 @@ const Myprofile = () => {
                   text="Edit"
                   onClick={() => {
                     navigate("/dashboard/settings");
-                    console.log("tankhubnjdsfnodsfaik");
                   }}
                 ></Iconbutton>
               </div>

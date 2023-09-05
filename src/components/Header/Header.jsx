@@ -15,12 +15,10 @@ import ProfileDown from "../ProfileDown/ProfileDown";
 const Header = ({ setcoordinating }) => {
   // importing reducers
 
-
-
-  const { tokenpara} = useSelector((state) => state.auth);
+  const { tokenpara } = useSelector((state) => state.auth);
   console.log("tokenpara ehich is token at header", tokenpara);
   // const { totalItems } = useSelector((state) => state.like);
-  const like =useSelector((state)=>state.like)
+  const like = useSelector((state) => state.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {

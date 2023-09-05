@@ -19,16 +19,15 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="bg-newpink h-screen">
-      <div className="drop-shadow-2xl">
+      <div className="bg-newpink min-h-screen overflow-auto ">
+        <div className="drop-shadow-2xl ">
           <Header />
         </div>
-        <div className='flex '>
-        <Sidebar />
-        
-       <Outlet />
+        <div className="flex ">
+          <Sidebar />
 
-    </div>
+          <Outlet />
+        </div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { CircularProgress } from "@mui/material";
 import "./List.css";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import { GlobalContext } from "../../components2/Home";
-import "../Spinner/Spinner.css"
+import "../Spinner/Spinner.css";
 const List = ({ places, loadinghorhi }) => {
   // is se pta chl rha left side mai pauch rha ky data
   const { receivekrega, settype, type, ratekro, setrating } =

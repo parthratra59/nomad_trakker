@@ -65,12 +65,10 @@ const Home = () => {
     // aise jb function ke andr function likh rhe hote toh vo call back function hota
     // Filter places based on rating
     // const filtered = places.filter((place) => place.rating > ratekro);
-    if(places && places.length>0)
-    {
+    if (places && places.length > 0) {
       const filtered = places.filter((place) => place.rating > ratekro);
       setfilteredplaces(filtered);
     }
-  
   }, [ratekro]);
   // jb rating bdle tb bhi yh kaam mai aye
 
