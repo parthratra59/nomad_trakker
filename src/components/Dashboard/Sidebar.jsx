@@ -31,8 +31,11 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className=" h-[calc(100vh-3.5rem)] bg-richblack-800">
-        <div className="min-w-[200px] flex-col text-white  border-r-richblack-700  py-10">
+      <div className=" text-white  bg-richblack-800  ">
+        <div
+          className="  border-r-richblack-700  hidden min-w-[200px] flex-col border-r-[1px]  lg:flex
+        bg-richblack-800 min-h-screen overflow-hidden py-10"
+        >
           <div className="flex flex-col">
             {sidebarLinks.map((link) => {
               return (
@@ -81,6 +84,21 @@ const Sidebar = () => {
               </div>
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* yh mobile ke liye hai */}
+      <div className="flex lg:hidden fixed bottom-0 justify-between items-center px-2 py-1 bg-richblack-900 z-50 w-full">
+        <div className="flex flex-row gap-1 w-full justify-between">
+          {sidebarLinks.map((link) => {
+            return (
+              <sidebarLinks key={link.id} link={link} iconName={link.icon} />
+            );
+          })}
+          <sidebarLinks
+            link={{ name: "Settings", path: "/dashboard/settings" }}
+            iconName="VscSettingsGear"
+          />
         </div>
       </div>
 

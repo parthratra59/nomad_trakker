@@ -7,8 +7,12 @@ import { logout } from "../operations/authApi.js";
 import { settingsEndpoints } from "../apiservice.js";
 import { setLoading } from "../../redux/slices/Authslice.jsx";
 
-const { UPDATE_DISPLAY_PICTURE_API, UPDATE_PROFILE_API, DELETE_PROFILE_API } =
-  settingsEndpoints;
+const {
+  UPDATE_DISPLAY_PICTURE_API,
+  UPDATE_PROFILE_API,
+  DELETE_PROFILE_API,
+  UPDATE_PASSWORD_API,
+} = settingsEndpoints;
 
 export async function deleteAccount(token, dispatch, navigate) {
   try {
@@ -95,37 +99,65 @@ export const updatePfp = async (tokenpara, pfp) => {
   toast.dismiss(toastId);
 };
 
-
 // authApi mai alg trh se paas kiya tha isme  alg trh se paas kr rha vese bhi kr skte usme jaise kiya tha
 
-export const update_names=async(tokenpara,formData)=>{
-  console.log("formData",formData)
-  const {firstName,lastName}=formData
+export const update_names = async (tokenpara, formData) => {
+  console.log("formData", formData);
+  const { firstName, lastName } = formData;
   const toastId = toast.loading("Updating...");
-  try{
-    const response=await apiConnector("PUT",UPDATE_PROFILE_API,{firstName,lastName},{ 
-      Authorisation: `Bearer ${tokenpara}`,
-    })
-    console.log("UPDATE_PROFILE_API API RESPONSE............", response)
-    if(!response.data.success){
-      throw new Error(response.data.message)
+  try {
+    const response = await apiConnector(
+      "PUT",
+      UPDATE_PROFILE_API,
+      { firstName, lastName },
+      {
+        Authorisation: `Bearer ${tokenpara}`,
+      }
+    );
+    console.log("UPDATE_PROFILE_API API RESPONSE............", response);
+    if (!response.data.success) {
+      throw new Error(response.data.message);
     }
     toast.success("Profile Updated Successfully");
-    console.log("response.data.data",response.data.data)
-    
+    console.log("response.data.data", response.data.data);
+
     localStorage.setItem(
       "hey",
-      JSON.stringify({...JSON.parse(localStorage.getItem("hey")),firstName,lastName})
-    )
-  }
-    catch(error){
-    
-    console.log("UPDATE_PROFILE_API API ERROR............", error)
-    toast.error(error.response.data.message)
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem("hey")),
+        firstName,
+        lastName,
+      })
+    );
+  } catch (error) {
+    console.log("UPDATE_PROFILE_API API ERROR............", error);
+    toast.error(error.response.data.message);
   }
   toast.dismiss(toastId);
-}
+};
 
-
-
-
+// password ko localstoorage mai thodi rhkege security breach hoskti
+export const updatePassword = async (tokenpara, password) => {
+  const { oldPassword, newPassword } = password;
+  console.log("password", password);
+  const toastId = toast.loading("Updating...");
+  try {
+    const response = await apiConnector(
+      "PUT",
+      UPDATE_PASSWORD_API,
+      { oldPassword, newPassword },
+      {
+        Authorisation: `Bearer ${tokenpara}`,
+      }
+    );
+    console.log("UPDATE_PASSWORD_API API RESPONSE............", response);
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    toast.success("Password Updated Successfully");
+  } catch (error) {
+    console.log("UPDATE_PASSWORD_API API ERROR............", error);
+    toast.error(error.response.data.message, "Password change failure");
+  }
+  toast.dismiss(toastId);
+};

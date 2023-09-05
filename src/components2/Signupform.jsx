@@ -208,7 +208,6 @@ const Signupform = () => {
         <button
           type="submit"
           className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
-         
         >
           Create Account
         </button>

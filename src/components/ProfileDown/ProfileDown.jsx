@@ -21,7 +21,6 @@ const ProfileDown = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useOnClickOutside(ref, () => setOpen(false));
 
-
   return (
     <>
       <button className="relative" onClick={() => setOpen(true)}>
