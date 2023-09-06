@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
 import { updatePfp } from "../../services/operations/ProfileApi";
@@ -13,7 +13,7 @@ import "./Setting.css";
 const Setting = () => {
   const navigate = useNavigate();
 
-  const { loading } = useSelector((state) => state.profile);
+  
   const { tokenpara } = useSelector((state) => state.auth);
 
   const profileImage = useSelector((state) => state.profile.hey.image);

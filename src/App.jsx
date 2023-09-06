@@ -24,7 +24,6 @@ const App = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/wishlist" element={<Cart />}></Route>
         <Route path="/Forgotpassword" element={<Forgotpassword />}></Route>
         <Route path="*" element={<Error />}></Route>
         <Route path="/resetpassword/:_id" element={<Resetpassword />}></Route>
@@ -40,6 +39,7 @@ const App = () => {
           <Route path="dashboard/my-profile" element={<Myprofile />} />
           {/* <Route path="dashboard/cart" element={<Cart />} /> */}
           <Route path="dashboard/settings" element={<Setting />} />
+          <Route path="dashboard/cart" element={<Cart />} />
         </Route>
       </Routes>
     </GlobalContext2.Provider>

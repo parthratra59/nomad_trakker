@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { logout } from "../../services/operations/authApi";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "../Header/Header";
+
 import { useNavigate } from "react-router";
 import sidebarLinks from "./Sidebarlinks";
 // import SidebarlinkTemplate from "./SidebarlinkTemplate";
 import { VscSignOut } from "react-icons/vsc";
-import { VscSettingsGear } from "react-icons/vsc";
+
 import Confirmationmodal from "../../components2/important_pages/Confirmationmodal";
 import SidebarlinkTemplate from "./SidebarlinkTemplate";
 const Sidebar = () => {

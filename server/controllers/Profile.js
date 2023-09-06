@@ -2,7 +2,7 @@ const User = require("../models/User");
 require("dotenv").config();
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+
 const { mailSender } = require("../utils/mailsender");
 // update ke time toh toh mongodb mai _id hota hai by defalut usko isliye hm object mai daall rhe hai _id: id isliye kr rhe
 exports.updateProfile = async (req, res) => {
@@ -25,13 +25,17 @@ exports.updateProfile = async (req, res) => {
 
     // const currentUser = await User.findById(id);
 
-    // update profile
+    // update profile aise dalege jo aya frontend se vo update hojaega then save krna hoga .save se krdege 
+    // phele hm id se nikage se then update krge then save krge
+    
     // currentUser.firstName = firstName;
     // currentUser.lastName = lastName;
+  // await currentUser.save();
+    // // 
 
-    // // save user
-    // // do trh se hm save kr skte hai ek toh .save kr ke jb object phele se bna ho dusra await User.create({firstName,lastName}}) aise idhr hmara object bna pda upr toh hm .save vala use krege methdod
-    // await currentUser.save();
+    // nhin toh direct .create kr ke kr do isme jrurt nhi alg se ek obj bnake ek .save kro toh direct use krdege
+    // // do trh se hm save kr skte hai ek toh .save kr ke jb object phele se bna ho dusra await User.create({firstName,lastName}}) aur isme hme kisi mai dalna bhhi nhi hota alg object mai hm toh destructure krke direct .create mai daaal skte
+  
 
     const currentUser = await User.findByIdAndUpdate(
       { _id: id },
@@ -170,9 +174,6 @@ exports.Uploadphoto = async (req, res) => {
   }
 };
 
-
-
-
 exports.updatePassword = async (req, res) => {
   try {
     // database mai jo id hai vo lo udhr se hm niche password nikalege
@@ -190,13 +191,13 @@ exports.updatePassword = async (req, res) => {
     // req ki body mai se mtlb frontend mai field se jo arha hai data
     // email se bhi ho skta hai but mai id se kr rha hu aur yh chala kr dekh bhi liya maine
     // const {email,oldPassword,newPassword,confirmPassword}=req.body
-    const { oldPassword, newPassword} = req.body;
+    const { oldPassword, newPassword } = req.body;
 
     // validate kro
 
     // if(!email||!oldPassword || !newPassword || !confirmPassword)
 
-    if (!oldPassword || !newPassword ) {
+    if (!oldPassword || !newPassword) {
       return res.status(403).json({
         success: false,
         message: "All fields are required",
@@ -210,7 +211,7 @@ exports.updatePassword = async (req, res) => {
 
     // ab hm id se kr rhe hai
     // destructuring thodi hogi user mai userid ke name se thodi kuch hai jo
-    const userDetails = await User.findById( id );
+    const userDetails = await User.findById(id);
     if (!userDetails) {
       return res.status(404).json({
         success: false,
@@ -232,10 +233,9 @@ exports.updatePassword = async (req, res) => {
     }
 
     // validate new password
-      // regex vgrh frontend mai kr rha hu idhr jrurt nhi hai ek jgh kr te hia
+    // regex vgrh frontend mai kr rha hu idhr jrurt nhi hai ek jgh kr te hia
 
     // Match new password and confirm new password
-  
 
     // chalo dono ab match kr gye isko hash kro
 

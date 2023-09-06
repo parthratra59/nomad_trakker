@@ -1,21 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  likeElemets: localStorage.getItem("likeElements")? JSON.parse(localStorage.getItem("likeElements")):[],
+};
+
 export const likeSlice = createSlice({
   name: "like",
-  initialState: [],
+  initialState,
   reducers: {
     // reducer function 2 chije lete argument mai
     // state,action
     // state mai imput paramenter mila hai
-    settotalItems: (state, action) => {
-      // state mai jo hai vo totalitems mai daldo
-      state.totalItems = action.payload;
-    },
+
 
     add: (state, action) => {
       // action.payload mai jo hm paas krte na
       // jo bhi hm input parameter send kiya hai na usko hm action.payload se access kr skte
-      state.push(action.payload);
+      state.likeElemets.push(action.payload);
+
+      // only set localStorage if the item is not already there
+      if (!state.likeElemets.some((item) => item.location_id === action.payload)) {
+        localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
+      }
+      
       //    console.log(action.payload)
     },
     remove: (state, action) => {
@@ -27,11 +34,28 @@ export const likeSlice = createSlice({
       // Productitem mai
       // action.payload mai id hi arhi hai toh action.payload.id likhne ki need nhi
       console.log(action.payload);
-      return state.filter((item) => item.location_id !== action.payload);
+
+      // agr mai direct flter lagaunga then vo pura object filter kr dega 0 aray aega that's why phele ...
+      // ...state se copy kro then filter kro ya fir niche jaise kra hai vaise krdo 
+      // but kb bhi return state.kuch/filter = action.filter nhi krege toh usi line mai return nhi krte
+      // because of immutability
+      
+      // This ensures that the original data structure is not changed, and that the state is always immutable.
+      const newLikeElemets = state.likeElemets.filter(
+        (item) => item.location_id !== action.payload
+      );
+
+      // update state
+      state.likeElemets = newLikeElemets;
+      // only set localStorage if the item is not already there
+      if (!newLikeElemets.some((item) => item.location_id === action.payload)) {
+        localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
+      }
+      
     },
   },
 });
 // destructure krlia
-export const { add, remove, settotalItems } = likeSlice.actions;
+export const { add, remove} = likeSlice.actions;
 
 export default likeSlice.reducer;
