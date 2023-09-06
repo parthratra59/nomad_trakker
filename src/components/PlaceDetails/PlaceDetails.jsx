@@ -27,11 +27,11 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   }, [selectkiya, refprop]);
 
   // likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
-  const like = useSelector((state) => state.like);
+  const {likeElemets} = useSelector((state) => state.like);
 
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
   const dispatch = useDispatch();
-  const { tokenpara } = useSelector((state) => state.auth);
+  
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
@@ -198,7 +198,7 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
                   transform: "translateY(-50%)",
                 }}
               >
-                {like.some(
+                {likeElemets.some(
                   (current) => current.location_id === hello.location_id
                 ) ? (
                   <button

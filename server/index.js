@@ -9,6 +9,9 @@ const { cloudnairyConnect } = require("./config/cloudinary");
 const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profileroute");
+
+const LikeRoutes = require("./routes/Likeroute");
+
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 
@@ -45,6 +48,7 @@ cloudnairyConnect();
 // routes ko use kro
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/like", LikeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

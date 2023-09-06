@@ -270,6 +270,7 @@ exports.login = async (req, res) => {
     // agr match krta hai toh token generate kro
     // sb explanation hai authbackend github mai hai udhr hr chij btai hai maine
 
+    // maine payload mai id paas kr rhki hai toh authorization mai decode mai id mil jati hai toh usse mai user ko fetch kr skta hu
     const payLoad = {
       email: user.email,
       id: user._id,

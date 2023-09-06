@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="bg-newpink min-h-screen overflow-auto ">
+      <div className="bg-newpink overflow-auto ">
         <div className="drop-shadow-2xl ">
           <Header />
         </div>

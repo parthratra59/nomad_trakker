@@ -43,7 +43,11 @@ exports.authorization = async (req, res, next) => {
       //     });
 
       // decode mai id and email hai jo hmne payload mai dala tha
-
+        // maine payload mai id paas kr rhki hai toh authorization mai decode mai id mil jati hai toh usse mai user ko fetch kr skta hu
+        // isilye req.user.id mai id hoti hai 
+        // decode means payload
+        // jo hmne payload mai dala tha vo decode mai hai
+        // email and id
       console.log(decode);
       req.user = decode;
     } catch (error) {

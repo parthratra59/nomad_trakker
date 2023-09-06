@@ -2,50 +2,62 @@ const mongoose = require("mongoose");
 
 const LikeSchema = new mongoose.Schema(
   {
-    itemid: {
+    itemId: {
       type: String,
       required: true,
+      trim: true,
     },
-    itemimage: {
+    itemImage: {
       type: String,
       required: true,
+      trim: true,
     },
-    itemname: {
+    itemName: {
       type: String,
       required: true,
+      trim: true,
     },
-    websiteurl: {
+    websiteUrl: {
       type: String,
       required: true,
+      trim: true,
     },
-    tripadviserurl: {
+    tripAdviserUrl: {
       type: String,
       required: true,
+      trim: true,
     },
     location: {
       type: String,
       required: true,
+      trim:true,
     },
     ranking: {
       type: String,
       required: true,
+      trim: true,
     },
     rating: {
       type: String,
       required: true,
+      trim: true,
     },
-    contactnumber: {
-      type: Number,
+    contactNumber: {
+      type: String,
       required: true,
+      trim: true,
     },
-    cusine: [
+    cuisine: [
       {
-        type: String,
-        required: true,
+        type:String,
+        required:true,
+        trim:true,
       },
     ],
   },
   { timestamps: true }
+
+  // timestamp se creatreat and updated at ata  hai
 );
 
 module.exports = mongoose.model("Like", LikeSchema);
