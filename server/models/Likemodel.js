@@ -9,9 +9,10 @@ const LikeSchema = new mongoose.Schema(
     },
     itemImage: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
+  
     itemName: {
       type: String,
       required: true,
@@ -19,7 +20,7 @@ const LikeSchema = new mongoose.Schema(
     },
     websiteUrl: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     tripAdviserUrl: {
@@ -34,26 +35,31 @@ const LikeSchema = new mongoose.Schema(
     },
     ranking: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     rating: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     contactNumber: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     cuisine: [
       {
         type:String,
-        required:true,
+      
         trim:true,
       },
     ],
+    reviews:{
+      type:String,
+      
+      trim:true,
+    }
   },
   { timestamps: true }
 

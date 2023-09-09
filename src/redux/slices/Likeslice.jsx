@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  likeElemets: localStorage.getItem("likeElements")? JSON.parse(localStorage.getItem("likeElements")):[],
+  // likeElemets: localStorage.getItem("likeElements")? JSON.parse(localStorage.getItem("likeElements")):[],
+  likeElemets: [],
 };
 
 export const likeSlice = createSlice({
@@ -48,9 +49,9 @@ export const likeSlice = createSlice({
       // update state
       state.likeElemets = newLikeElemets;
       // only set localStorage if the item is not already there
-      if (!newLikeElemets.some((item) => item.location_id === action.payload)) {
-        localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
-      }
+      // if (!newLikeElemets.some((item) => item.location_id === action.payload)) {
+      //   localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
+      // }
       
     },
   },

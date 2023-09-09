@@ -14,34 +14,27 @@ exports.addLike = async (req, res) => {
       ranking,
       rating,
       contactNumber,
-      cuisine,
+      reviews,
+      cuisine
     } = req.body;
 
-    const itemImage = req.files.clicks;
+    
+    // console.log("waheguruji", req.body);
 
-    if (
-      !itemId ||
-      !itemName ||
-      !websiteUrl ||
-      !tripAdviserUrl ||
-      !location ||
-      !ranking ||
-      !rating ||
-      !contactNumber ||
-      !itemImage ||
-      !cuisine
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Please Enter All the Fields",
-      });
-    }
+    // const thumbnail = req.files.clicks;
+    console.log("waheguruji", req.body);
+    // if (!thumbnail) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Please Upload Image",
+    //   });
+    // }
 
-    console.log("req.body", cuisine);
 
     const userId = req.user.id;
+    console.log("req.user.id", userId)
     const userDetails = await User.findById(userId);
-    console.log(userDetails);
+    console.log("userDetails", userDetails);
 
     if (!userDetails) {
       return res.status(404).json({
@@ -52,16 +45,17 @@ exports.addLike = async (req, res) => {
 
     // upload image to cloudinary
     // first parameter file name jo upr likhi hai
-    const uploadDetails = await uploadImageToCloudinary(
-      itemImage,
-      process.env.FOLDER_NAME1
-    );
+    // const uploadDetails = await uploadImageToCloudinary(
+    //   thumbnail,
+    //   process.env.FOLDER_NAME1
+    // );
+    // console.log("uploadDetails", uploadDetails);
 
     // create an entry for item in database
 
     const newItem = await Like.create({
       itemId,
-      itemImage: uploadDetails.secure_url,
+      // itemImage: uploadDetails.secure_url, 
       itemName,
       websiteUrl,
       tripAdviserUrl,
@@ -69,9 +63,13 @@ exports.addLike = async (req, res) => {
       ranking,
       rating,
       contactNumber,
-      cuisine,
+      cuisine,    
+      reviews,
+     
     });
-    
+
+ 
+   
 
     // add item to user's liked items array tbhi toh user ke liked/wishlist dikhegi items mei show hoga
 
@@ -84,12 +82,10 @@ exports.addLike = async (req, res) => {
       { _id: userId },
       {
         $push: {
-            likeCart: newItem._id,
-          
+          likeCart: newItem._id,
         },
-       
       },
-      console.log("newItem.itjjemId",newItem.itemId),
+      console.log("newItem.itjjemId", newItem.itemId),
       {
         new: true,
       }
@@ -129,39 +125,37 @@ exports.showAllLikedItems = async (req, res) => {
 
 exports.deleteLikedItem = async (req, res) => {
   try {
-
     // User ke andr ek array hai cart ka jisme sare items hai usme item is hai toh kee milegi
     const userId = req.user.id;
     console.log("req.user.id", userId);
-     // Get the itemId from the route parameters
-     const objectIdToRemove = req.params.id; 
-    console.log("req.params.id",objectIdToRemove)
-    
+    // Get the itemId from the route parameters
+    const objectIdToRemove = req.params.id;
+    console.log("req.params.id", objectIdToRemove);
+
     // console.log("req.body",itemIdToRemove)
     // itemId vo hai jo location.id hai
     // const removeId = req.likeCarparams._id;
     // console.log("removeId",removeId)
 
     // delete item from cart
-//     1.findByIdAndDelete deletes the entire document. means all fields of an array
-// 2.$pull with findByIdAndUpdate modifies a specific field (in this case, an array) within the document without deleting the entire document.
-    const removeElement = await User.findByIdAndUpdate( 
-        { _id: userId },
-        console.log("userid",userId),
-        {
-            $pull:{
-                likeCart:objectIdToRemove,
-            }
+    //     1.findByIdAndDelete deletes the entire document. means all fields of an array
+    // 2.$pull with findByIdAndUpdate modifies a specific field (in this case, an array) within the document without deleting the entire document.
+    const removeElement = await User.findByIdAndUpdate(
+      { _id: userId },
+      console.log("userid", userId),
+      {
+        $pull: {
+          likeCart: objectIdToRemove,
         },
-        { new: true }
-);
+      },
+      { new: true }
+    );
 
     return res.status(200).json({
-        success: true,
-        message: "Item removed from the liked items",
-        data: removeElement,
-      });
-
+      success: true,
+      message: "Item removed from the liked items",
+      data: removeElement,
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
