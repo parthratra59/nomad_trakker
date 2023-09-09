@@ -23,6 +23,6 @@ router.get("/showalllikeditems", authorization, showAllLikedItems);
 
 
 // remove like from cart
-router.put("/removelike/:id", authorization, deleteLikedItem );
+router.put("/removelike/:itemId", authorization, deleteLikedItem);
 
 module.exports = router;        

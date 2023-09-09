@@ -24,3 +24,13 @@ export const settingsEndpoints = {
   UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/uploadphoto",
   UPDATE_PASSWORD_API: BASE_URL + "/profile/updatepassword",
 };
+
+
+
+
+// ADD TO CART API
+export const cartEndpoints = {
+  ADD_TO_CART_API: BASE_URL + "/like/addlike",
+  SHOW_ALL_CART_ITEMS_API: BASE_URL + "/like/showalllikeditems",
+  REMOVE_FROM_CART_API: BASE_URL + "/like/removelike",
+};

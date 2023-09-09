@@ -18,6 +18,8 @@ import "react-toastify/dist/ReactToastify.css";
 // import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "../../redux/slices/Likeslice";
+import { useNavigate } from "react-router-dom";
+import { addTocartdb } from "../../services/operations/likeApi";
 
 const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   useEffect(() => {
@@ -25,26 +27,39 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
       refprop.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [selectkiya, refprop]);
+  const navigate = useNavigate();
 
   // likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
   const {likeElemets} = useSelector((state) => state.like);
-
+  const { tokenpara } = useSelector((state) => state.auth);
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  
   
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
-    dispatch(add(hello));
-    console.log(hello);
-    toast.success("Items added to Wishlist");
+    // dispatch(add(hello));/
+   
+  
+
+    
+    addTocartdb(hello,tokenpara)
+    
+   
+
+    
+   
+     
   };
-  const removefromcart = () => {
+  const gotoCart = () => {
     // yh remove krta cart mai se item
     // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
-    dispatch(remove(hello.location_id));
+    // dispatch(remove(hello.location_id));
     // console.log(hello)
-    toast.error("Items removed from Wishlist");
+    // toast.error("Items removed from Wishlist");
+    navigate("/dashboard/cart");
+    toast.success("Switch to Wishlist ");
   };
 
   // console.log(hello)
@@ -198,28 +213,30 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
                   transform: "translateY(-50%)",
                 }}
               >
+                {tokenpara ? (
+                  <>
                 {likeElemets.some(
                   (current) => current.location_id === hello.location_id
                 ) ? (
                   <button
-                    className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
-              text-[12px] p-1 px-2  uppercase 
-              hover:bg-gray-700
-               transition duration-300 ease-in"
-                    onClick={removefromcart}
+                    className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
+                    onClick={gotoCart}
                   >
-                    Remove Item
+                    Go to Wishlist
                   </button>
                 ) : (
                   <button
-                    className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
-              text-[12px] p-1 px-3 uppercase 
-              hover:bg-gray-700
-              transition duration-300 ease-in"
+                    className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
                     onClick={addtocart}
                   >
                     Add Item
                   </button>
+                )}
+                </>
+                ) : (
+                  <button
+
+                    className="hidden" ></button>
                 )}
               </div>
             </Typography>
