@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useMemo } from "react";
 import "./Header.css";
 import { FcSearch } from "react-icons/fc";
 import { Autocomplete } from "@react-google-maps/api";
@@ -7,6 +7,7 @@ import { SiYourtraveldottv } from "react-icons/si";
 import { BsFillHeartFill } from "react-icons/bs";
 import { InputBase } from "@mui/material";
 import { Link } from "react-router-dom";
+import { fetchCartData } from "../../services/operations/likeApi";
 
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -16,8 +17,32 @@ const Header = ({ setcoordinating }) => {
   // importing reducers
 
   const { tokenpara } = useSelector((state) => state.auth);
+// YHI CHIJ MAINE CART.JS MAI KRI HAI 
+  const [likecart, setlikecart] = useState([]);
+  const [cartItemCount, setCartItemCount] = useState(0); 
+
+  
+    // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai 
+    const datacartfetch =async()=>{
+      try{
+          const response = await fetchCartData(tokenpara)
+          setlikecart(response)
+          setCartItemCount(response.length);
+          console.log(response)
+      }
+      catch(error)
+      {
+        console.error('Error fetching cart data:', error);
+      }
+    }
+
+    useEffect(() => {
+      datacartfetch()
+    }, [cartItemCount])
+
+
   console.log("tokenpara ehich is token at header", tokenpara);
-  // const { totalItems } = useSelector((state) => state.like);
+  
   const {likeElemets} = useSelector((state) => state.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
@@ -45,6 +70,8 @@ const Header = ({ setcoordinating }) => {
       inputElement.click();
     }
   };
+
+  // const memoizedCartItemCount = useMemo(() => likecart.length, [likecart.length]);
 
   return (
     <>
@@ -111,10 +138,10 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {likeElemets.length > 0 && (
+                      {cartItemCount> 0 && (
                         <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
                     justify-center items-center animate-bounce rounded-full text-white" >
-                          {likeElemets.length}
+                          {cartItemCount}
                         </span>
                       )}
                     </div>

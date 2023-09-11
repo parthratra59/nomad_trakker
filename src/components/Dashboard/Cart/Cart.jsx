@@ -1,13 +1,40 @@
-import React,{useCallback} from 'react';
+import React,{useCallback, useEffect,useState} from 'react';
 
 import { useNavigate } from 'react-router-dom'; // Don't forget to import NavLink
 import { useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
 import Cartitem from "../Cart/Cartitem"
+import {fetchCartData } from "../../../services/operations/likeApi"
 import './Cart.css'
 
 const Cart = () => {
-  const {likeElemets} = useSelector((state) => state.like);
+    // const {likeElemets}=useSelector((state)=>state.like)
+
+
+    // fetching krege apiservice se
+    const { tokenpara } = useSelector((state) => state.auth);
+    const [likecart, setlikecart] = useState([]);
+
+
+    // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const datacartfetch =async()=>{
+      try{
+          const response = await fetchCartData(tokenpara)
+          setlikecart(response)
+          console.log(response)
+      }
+      catch(error)
+      {
+        console.error('Error fetching cart data:', error);
+      }
+    }
+
+    useEffect(() => {
+      datacartfetch()
+    }, [])
+
+
   const navigate=useNavigate()
 
   const back=useCallback(()=>{
@@ -21,7 +48,7 @@ const Cart = () => {
   return (
     <>
     
-        {likeElemets?.length === 0 ? (
+        {likecart?.length === 0 ? (
           <div className=" m-auto w-11/12 max-w-[1080px]  flex items-center justify-center">
             <div className='mt-4'>
               <h1 className="text-gray-700 font-semibold text-xl mb-2 text-white">Your Adventure Awaits! 🌍 Your Wishlist is Ready to Be Filled with Dream Destinations!</h1>
@@ -41,7 +68,7 @@ const Cart = () => {
             </h1>
           <div className='flex flex-col'>
             {
-              likeElemets?.map((item)=>{
+              likecart?.map((item)=>{
                 return(
                   <Cartitem item={item} key={item.location_id}/>
                 )

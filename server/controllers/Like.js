@@ -15,24 +15,22 @@ exports.addLike = async (req, res) => {
       rating,
       contactNumber,
       reviews,
-      cuisine
+      cuisine,
     } = req.body;
 
-    
-    // console.log("waheguruji", req.body);
+    console.log("req.body", req.body);
+    const thumbnail = req.files.clicks;
+    console.log("thumbnail", thumbnail);
 
-    // const thumbnail = req.files.clicks;
-    console.log("waheguruji", req.body);
-    // if (!thumbnail) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: "Please Upload Image",
-    //   });
-    // }
-
+    if (!thumbnail) {
+      return res.status(400).json({
+        success: false,
+        message: "Please Upload Image",
+      });
+    }
 
     const userId = req.user.id;
-    console.log("req.user.id", userId)
+    console.log("req.user.id", userId);
     const userDetails = await User.findById(userId);
     console.log("userDetails", userDetails);
 
@@ -45,17 +43,17 @@ exports.addLike = async (req, res) => {
 
     // upload image to cloudinary
     // first parameter file name jo upr likhi hai
-    // const uploadDetails = await uploadImageToCloudinary(
-    //   thumbnail,
-    //   process.env.FOLDER_NAME1
-    // );
+    const uploadDetails = await uploadImageToCloudinary(
+      thumbnail,
+      process.env.FOLDER_NAME1
+    );
     // console.log("uploadDetails", uploadDetails);
 
     // create an entry for item in database
 
     const newItem = await Like.create({
       itemId,
-      // itemImage: uploadDetails.secure_url, 
+      itemImage:uploadDetails.secure_url,
       itemName,
       websiteUrl,
       tripAdviserUrl,
@@ -63,13 +61,11 @@ exports.addLike = async (req, res) => {
       ranking,
       rating,
       contactNumber,
-      cuisine,    
       reviews,
-     
-    });
+      cuisine
 
- 
-   
+    });
+    console.log("newItem", newItem);
 
     // add item to user's liked items array tbhi toh user ke liked/wishlist dikhegi items mei show hoga
 
@@ -126,30 +122,31 @@ exports.showAllLikedItems = async (req, res) => {
 exports.deleteLikedItem = async (req, res) => {
   try {
     // User ke andr ek array hai cart ka jisme sare items hai usme item is hai toh kee milegi
-    const userId = req.user.id;
-    console.log("req.user.id", userId);
-    // Get the itemId from the route parameters
-    const objectIdToRemove = req.params.id;
-    console.log("req.params.id", objectIdToRemove);
+    const {itemId} = req.body
 
-    // console.log("req.body",itemIdToRemove)
-    // itemId vo hai jo location.id hai
-    // const removeId = req.likeCarparams._id;
-    // console.log("removeId",removeId)
-
+    await Like.findByIdAndDelete(itemId)
+    console.log("req.body", itemId);
+    
     // delete item from cart
     //     1.findByIdAndDelete deletes the entire document. means all fields of an array
     // 2.$pull with findByIdAndUpdate modifies a specific field (in this case, an array) within the document without deleting the entire document.
-    const removeElement = await User.findByIdAndUpdate(
-      { _id: userId },
-      console.log("userid", userId),
+  const removeElement = await User.findByIdAndUpdate(
+      { _id: req.user.id },
       {
         $pull: {
-          likeCart: objectIdToRemove,
+          likeCart: req.params._id,
         },
       },
-      { new: true }
+      {
+        new: true,
+      }
     );
+    console.log("removeElement", removeElement);
+
+  
+
+
+
 
     return res.status(200).json({
       success: true,

@@ -120,9 +120,8 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
         <CardMedia
           style={{ height: 350 }}
           image={
-            hello.photo
-              ? hello.photo.images.large.url
-              : "https://www.foodserviceandhospitality.com/wp- content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
+            hello.photo.images.large.url
+              
           }
         />
         <CardContent>

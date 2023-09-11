@@ -31,6 +31,6 @@ export const settingsEndpoints = {
 // ADD TO CART API
 export const cartEndpoints = {
   ADD_TO_CART_API: BASE_URL + "/like/addlike",
-  SHOW_ALL_CART_ITEMS_API: BASE_URL + "/like/showalllikeditems",
+  SHOW_ALL_CART_ITEMS_API: BASE_URL + "/like/alllikes",
   REMOVE_FROM_CART_API: BASE_URL + "/like/removelike",
 };

@@ -7,6 +7,16 @@ import { logout } from "../operations/authApi.js";
 import { settingsEndpoints } from "../apiservice.js";
 import { setLoading } from "../../redux/slices/Authslice.jsx";
 
+
+
+// there are two ways fetch and axios to make api calls CRUD operations ke liye
+// fetch is a browser api and axios is a library
+// fetch is a promise based api and axios is a promise based library
+// dono mai difference yh hai ki axios mai hme .then .catch nhi likhna pdta hai likh bhi skte hai but nhi likhna pdta hai
+// dono mai async and await use kr te hai jb ap async and await use krte hai toh apko .then .catch nhi likhna pdta hai
+
+// https://chat.openai.com/share/3658bbeb-0929-449f-8981-617a72165b9e best hai yh isko ek baar ache se sb pdna akri mai jana udhr jyada clear hai
+
 const {
   UPDATE_DISPLAY_PICTURE_API,
   UPDATE_PROFILE_API,
@@ -14,6 +24,8 @@ const {
   UPDATE_PASSWORD_API,
 } = settingsEndpoints;
 
+
+// null likh skte hai bodydata vale mai ya fir omit kr skte hm delte ke time pr koi data bhej nhi rhe hote backend pr toh null likh skte hai
 export async function deleteAccount(token, dispatch, navigate) {
   try {
     const response = await apiConnector("DELETE", DELETE_PROFILE_API, null, {
