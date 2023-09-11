@@ -4,7 +4,7 @@ const LikeSchema = new mongoose.Schema(
   {
     itemId: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     itemImage: {
@@ -15,7 +15,7 @@ const LikeSchema = new mongoose.Schema(
   
     itemName: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     websiteUrl: {
@@ -25,12 +25,12 @@ const LikeSchema = new mongoose.Schema(
     },
     tripAdviserUrl: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     location: {
       type: String,
-      required: true,
+      // required: true,
       trim:true,
     },
     ranking: {

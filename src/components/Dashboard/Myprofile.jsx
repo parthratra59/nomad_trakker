@@ -48,7 +48,7 @@ const Myprofile = () => {
                   </p>
                 </div>
               </div>
-              <div className="hidden md:block ">
+              <div className=" md:block ">
                 <Iconbutton
                   text="Edit"
                   onClick={() => {

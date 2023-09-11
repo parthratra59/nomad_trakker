@@ -19,7 +19,7 @@ const { authorization } = require("../middleware/authorization"); // Update the 
 
 router.post("/addlike", authorization, addLike);
 
-router.get("/showalllikeditems", authorization, showAllLikedItems);
+router.get("/alllikes", authorization, showAllLikedItems);
 
 
 // remove like from cart

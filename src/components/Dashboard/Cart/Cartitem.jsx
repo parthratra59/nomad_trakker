@@ -26,6 +26,20 @@ const Cartitem = ({ item }) => {
     toast.error("Item removed from Wishlist");
   };
 
+  // SPLIT FUNCTION TO CONVERT STRING INTO ARRAY
+  // isme , ke basis pr split krta then array mai dalta
+  // const text = "apple,banana,cherry";
+// const fruits = text.split(",");
+
+// // Map over the array and render each fruit as an HTML element
+// const fruitElements = fruits.map((fruit, index) => (
+//   <div key={index}>{fruit}</div>
+// ));
+
+
+
+
+
   // yh format hota piche hm bhar vala krke agye hai ab ek div and then card vala
   // <div>
   //   <div>
@@ -44,55 +58,57 @@ const Cartitem = ({ item }) => {
         >
           <CardMedia
             style={{ height: "450px", objectFit: "cover" }}
-            image={item.photo.images.large.url}
+            image={item.itemImage}
           />
           
           <CardContent>
             <Typography gutterBottom variant="h5">
-              {item.name}
+              {item.itemName}
             </Typography>
             <div className="media">
               <Rating value={Number(item.rating)} readOnly />
               <Typography gutterBottom variant="subtitle1">
                 {" "}
-                out of {item.num_reviews} reviews
+                out of {item.reviews} reviews
               </Typography>
             </div>
             <div className="media">
               <Typography variant="subtitle1">Ranking</Typography>
               <Typography gutterBottom variant="subtitle1">
-                {item.ranking ? item.ranking.replace(/#/g, "") : ""}
+                {item.ranking}
               </Typography>
             </div>
-            {item?.cuisine?.map((khana, index) => (
+            {item.cuisine?.map((khana, index) => (
               <Chip
                 key={index}
                 size="small"
-                label={khana.name}
+                label={khana}
                 className="chip"
               />
             ))}
             <div className="address">
               <LocationOnIcon />
-              {item?.address}
+              {item.location}
             </div>
             <div className="address">
               <PhoneIcon />
-              {item?.phone}
+              {item.contactNumber}
             </div>
           </CardContent>
           <CardActions>
             <Button
               size="small"
               color="primary"
-              onClick={() => window.open(item.web_url, "_blank")}
+              onClick={() => window.open(item.tripAdviserUrl
+, "_blank")}
             >
               Trip Advisor
             </Button>
             <Button
               size="small"
               color="primary"
-              onClick={() => window.open(item.website, "_blank")}
+              onClick={() => window.open(item.websiteUrl
+, "_blank")}
             >
               Website
             </Button>

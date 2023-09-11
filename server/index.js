@@ -13,6 +13,8 @@ const profileRoutes = require("./routes/Profileroute");
 const LikeRoutes = require("./routes/Likeroute");
 
 const dotenv = require("dotenv");
+// req.files idhr se ata hai do trh se fileupload hoti multer and express file upload
+// https://www.npmjs.com/package/express-fileupload/
 const fileUpload = require("express-fileupload");
 
 dotenv.config();
