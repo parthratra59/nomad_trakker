@@ -18,32 +18,18 @@ const Header = ({ setcoordinating }) => {
 
   const { tokenpara } = useSelector((state) => state.auth);
 // YHI CHIJ MAINE CART.JS MAI KRI HAI 
-  const [likecart, setlikecart] = useState([]);
-  const [cartItemCount, setCartItemCount] = useState(0); 
+  // const [likecart, setlikecart] = useState([]);
+  // const [cartItemCount, setCartItemCount] = useState(0); 
 
   
     // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai 
-    const datacartfetch =async()=>{
-      try{
-          const response = await fetchCartData(tokenpara)
-          setlikecart(response)
-          setCartItemCount(response.length);
-          console.log(response)
-      }
-      catch(error)
-      {
-        console.error('Error fetching cart data:', error);
-      }
-    }
-
-    useEffect(() => {
-      datacartfetch()
-    }, [cartItemCount])
+    
 
 
   console.log("tokenpara ehich is token at header", tokenpara);
   
   const {likeElemets} = useSelector((state) => state.like);
+  const { totalItems } = useSelector((hello) => hello.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
@@ -138,10 +124,10 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {cartItemCount> 0 && (
+                      {totalItems.length>0 && (
                         <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
                     justify-center items-center animate-bounce rounded-full text-white" >
-                          {cartItemCount}
+                          {totalItems.length}
                         </span>
                       )}
                     </div>

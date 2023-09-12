@@ -65,9 +65,9 @@ const List = ({ places, loadinghorhi }) => {
 
   // ]
   return (
-    <div className="listing" style={{ padding: "25px", userSelect: "none" }}>
+    <div className="listing" style={{ padding: "10px", userSelect: "none" }}>
       <span
-        className="heading"
+        className="heading text-center"
         style={{ fontWeight: "bold", fontSize: "26px", userSelect: "none" }}
       >
         Restaurants,Hot
@@ -81,7 +81,7 @@ const List = ({ places, loadinghorhi }) => {
         <>
           <div className="line" style={{ display: "flex" }}>
             <div
-              style={{ margin: "15px", minWidth: 120, marginBottom: "30px" }}
+              style={{ margin: "15px", minWidth: 120, marginBottom: "40px" }}
               className="box"
             >
               <InputLabel style={{ userSelect: "none" }}>Type</InputLabel>

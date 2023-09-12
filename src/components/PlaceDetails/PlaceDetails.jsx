@@ -33,13 +33,13 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   const {likeElemets} = useSelector((state) => state.like);
   const { tokenpara } = useSelector((state) => state.auth);
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
   
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
-    // dispatch(add(hello));/
+    dispatch(add(hello));
    
   
 
@@ -55,9 +55,7 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   const gotoCart = () => {
     // yh remove krta cart mai se item
     // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
-    // dispatch(remove(hello.location_id));
-    // console.log(hello)
-    // toast.error("Items removed from Wishlist");
+   
     navigate("/dashboard/cart");
     toast.success("Switch to Wishlist ");
   };
@@ -172,6 +170,7 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               label={khana.name}
               className="chip"
             />
+            
           ))}
 
           {/* typography ke sath gutterBottom use hota hai */}
@@ -182,8 +181,14 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               color="textSecondary"
               className="addressing"
             >
-              <LocationOnIcon />
-              {hello?.address}
+              
+              {hello?.address ? <div>
+                <LocationOnIcon />
+                {hello.address}
+              </div> : 
+              <div className="hidden">
+                ""
+              </div>}
             </Typography>
           </Box>
           <Box
@@ -201,8 +206,15 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               color="textSecondary"
               className="addressing"
             >
-              <PhoneIcon />
-              {hello?.phone}
+              {
+                hello?.phone ? <div>
+                <PhoneIcon />
+                {hello.phone}
+              </div> :
+              <div className="hidden">
+                
+              </div>
+              }
 
               <div
                 style={{

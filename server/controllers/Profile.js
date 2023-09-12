@@ -116,6 +116,8 @@ exports.Uploadphoto = async (req, res) => {
 
     // profilepciture
     // same idhr jo rhka hai cohi frontend mai hona chaiye name "profilepic" se
+    // here files is middleware jo hm ne express file upload use kiya hai usme se hai req.files
+    // https://www.npmjs.com/package/express-fileupload mai hai sb
     const image = req.files.profilepic;
     if (!image) {
       return res.status(400).json({

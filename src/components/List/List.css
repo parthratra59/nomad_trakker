@@ -6,12 +6,12 @@
   /* agr height ka hota vo apne dekhleta overflow mai */
   overflow: auto;
 }
-.loading {
+/* .loading {
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .heading {
   font-weight: "bold";
   font-size: "26px";

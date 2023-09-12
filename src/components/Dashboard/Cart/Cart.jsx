@@ -8,7 +8,8 @@ import {fetchCartData } from "../../../services/operations/likeApi"
 import './Cart.css'
 
 const Cart = () => {
-    // const {likeElemets}=useSelector((state)=>state.like)
+    const {likeElemets}=useSelector((state)=>state.like)
+
 
 
     // fetching krege apiservice se

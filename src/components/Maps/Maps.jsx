@@ -50,10 +50,10 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
   };
 
   return (
-    <Paper
-      className="google z-10 "
+    <div
+      className="google z-10  h-[100vh] w-[100vw]  md:h-[100vh] md:w-[100vw]  sm:p-1"
       xs={12}
-      style={{ height: "90vh", width: "100vw" }}
+    
     >
       <GoogleMapReact
         // props
@@ -73,7 +73,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         // when parallel component kaam kar rhe ho ek sath tb yh use hota hai
 
         onChildClick={(bhai) => sendkrega(bhai)}
-        margin={[50, 50, 50, 50]}
+        margin={[0, 0, 0, 0]}
       >
         {/* there will be two syntax with return without return 
     with return there is a curly braces
@@ -133,7 +133,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         })}
         {/* /google map ke andr hi toh krunga */}
       </GoogleMapReact>
-    </Paper>
+    </div>
   );
 };
 

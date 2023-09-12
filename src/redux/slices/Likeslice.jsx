@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  // likeElemets: localStorage.getItem("likeElements")? JSON.parse(localStorage.getItem("likeElements")):[],
-  likeElemets: [],
+  likeElemets: localStorage.getItem("likeElements")? JSON.parse(localStorage.getItem("likeElements")):[],
+  totalItems: localStorage.getItem("totalItems")
+  ? JSON.parse(localStorage.getItem("totalItems"))
+  : 0,
+  // likeElemets: [],
 };
 
 export const likeSlice = createSlice({
@@ -12,6 +15,14 @@ export const likeSlice = createSlice({
     // reducer function 2 chije lete argument mai
     // state,action
     // state mai imput paramenter mila hai
+
+      // reducer function 2 chije lete argument mai
+    // state,action
+    // state mai imput paramenter mila hai
+    settotalItems: (state, action) => {
+      // state mai jo hai vo totalitems mai daldo
+      state.totalItems = action.payload;
+    },
 
 
     add: (state, action) => {
@@ -43,15 +54,17 @@ export const likeSlice = createSlice({
       
       // This ensures that the original data structure is not changed, and that the state is always immutable.
       const newLikeElemets = state.likeElemets.filter(
-        (item) => item.location_id !== action.payload
+        (item) => item._id !== action.payload
       );
+      console.log("nyiellie",newLikeElemets);
 
       // update state
       state.likeElemets = newLikeElemets;
       // only set localStorage if the item is not already there
-      // if (!newLikeElemets.some((item) => item.location_id === action.payload)) {
-      //   localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
-      // }
+      if (!newLikeElemets.some((item) => item._id === action.payload)) {
+        localStorage.removeItem("likeElements", JSON.stringify(state.likeElemets));
+      }
+      console.log("state.likeelements",state.likeElemets)
       
     },
   },
