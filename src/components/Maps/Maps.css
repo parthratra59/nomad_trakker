@@ -1,11 +1,13 @@
 /* Add a class for centering the map on smaller screens */
-.centerMap {
+/* .centerMap {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* Rest of the styles */
+
+
 .marking {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -17,8 +19,8 @@
 
 .google {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  /* width: 100%;
+  height: 100vh; */
   z-index: 0;
   &:hover {
     z-index: 1;

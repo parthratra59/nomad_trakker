@@ -135,7 +135,7 @@ const Setting = () => {
                   <form onSubmit={handleUpload}>
                     <div className="flex gap-3">
                       <label
-                        className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50'"
+                        className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
                         htmlFor="upload"
                       >
                         Select
@@ -150,7 +150,7 @@ const Setting = () => {
 
                       <button
                         type="submit"
-                        className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 "
+                        className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900"
                       >
                         <span className="false">Upload</span>
                         <FiUpload />

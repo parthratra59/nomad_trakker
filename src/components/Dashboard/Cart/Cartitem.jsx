@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {
   Card,
   CardActions,
@@ -12,20 +12,39 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {RiDeleteBin6Line} from 'react-icons/ri'
 // import { Link } from "react-router-dom";
-import { remove } from "../../../redux/slices/Likeslice";
-
+import { deleteItem } from "../../../services/operations/likeApi";
+import { useNavigate } from "react-router-dom";
+import {remove} from "../../../redux/slices/Likeslice"
 const Cartitem = ({ item }) => {
-  const dispatch = useDispatch();
 
-  const removefromcart = () => {
-    dispatch(remove(item.location_id));
-    console.log(dispatch(remove(item.location_id)));
-    toast.error("Item removed from Wishlist");
+
+  const {tokenpara} = useSelector((state)=>state.auth)
+   const dispatch = useDispatch();
+ 
+
+  
+ 
+ 
+  const removefromcart = async () => {
+    try {
+      // Attempt to delete the item
+      await deleteItem(tokenpara,item._id);
+      // If deletion is successful, set the local state to indicate removal
+       dispatch(remove(item._id));
+      console.log(dispatch(remove(item._id)));
+      
+      
+    } catch (error) {
+      toast.error("Error removing item from cart");
+    }
   };
 
+  // bda sa function hai yh re rendering vgh mai toh redux use krte hai thik hai
+
+ 
   // SPLIT FUNCTION TO CONVERT STRING INTO ARRAY
   // isme , ke basis pr split krta then array mai dalta
   // const text = "apple,banana,cherry";
@@ -78,22 +97,19 @@ const Cartitem = ({ item }) => {
                 {item.ranking}
               </Typography>
             </div>
-            {item.cuisine?.map((khana, index) => (
-              <Chip
-                key={index}
-                size="small"
-                label={khana}
-                className="chip"
-              />
-            ))}
+           
+
             <div className="address">
-              <LocationOnIcon />
-              {item.location}
+              {
+                item.location?<div>
+                <LocationOnIcon />
+                {item.location}
+              </div>:<div className="hidden">
+              ""
+              </div>
+              }
             </div>
-            <div className="address">
-              <PhoneIcon />
-              {item.contactNumber}
-            </div>
+            
           </CardContent>
           <CardActions>
             <Button
@@ -193,3 +209,13 @@ export default Cartitem;
 //   </button>
 // </CardActions>
 // </Card>
+
+
+
+
+
+  // const dispatch = useDispatch();
+
+
+  // dispatch(remove(item.location_id));
+  // console.log(dispatch(remove(item.location_id)));

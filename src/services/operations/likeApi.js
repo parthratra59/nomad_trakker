@@ -60,11 +60,11 @@ export const addTocartdb = async (hello, tokenpara) => {
     // Append the image FormData as a part of the parent FormData
 
     // Append other JSON data as fields in the parent FormData
-    formData.append("itemId", hello.location_id);
+    formData.append("itemId", hello.location_id || "");
     formData.append("itemName", hello.name);
     formData.append("websiteUrl", hello.website || "");
     formData.append("tripAdviserUrl", hello.web_url || "");
-    formData.append("location", hello.address);
+    formData.append("location", hello.address || " ");
     formData.append(
       "ranking",
       hello.ranking ? hello.ranking.replace(/#/g, "") : ""
@@ -120,3 +120,26 @@ export const fetchCartData = async (tokenpara) => {
     toast.error(error.response.data.message);
   }
 };
+
+
+
+export const deleteItem= async (tokenpara,_id) => {
+  try{
+      const response = await apiConnector("DELETE", REMOVE_FROM_CART_API, {_id}, {
+        Authorisation: `Bearer ${tokenpara}`,
+      });
+      console.log("response.data.data", response.data.data);
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+      toast.success("Item deleted from cart");
+
+  }
+  catch(error)
+  {
+    console.error('Error fetching cart data:', error);
+    toast.error(error.response.data.message);
+  }
+}
+
+

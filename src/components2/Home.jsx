@@ -133,7 +133,8 @@ const Home = () => {
 
         <Header setcoordinating={setcoordinates} />
         {/* <Header/> */}
-        <Grid container spacing={3} style={{ width: "100%" }}>
+        <div className="flex h-100vh w-100%">
+        <Grid container spacing={3} >
           <Grid item xs={12} md={4}>
             {/*  */}
             <List places={filtered.length ? filtered : places} />
@@ -162,6 +163,7 @@ const Home = () => {
         {/* <Footer/> */}
 
         {/* routes */}
+        </div>
       </>
     </GlobalContext.Provider>
   );

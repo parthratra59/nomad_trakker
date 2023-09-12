@@ -3,6 +3,7 @@ const Like = require("../models/Likemodel");
 require("dotenv").config();
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
+
 exports.addLike = async (req, res) => {
   try {
     const {
@@ -122,26 +123,58 @@ exports.showAllLikedItems = async (req, res) => {
 exports.deleteLikedItem = async (req, res) => {
   try {
     // User ke andr ek array hai cart ka jisme sare items hai usme item is hai toh kee milegi
-    const {itemId} = req.body
-
-    await Like.findByIdAndDelete(itemId)
-    console.log("req.body", itemId);
+    // console.log("req.body1", req.body);
+    // 3 ways hai id nikalne ke
+    // const id= req.body.id;    // const {id}=req.body;  //const {_id} =req.body;
+    // apdono kr skte hai id and _id/id destructure kuch bhi use kr skte hai 
+    // but mai _id use kr rha muje jyda 
+    const { _id } = req.body;
     
-    // delete item from cart
-    //     1.findByIdAndDelete deletes the entire document. means all fields of an array
-    // 2.$pull with findByIdAndUpdate modifies a specific field (in this case, an array) within the document without deleting the entire document.
-  const removeElement = await User.findByIdAndUpdate(
-      { _id: req.user.id },
+    console.log("req.body", req.body);
+
+    // idhr destructure krlia hai toh bracket mai krne ki need nhi hai
+    
+    const deleteItem = await Like.findByIdAndDelete(_id)
+
+    if (!deleteItem) {
+      // If the item is not found in the database
+      return res.status(404).json({
+        success: false,
+        message: "Item not found in the liked items",
+      });
+    }
+
+    // delete item from user's module
+    
+    const userId = req.user.id;
+    // middleware vale function se id mil jati hai  
+
+
+    // phele maine vo user ki id nikali then pull mai jakr liked cart se usme _id hogi item ki uda do 
+    console.log("req.user.id", req.user.id);
+    const removeElement = await User.findByIdAndUpdate(
+       userId ,
       {
         $pull: {
-          likeCart: req.params._id,
+          likeCart: _id,
         },
       },
+      console.log("kasturi", _id),
       {
         new: true,
       }
     );
-    console.log("removeElement", removeElement);
+
+      console.log("delete from the User also", removeElement)
+    
+
+
+
+    // delete item from cart
+    //     1.findByIdAndDelete deletes the entire document. means all fields of an array
+    // 2.$pull with findByIdAndUpdate modifies a specific field (in this case, an array) within the document without deleting the entire document.
+ 
+    // console.log("removeElement", removeElement);
 
   
 
@@ -151,7 +184,8 @@ exports.deleteLikedItem = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Item removed from the liked items",
-      data: removeElement,
+      data: deleteItem,
+
     });
   } catch (error) {
     return res.status(500).json({
