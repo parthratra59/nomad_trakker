@@ -1,7 +1,7 @@
 const User = require("../models/User");
 require("dotenv").config();
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const { mailSender } = require("../utils/mailsender");
 // update ke time toh toh mongodb mai _id hota hai by defalut usko isliye hm object mai daall rhe hai _id: id isliye kr rhe
