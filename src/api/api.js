@@ -31,6 +31,7 @@ const Getplacesdata = async (type, sw, ne) => {
           tr_longitude: ne.lng,
           tr_latitude: ne.lat,
         },
+        // parth
         headers: {
           "X-RapidAPI-Key":
             "cdea7bb5a8msh42ca15504ac68b3p1c095cjsn1eab37a169dc",
