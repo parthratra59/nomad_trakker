@@ -39,7 +39,7 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 780px) {
   .typo {
     display: none;
     font-size: 12px;

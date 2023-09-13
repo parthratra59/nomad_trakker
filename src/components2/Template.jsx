@@ -1,13 +1,27 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Signupform from "./Signupform";
 import Loginform from "./Loginform";
 import photo from "./assets/frame.png";
 // import Login from '../pages/Login'
 // import { FcGoogle } from "react-icons/fc";
+import "./Template.css"
 import Header from "../components/Header/Header";
 
 const Template = ({ title, desc1, desc2, image, formType }) => {
   console.log(formType);
+
+  const [coordinates, setcoordinates] = useState({});
+  useEffect(() => {
+    // mai chata jaise hi khule vo current location pr ajae
+    // ise current location khul gya jo hm pop up dekte hai na fir cookies mai jakr enable kr te hai
+    // coords bydefault hai
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setcoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+    // [] empty isliye hai atleast ek baar toh chaiye hm current location ke liye
+  }, []);
 
   // Template jo common hoga signup and login mei
 
@@ -19,15 +33,15 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
         </div>
 
         {/* iski width navbar jaisi hai toh usme jo kiya vohi */}
-        <div className="flex h-[80vh] w-11/12 max-w-[1160px] py-12 gap-y-0 mx-auto gap-x-12 justify-between">
+        <div className="flex h-[80vh]  w-11/12 max-w-[1160px] py-12 gap-y-0 mx-auto gap-x-12 justify-between">
           {/* left section  */}
           {/* meri max width 450px decide hogyi */}
-          <div className="w-11/12 max-w-[450px] mx-0 text-white">
+          <div className="w-11/12  max-w-[450px] mx-0 text-white">
             <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
               {title}
             </h1>
-            <p className="text-[1.125rem] mt-4 leading-[1.625rem]">
-              <span className="text-richblack-100">{desc1}</span>
+            <p className="text-[1.125rem] md:text-[1.125rem]  text-md mt-4 leading-[1.625rem]">
+              <span className="text-richblack-100 ">{desc1}</span>
               <span className="text-blue-100 italic">{desc2}</span>
             </p>
 
@@ -65,6 +79,7 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
               loading="lazy"
               className="absolute -top-4 right-4 "
             />
+            
           </div>
         </div>
       </div>
