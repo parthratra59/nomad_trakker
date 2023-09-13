@@ -33,7 +33,7 @@ app.use(cookieParser());
 // fir entertain bhi nhi kr paege hm
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: ['https://nomadtrakker.netlify.app/', 'http://localhost:3000'],
     credentials: true,
   })
 );
