@@ -62,10 +62,18 @@ const Header = ({ setcoordinating }) => {
   return (
     <>
       <div className="bg-newpink h-14 ">
-        <div className="flex justify-between w-11/12 max-w-maxContent items-center m-auto  p-2 drop-shadow-2xl ">
+        <div className="flex justify-evenly  items-center m-auto  p-2 drop-shadow-2xl @media (max-width: 768px)
+        {
+        gap-x-3
+        } 
+
+        ">
           <Link to="/">
-            <Box className="flex items-center gap-x-2 ml-6">
-              <SiYourtraveldottv style={{ fontSize: "40px", color: "white" }} />
+            <Box className="flex items-center gap-x-2 ml-6 ">
+            
+            <div className="text-[40px] ">
+              <SiYourtraveldottv  style={{ color: "white" }} />
+              </div>
               <Typography
                 className="typo"
                 style={{ color: "white" }}
@@ -73,6 +81,7 @@ const Header = ({ setcoordinating }) => {
               >
                 Nomad_Trakker
               </Typography>
+  
             </Box>
           </Link>
           {/* flex mtlb ek hi row mai krdo flex column ek ke niche ek */}
@@ -86,12 +95,14 @@ const Header = ({ setcoordinating }) => {
                 onLoad={onloading}
                 onPlaceChanged={handlePlaceSelected}
               >
+              <div className=" ">
                 <InputBase
                   className="inputBase"
-                  placeholder="Search......"
-                  style={{ color: "black" }}
+                  placeholder="Search..................."
+                  style={{ color: "black",width:"800px" ,maxWidth: "600px"}}
                   id="input"
                 />
+                </div>
               </Autocomplete>
             </div>
           )}
@@ -99,11 +110,11 @@ const Header = ({ setcoordinating }) => {
           {/**********cart /LOGIN/LOGOUT/DELTEBUTTON */}
 
           <div>
-            <ul className="flex items-center gap-x-4 ">
+            <ul className="flex items-center gap-x-2  ">
               {tokenpara === null && (
                 <li>
                   <Link to="/login">
-                    <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-md border border-richblack-700">
+                    <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] md:py-[8px] sm:px-[12px] rounded-md border border-richblack-700">
                       Login
                     </button>
                   </Link>

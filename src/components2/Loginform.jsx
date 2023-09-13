@@ -74,7 +74,8 @@ const Loginform = () => {
             placeholder="Enter email address"
             onChange={handleinput}
             name="email"
-            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px]  text-richblack-5 shadow-md outline-none
+          "
           />
         </label>
 
@@ -94,7 +95,7 @@ const Loginform = () => {
             onChange={handleinput}
             name="password"
             id="password"
-            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] sm:w-full xs:w-full  text-richblack-5 shadow-md outline-none "
             // bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5
           />
           <span
