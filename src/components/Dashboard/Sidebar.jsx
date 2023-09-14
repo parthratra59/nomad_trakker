@@ -33,8 +33,8 @@ const Sidebar = () => {
     <>
       <div className=" text-white  bg-richblack-800  ">
         <div
-          className="  border-r-richblack-700  hidden min-w-[200px] flex-col border-r-[1px]  lg:flex
-        bg-richblack-800 min-h-screen overflow-hidden py-10"
+          className="border-r-richblack-700 hidden min-w-[200px] flex-col border-r-[1px]  lg:flex
+        bg-richblack-800 min-h-screen  py-10 "
         >
           <div className="flex flex-col">
             {sidebarLinks.map((link) => {

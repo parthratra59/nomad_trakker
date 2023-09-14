@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import useOnClickOutside from "../ProfileDown/UseOncllickoutside";
 import { logout } from "../../services/operations/authApi";
+import "./Profiledropdown.css"
 const ProfileDown = () => {
   const dispatch = useDispatch();
   const { hey } = useSelector((state) => state.profile);
@@ -18,13 +19,14 @@ const ProfileDown = () => {
     return localStorage.setItem("tokenpara", null);
   }
 
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useOnClickOutside(ref, () => setOpen(false));
 
   return (
     <>
       <button className="relative" onClick={() => setOpen(true)}>
-        <div className="flex items-center gap-x-1">
+        <div className="flex items-center">
           <img
             src={hey?.image}
             alt={`profile-${hey?.firstName}`}
@@ -34,11 +36,11 @@ const ProfileDown = () => {
         </div>
         {open && (
           <div
-            className="absolute top-8 -right-8 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800"
+            className="absolute top-8 -right-8 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800 dropdown"
             ref={ref}
           >
             <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
-              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25">
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25 z-10 ">
                 <VscDashboard className="text-lg" />
                 Dashboard
               </div>
@@ -48,7 +50,7 @@ const ProfileDown = () => {
                 dispatch(logout(navigate));
                 setOpen(false);
               }}
-              className="flex items-center w-full gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
+              className="flex items-center w-full  gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
             >
               <VscSignOut />
               Logout

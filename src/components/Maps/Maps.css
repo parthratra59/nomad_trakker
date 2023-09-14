@@ -45,8 +45,9 @@
 
 /* Optionally, you can adjust the height for smaller screens */
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 780px) {
   .google {
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;

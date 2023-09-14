@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Iconbutton from "../../components2/important_pages/Iconbutton";
-
+import "./Myprofile.css"
 import { deleteAccount } from "../../services/operations/ProfileApi";
 
 const Myprofile = () => {
@@ -22,8 +22,9 @@ const Myprofile = () => {
   return (
     <>
       <div className="flex-1 ">
-        <div className="py-6  mx-auto w-11/12 max-w-[1080px] ">
-          <div>
+        <div className="py-6  mx-auto w-11/12 max-w-[1080px] motog
+       ">
+          <div className="serious">
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
               My Profile
             </h1>
@@ -42,7 +43,7 @@ const Myprofile = () => {
                     {" "}
                     {hey?.firstName + " " + hey?.lastName}{" "}
                   </p>
-                  <p className=" text-[11px] md:text-sm text-richblack-300 md:max-w-full max-w-[220px] break-words">
+                  <p className=" text-[11px] md:text-sm text-richblack-300 md:max-w-full max-w-[220px] break-words hero">
                     {" "}
                     {hey?.email}
                   </p>
@@ -81,11 +82,11 @@ const Myprofile = () => {
                 <line x1="14" y1="11" x2="14" y2="17"></line>
               </svg>
             </div>
-            <div className="flex flex-col space-y-2 w-full">
+            <div className="flex flex-col space-y-2 w-full delete">
               <h2 className="text-lg font-semibold text-richblack-5">
                 Delete Account
               </h2>
-              <div className="md:w-3/5 text-pink-25">
+              <div className="md:w-3/5 text-pink-25 kaksha">
                 <p>Would you like to delete account?</p>
                 <p>
                   Deleting your account is permanent and will remove all the
