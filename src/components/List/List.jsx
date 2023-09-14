@@ -65,7 +65,7 @@ const List = ({ places, loadinghorhi }) => {
 
   // ]
   return (
-    <div className="listing" style={{ padding: "10px", userSelect: "none" }}>
+    <div className="listing" style={{ padding: "10px" }}>
       <span
         className="heading text-center"
         style={{ fontWeight: "bold", fontSize: "26px", userSelect: "none" }}
@@ -97,7 +97,7 @@ const List = ({ places, loadinghorhi }) => {
               <Select
                 value={type}
                 onChange={(e) => settype(e.target.value)}
-                style={{ outline: "none" }}
+                style={{ outline: "none",userSelect:"none" }}
               >
                 {/* restaruants,hotels,attractions api mai small hai isliye 
           small mai liya hai nhi toh match nhi honge */}
@@ -133,7 +133,7 @@ const List = ({ places, loadinghorhi }) => {
             container
             spacing={3}
             className="griding"
-            style={{ userSelect: "none" }}
+           
           >
             {/* yh hogya ek trh se container div vala but yh responsive hai 
       same chij */}

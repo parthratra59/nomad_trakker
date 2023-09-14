@@ -161,7 +161,9 @@ export const login = (email, password, navigate) => {
       console.log("LOGIN API RESPONSE............", response);
 
       if (!response.data.success) {
+        dispatch(setLoading(false))
         throw new Error(response.data.message);
+        
       }
 
       toast.success("Login Successful");
@@ -199,6 +201,7 @@ export const login = (email, password, navigate) => {
       navigate("/");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
+      dispatch(setLoading(false))
       toast.error("Login Failed");
     }
     toast.dismiss(toastId);

@@ -51,7 +51,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
 
   return (
     <div
-      className="google z-10  h-[100vh] w-[100vw]  md:h-[100vh] md:w-[100vw]  sm:p-1"
+      className="google z-40  h-[100vh] w-[100vw]   select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
       xs={12}
     
     >
@@ -61,6 +61,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
+        
         // hr chiij ek baar mai chl gyi mapoptions
         options={mapOptions}
         onChange={(e) => {
@@ -73,7 +74,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         // when parallel component kaam kar rhe ho ek sath tb yh use hota hai
 
         onChildClick={(bhai) => sendkrega(bhai)}
-        margin={[0, 0, 0, 0]}
+        margin={[50, 50,50, 50]}
       >
         {/* there will be two syntax with return without return 
     with return there is a curly braces

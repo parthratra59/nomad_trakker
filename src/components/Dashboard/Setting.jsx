@@ -113,7 +113,7 @@ const Setting = () => {
     <>
       {/* side vala flex-1 lelerha hai  */}
       <div className=" flex-1 ">
-        <div className=" py-6 mx-auto w-11/12 max-w-[1080px] ">
+        <div className=" py-6 mx-auto w-11/12 max-w-[1080px] apna ">
           <div>
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
               Edit Profile
@@ -242,7 +242,7 @@ const Setting = () => {
                       name="oldPassword"
                       value={passwordFormData.oldPassword}
                       onChange={handleOnChangePassword}
-                      className="form-style outline-none"
+                      className="form-style outline-none pr-12"
                       required
                     />
 
@@ -282,7 +282,7 @@ const Setting = () => {
                       placeholder="Enter New Password"
                       name="newPassword"
                       value={passwordFormData.newPassword}
-                      className="form-style outline-none"
+                      className="form-style outline-none pr-12"
                       onChange={handleOnChangePassword}
                       required
                     />

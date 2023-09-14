@@ -23,10 +23,17 @@
   user-select: none;
 }
 
+
 .inputBase::placeholder {
   color: #8e3a52;
 }
-
+@media (max-width: 600px) {
+  .inputBase {
+    width: 100%; /* Full width on smaller screens */
+    max-width: none; /* Remove the maximum width constraint */
+    /* Add additional styles specific to smaller screens here */
+  }
+}
 .avatar {
   display: flex;
   align-items: center;
@@ -44,4 +51,11 @@
     display: none;
     font-size: 12px;
   }
+  .pixeling{
+    
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
 }
+

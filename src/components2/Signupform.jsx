@@ -159,7 +159,7 @@ const Signupform = () => {
               onChange={handleinput}
               value={formData.password}
               name="password"
-              className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+              className="bg-richblack-800 pr-12 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
             />
             <span
               onClick={() => setshowpassword(!showpassword)}
@@ -190,7 +190,7 @@ const Signupform = () => {
               onChange={handleinput}
               value={formData.confirmPassword}
               name="confirmPassword"
-              className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+              className="bg-richblack-800 pr-12 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
             />
             <span
               onClick={() => setshowpassword2(!showpassword2)}
@@ -207,7 +207,7 @@ const Signupform = () => {
 
         <button
           type="submit"
-          className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
+          className="bg-yellow-50 py-[8px] px-[12px]  rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
         >
           Create Account
         </button>
