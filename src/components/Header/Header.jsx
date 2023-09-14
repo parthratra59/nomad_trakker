@@ -62,7 +62,7 @@ const Header = ({ setcoordinating }) => {
   return (
     <>
       <div className="bg-newpink h-14 ">
-        <div className="flex justify-evenly  items-center m-auto  p-2 drop-shadow-2xl @media (max-width: 768px)
+        <div className="flex justify-between w-11/12 max-w-maxContent items-center m-auto  p-2 drop-shadow-2xl @media (max-width: 768px)
         {
         gap-x-3
         } 
@@ -95,6 +95,7 @@ const Header = ({ setcoordinating }) => {
                 onLoad={onloading}
                 onPlaceChanged={handlePlaceSelected}
               >
+              {/* maxWidth means itna hi highest jaega agr 800px se jyada hogya */}
               <div className=" ">
                 <InputBase
                   className="inputBase"
