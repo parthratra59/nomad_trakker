@@ -21,3 +21,29 @@
   list-style-type: disc;
   margin-bottom: 5px;
 }
+
+
+@media screen and (max-width: 750px) {
+  .rachit{
+  
+    margin-top: 28px;
+   
+    
+   
+   
+    
+    
+    
+  }
+  form{
+    margin-left: 18px;
+    
+  }
+  input::placeholder {
+    font-size: 14px;
+  }
+  .technical::placeholder{
+    font-size: 14px;
+  }
+  
+}

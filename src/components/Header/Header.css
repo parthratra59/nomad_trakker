@@ -23,7 +23,6 @@
   user-select: none;
 }
 
-
 .inputBase::placeholder {
   color: #8e3a52;
 }
@@ -51,11 +50,9 @@
     display: none;
     font-size: 12px;
   }
-  .pixeling{
-    
+  .pixeling {
     position: relative;
     top: 0px;
     left: 0px;
   }
 }
-

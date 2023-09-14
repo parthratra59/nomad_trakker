@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import Signupform from "./Signupform";
 import Loginform from "./Loginform";
 import photo from "./assets/frame.png";
+// import photo2 from ""
 // import Login from '../pages/Login'
 // import { FcGoogle } from "react-icons/fc";
 import "./Template.css"
@@ -33,20 +34,22 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
         </div>
 
         {/* iski width navbar jaisi hai toh usme jo kiya vohi */}
-        <div className="flex h-[80vh]  w-11/12 max-w-[1160px] py-12 gap-y-0 mx-auto gap-x-12 justify-between">
+        <div className="flex h-[80vh]  w-11/12 max-w-[1160px] py-12 gap-y-0 mx-auto gap-x-12 justify-between parthratra">
           {/* left section  */}
           {/* meri max width 450px decide hogyi */}
-          <div className="w-11/12  max-w-[450px] mx-0 text-white">
-            <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
+          <div className="w-11/12  max-w-[450px] mx-0 text-white ">
+            <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem] giyan">
               {title}
             </h1>
-            <p className="text-[1.125rem] md:text-[1.125rem]  text-md mt-4 leading-[1.625rem]">
+            <p className="text-[1.125rem] chor text-md mt-4 leading-[1.625rem] giyan">
               <span className="text-richblack-100 ">{desc1}</span>
-              <span className="text-blue-100 italic">{desc2}</span>
+              
             </p>
 
             {/* form add krdiya*/}
+            <div className="ooof">
             {formType === "signup" ? <Signupform /> : <Loginform />}
+            </div>
 
             {/* <div className="flex w-full items-center my-4 gap-x-2">
                     <div className="h-[1px] w-full bg-richblack-100"></div>
@@ -62,7 +65,7 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
           </div>
 
           {/* right section  */}
-          <div className="relative w-11/12 max-w-[450px]">
+          <div className="relative w-11/12 max-w-[450px] please">
             {/* muje dusri vali image overlapp krani thi isliuye bhar vlaa div relative krdiya  andr vala absolute */}
             <img
               src={photo}
@@ -79,7 +82,6 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
               loading="lazy"
               className="absolute -top-4 right-4 "
             />
-            
           </div>
         </div>
       </div>

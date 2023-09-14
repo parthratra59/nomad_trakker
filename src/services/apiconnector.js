@@ -14,17 +14,8 @@ export const axiosInstance = axios.create({});
 // params: Optional parameter to specify query parameters for the request.
 // So, in the context of the apiConnector function you provided, there are a total of five parameters that allow you to customize and configure your API requests.
 
-
-
-
-
-
-
 // imaportant jb bbhi ap backend se connect kr rhe ho toh yh use krna hai yh ek generic method hai
 // means header params and bodydata use krna hi pdega toh yh use krna hai
-
-
-
 
 export const apiConnector = (method, url, bodyData, headers, params) => {
   return axiosInstance({

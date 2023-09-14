@@ -97,7 +97,7 @@ const List = ({ places, loadinghorhi }) => {
               <Select
                 value={type}
                 onChange={(e) => settype(e.target.value)}
-                style={{ outline: "none",userSelect:"none" }}
+                style={{ outline: "none", userSelect: "none" }}
               >
                 {/* restaruants,hotels,attractions api mai small hai isliye 
           small mai liya hai nhi toh match nhi honge */}
@@ -129,12 +129,7 @@ const List = ({ places, loadinghorhi }) => {
             </div>
           </div>
           {/* Added a div with ref to target scrolling */}
-          <Grid
-            container
-            spacing={3}
-            className="griding"
-           
-          >
+          <Grid container spacing={3} className="griding">
             {/* yh hogya ek trh se container div vala but yh responsive hai 
       same chij */}
             {/* grid ke items mai ab mapping strt hogi images vgrh ki */}

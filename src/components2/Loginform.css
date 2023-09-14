@@ -1,0 +1,9 @@
+@media screen and (max-width: 750px) {
+    .lioo {
+        margin-left: 28px; /* Take up the full width of the viewport */
+        /* max-width: 80%; Adjust this value as needed */
+            
+    }
+
+    
+}

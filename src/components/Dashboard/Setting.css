@@ -23,17 +23,12 @@
   color: rgb(241 242 255 / var(--tw-text-opacity));
 }
 
-
-@media screen  and (max-width: 780px){
-  .apna{
+@media screen and (max-width: 780px) {
+  .apna {
     margin: auto;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     max-width: 91.666667%;
     width: 1200vw;
-    
-   
-
   }
-  
 }

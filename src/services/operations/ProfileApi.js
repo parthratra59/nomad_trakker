@@ -7,8 +7,6 @@ import { logout } from "../operations/authApi.js";
 import { settingsEndpoints } from "../apiservice.js";
 import { setLoading } from "../../redux/slices/Authslice.jsx";
 
-
-
 // there are two ways fetch and axios to make api calls CRUD operations ke liye
 // fetch is a browser api and axios is a library
 // fetch is a promise based api and axios is a promise based library
@@ -23,7 +21,6 @@ const {
   DELETE_PROFILE_API,
   UPDATE_PASSWORD_API,
 } = settingsEndpoints;
-
 
 // null likh skte hai bodydata vale mai ya fir omit kr skte hm delte ke time pr koi data bhej nhi rhe hote backend pr toh null likh skte hai
 export async function deleteAccount(token, dispatch, navigate) {
@@ -173,5 +170,3 @@ export const updatePassword = async (tokenpara, password) => {
   }
   toast.dismiss(toastId);
 };
-
-

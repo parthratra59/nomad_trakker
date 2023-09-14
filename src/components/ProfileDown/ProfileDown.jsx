@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import useOnClickOutside from "../ProfileDown/UseOncllickoutside";
 import { logout } from "../../services/operations/authApi";
-import "./Profiledropdown.css"
+import "./Profiledropdown.css";
 const ProfileDown = () => {
   const dispatch = useDispatch();
   const { hey } = useSelector((state) => state.profile);
@@ -18,7 +18,6 @@ const ProfileDown = () => {
     console.log("no user");
     return localStorage.setItem("tokenpara", null);
   }
-
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useOnClickOutside(ref, () => setOpen(false));
