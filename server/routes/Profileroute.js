@@ -29,6 +29,4 @@ router.put("/uploadphoto", authorization, Uploadphoto);
 // change password
 router.put("/updatepassword", authorization, updatePassword);
 
-
-
 module.exports = router;

@@ -121,25 +121,23 @@ export const fetchCartData = async (tokenpara) => {
   }
 };
 
-
-
-export const deleteItem= async (tokenpara,_id) => {
-  try{
-      const response = await apiConnector("DELETE", REMOVE_FROM_CART_API, {_id}, {
+export const deleteItem = async (tokenpara, _id) => {
+  try {
+    const response = await apiConnector(
+      "DELETE",
+      REMOVE_FROM_CART_API,
+      { _id },
+      {
         Authorisation: `Bearer ${tokenpara}`,
-      });
-      console.log("response.data.data", response.data.data);
-      if (!response.data.success) {
-        throw new Error(response.data.message);
       }
-      toast.success("Item deleted from cart");
-
-  }
-  catch(error)
-  {
-    console.error('Error fetching cart data:', error);
+    );
+    console.log("response.data.data", response.data.data);
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+    toast.success("Item deleted from cart");
+  } catch (error) {
+    console.error("Error fetching cart data:", error);
     toast.error(error.response.data.message);
   }
-}
-
-
+};

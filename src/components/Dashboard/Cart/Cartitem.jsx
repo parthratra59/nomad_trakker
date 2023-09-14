@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardActions,
@@ -13,30 +13,22 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import {RiDeleteBin6Line} from 'react-icons/ri'
+import { RiDeleteBin6Line } from "react-icons/ri";
 // import { Link } from "react-router-dom";
 import { deleteItem } from "../../../services/operations/likeApi";
 import { useNavigate } from "react-router-dom";
-import {remove} from "../../../redux/slices/Likeslice"
+import { remove } from "../../../redux/slices/Likeslice";
 const Cartitem = ({ item }) => {
+  const { tokenpara } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-
-  const {tokenpara} = useSelector((state)=>state.auth)
-   const dispatch = useDispatch();
- 
-
-  
- 
- 
   const removefromcart = async () => {
     try {
       // Attempt to delete the item
-      await deleteItem(tokenpara,item._id);
+      await deleteItem(tokenpara, item._id);
       // If deletion is successful, set the local state to indicate removal
-       dispatch(remove(item._id));
+      dispatch(remove(item._id));
       console.log(dispatch(remove(item._id)));
-      
-      
     } catch (error) {
       toast.error("Error removing item from cart");
     }
@@ -44,20 +36,15 @@ const Cartitem = ({ item }) => {
 
   // bda sa function hai yh re rendering vgh mai toh redux use krte hai thik hai
 
- 
   // SPLIT FUNCTION TO CONVERT STRING INTO ARRAY
   // isme , ke basis pr split krta then array mai dalta
   // const text = "apple,banana,cherry";
-// const fruits = text.split(",");
+  // const fruits = text.split(",");
 
-// // Map over the array and render each fruit as an HTML element
-// const fruitElements = fruits.map((fruit, index) => (
-//   <div key={index}>{fruit}</div>
-// ));
-
-
-
-
+  // // Map over the array and render each fruit as an HTML element
+  // const fruitElements = fruits.map((fruit, index) => (
+  //   <div key={index}>{fruit}</div>
+  // ));
 
   // yh format hota piche hm bhar vala krke agye hai ab ek div and then card vala
   // <div>
@@ -79,7 +66,7 @@ const Cartitem = ({ item }) => {
             style={{ height: "450px", objectFit: "cover" }}
             image={item.itemImage}
           />
-          
+
           <CardContent>
             <Typography gutterBottom variant="h5">
               {item.itemName}
@@ -97,44 +84,41 @@ const Cartitem = ({ item }) => {
                 {item.ranking}
               </Typography>
             </div>
-           
 
             <div className="address">
-              {
-                item.location?<div>
-                <LocationOnIcon />
-                {item.location}
-              </div>:<div className="hidden">
-              ""
-              </div>
-              }
+              {item.location ? (
+                <div>
+                  <LocationOnIcon />
+                  {item.location}
+                </div>
+              ) : (
+                <div className="hidden">""</div>
+              )}
             </div>
-            
           </CardContent>
           <CardActions>
             <Button
               size="small"
               color="primary"
-              onClick={() => window.open(item.tripAdviserUrl
-, "_blank")}
+              onClick={() => window.open(item.tripAdviserUrl, "_blank")}
             >
               Trip Advisor
             </Button>
             <Button
               size="small"
               color="primary"
-              onClick={() => window.open(item.websiteUrl
-, "_blank")}
+              onClick={() => window.open(item.websiteUrl, "_blank")}
             >
               Website
             </Button>
-            <div >
-            <button className='flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-2 px-[8px] text-pink-200 text-lg font-medium'
-                    onClick={removefromcart}
-                    >
-                        <RiDeleteBin6Line/>
-                        <span></span>
-                    </button>
+            <div>
+              <button
+                className="flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-2 px-[8px] text-pink-200 text-lg font-medium"
+                onClick={removefromcart}
+              >
+                <RiDeleteBin6Line />
+                <span></span>
+              </button>
             </div>
           </CardActions>
         </Card>
@@ -210,12 +194,7 @@ export default Cartitem;
 // </CardActions>
 // </Card>
 
+// const dispatch = useDispatch();
 
-
-
-
-  // const dispatch = useDispatch();
-
-
-  // dispatch(remove(item.location_id));
-  // console.log(dispatch(remove(item.location_id)));
+// dispatch(remove(item.location_id));
+// console.log(dispatch(remove(item.location_id)));

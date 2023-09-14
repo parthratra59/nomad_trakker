@@ -1,20 +1,12 @@
 @media screen and (max-width: 780px) {
-    .motog{
-        max-width: 100%; 
-        
-        height: calc(100vh - 3.5rem);
-        margin: auto;
-        
-        
-    
-    }
-    .kaksha{
-      /* padding: 5px; */
-        font-size: 12px;
-        
-       
-    }
-   
+  .motog {
+    max-width: 100%;
 
-    
+    height: calc(100vh - 3.5rem);
+    margin: auto;
+  }
+  .kaksha {
+    /* padding: 5px; */
+    font-size: 12px;
+  }
 }

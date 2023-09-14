@@ -30,32 +30,21 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   const navigate = useNavigate();
 
   // likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
-  const {likeElemets} = useSelector((state) => state.like);
+  const { likeElemets } = useSelector((state) => state.like);
   const { tokenpara } = useSelector((state) => state.auth);
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
   const dispatch = useDispatch();
-  
-  
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
     dispatch(add(hello));
-   
-  
 
-    
-    addTocartdb(hello,tokenpara)
-    
-   
-
-    
-   
-     
+    addTocartdb(hello, tokenpara);
   };
   const gotoCart = () => {
     // yh remove krta cart mai se item
     // post.id bhi paas kr rhe because remove toh id se bhi hojaegi
-   
+
     navigate("/dashboard/cart");
     toast.success("Switch to Wishlist ");
   };
@@ -117,10 +106,7 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
       <Card elevation={6}>
         <CardMedia
           style={{ height: 350 }}
-          image={
-            hello.photo.images.large.url
-              
-          }
+          image={hello.photo.images.large.url}
         />
         <CardContent>
           <Typography gutterBottom variant="h5">
@@ -170,7 +156,6 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               label={khana.name}
               className="chip"
             />
-            
           ))}
 
           {/* typography ke sath gutterBottom use hota hai */}
@@ -181,14 +166,14 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               color="textSecondary"
               className="addressing"
             >
-              
-              {hello?.address ? <div>
-                <LocationOnIcon />
-                {hello.address}
-              </div> : 
-              <div className="hidden">
-                ""
-              </div>}
+              {hello?.address ? (
+                <div>
+                  <LocationOnIcon />
+                  {hello.address}
+                </div>
+              ) : (
+                <div className="hidden">""</div>
+              )}
             </Typography>
           </Box>
           <Box
@@ -206,15 +191,14 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               color="textSecondary"
               className="addressing"
             >
-              {
-                hello?.phone ? <div>
-                <PhoneIcon />
-                {hello.phone}
-              </div> :
-              <div className="hidden">
-                
-              </div>
-              }
+              {hello?.phone ? (
+                <div>
+                  <PhoneIcon />
+                  {hello.phone}
+                </div>
+              ) : (
+                <div className="hidden"></div>
+              )}
 
               <div
                 style={{
@@ -226,28 +210,26 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               >
                 {tokenpara ? (
                   <>
-                {likeElemets.some(
-                  (current) => current.location_id === hello.location_id
-                ) ? (
-                  <button
-                    className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
-                    onClick={gotoCart}
-                  >
-                    Go to Wishlist
-                  </button>
+                    {likeElemets.some(
+                      (current) => current.location_id === hello.location_id
+                    ) ? (
+                      <button
+                        className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
+                        onClick={gotoCart}
+                      >
+                        Go to Wishlist
+                      </button>
+                    ) : (
+                      <button
+                        className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
+                        onClick={addtocart}
+                      >
+                        Add Item
+                      </button>
+                    )}
+                  </>
                 ) : (
-                  <button
-                    className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
-                    onClick={addtocart}
-                  >
-                    Add Item
-                  </button>
-                )}
-                </>
-                ) : (
-                  <button
-
-                    className="hidden" ></button>
+                  <button className="hidden"></button>
                 )}
               </div>
             </Typography>

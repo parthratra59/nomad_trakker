@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Iconbutton from "../../components2/important_pages/Iconbutton";
-import "./Myprofile.css"
+import "./Myprofile.css";
 import { deleteAccount } from "../../services/operations/ProfileApi";
 
 const Myprofile = () => {
@@ -22,8 +22,10 @@ const Myprofile = () => {
   return (
     <>
       <div className="flex-1 ">
-        <div className="py-6  mx-auto w-11/12 max-w-[1080px] motog
-       ">
+        <div
+          className="py-6  mx-auto w-11/12 max-w-[1080px] motog
+       "
+        >
           <div className="serious">
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
               My Profile

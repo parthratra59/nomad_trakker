@@ -7,7 +7,6 @@ import { setUser } from "../../redux/slices/Profileslice";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
-
 // there are two ways fetch and axios to make api calls CRUD operations ke liye
 // fetch is a browser api and axios is a library
 // fetch is a promise based api and axios is a promise based library
@@ -15,9 +14,6 @@ import Cookies from "js-cookie";
 // dono mai async and await use kr te hai jb ap async and await use krte hai toh apko .then .catch nhi likhna pdta hai
 
 // https://chat.openai.com/share/3658bbeb-0929-449f-8981-617a72165b9e best hai yh isko ek baar ache se sb pdna akri mai jana udhr jyada clear hai
-
-
-
 
 // destructure krlia
 
@@ -161,9 +157,8 @@ export const login = (email, password, navigate) => {
       console.log("LOGIN API RESPONSE............", response);
 
       if (!response.data.success) {
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
         throw new Error(response.data.message);
-        
       }
 
       toast.success("Login Successful");
@@ -201,7 +196,7 @@ export const login = (email, password, navigate) => {
       navigate("/");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
-      dispatch(setLoading(false))
+      dispatch(setLoading(false));
       toast.error("Login Failed");
     }
     toast.dismiss(toastId);

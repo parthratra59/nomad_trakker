@@ -1,21 +1,17 @@
+.loading {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  font-weight: "bold";
+  font-size: "26px";
+}
 
-
- .loading{
-    
-        height: 600px;
-         display: flex; 
-         justify-content: center;
-         align-items:center;
-  
- }
- .heading{
-    font-weight:'bold';
-    font-size:'26px';
- }
-
- @media screen and (max-width: 1200px) {
-    .heading{
-        font-weight:bold;
-        font-size:20px;
-     }
- }
+@media screen and (max-width: 1200px) {
+  .heading {
+    font-weight: bold;
+    font-size: 20px;
+  }
+}

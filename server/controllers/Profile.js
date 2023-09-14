@@ -25,17 +25,16 @@ exports.updateProfile = async (req, res) => {
 
     // const currentUser = await User.findById(id);
 
-    // update profile aise dalege jo aya frontend se vo update hojaega then save krna hoga .save se krdege 
+    // update profile aise dalege jo aya frontend se vo update hojaega then save krna hoga .save se krdege
     // phele hm id se nikage se then update krge then save krge
-    
+
     // currentUser.firstName = firstName;
     // currentUser.lastName = lastName;
-  // await currentUser.save();
-    // // 
+    // await currentUser.save();
+    // //
 
     // nhin toh direct .create kr ke kr do isme jrurt nhi alg se ek obj bnake ek .save kro toh direct use krdege
     // // do trh se hm save kr skte hai ek toh .save kr ke jb object phele se bna ho dusra await User.create({firstName,lastName}}) aur isme hme kisi mai dalna bhhi nhi hota alg object mai hm toh destructure krke direct .create mai daaal skte
-  
 
     const currentUser = await User.findByIdAndUpdate(
       { _id: id },

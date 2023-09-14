@@ -25,9 +25,6 @@ export const settingsEndpoints = {
   UPDATE_PASSWORD_API: BASE_URL + "/profile/updatepassword",
 };
 
-
-
-
 // ADD TO CART API
 export const cartEndpoints = {
   ADD_TO_CART_API: BASE_URL + "/like/addlike",

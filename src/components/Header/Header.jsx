@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./Header.css";
 import { FcSearch } from "react-icons/fc";
 import { Autocomplete } from "@react-google-maps/api";
@@ -17,18 +17,15 @@ const Header = ({ setcoordinating }) => {
   // importing reducers
 
   const { tokenpara } = useSelector((state) => state.auth);
-// YHI CHIJ MAINE CART.JS MAI KRI HAI 
+  // YHI CHIJ MAINE CART.JS MAI KRI HAI
   // const [likecart, setlikecart] = useState([]);
-  // const [cartItemCount, setCartItemCount] = useState(0); 
+  // const [cartItemCount, setCartItemCount] = useState(0);
 
-  
-    // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai 
-    
-
+  // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai
 
   console.log("tokenpara ehich is token at header", tokenpara);
-  
-  const {likeElemets} = useSelector((state) => state.like);
+
+  const { likeElemets } = useSelector((state) => state.like);
   const { totalItems } = useSelector((hello) => hello.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
@@ -61,23 +58,23 @@ const Header = ({ setcoordinating }) => {
 
   return (
     <>
-      <div className="bg-newpink h-14" style={{userSelect:"none"}}>
-        <div className="flex justify-between w-11/12 max-w-maxContent items-center m-auto select-none  p-2 drop-shadow-2xl pixeling
-        ">
+      <div className="bg-newpink h-14" style={{ userSelect: "none" }}>
+        <div
+          className="flex justify-between w-11/12 max-w-maxContent items-center m-auto select-none  p-2 drop-shadow-2xl pixeling
+        "
+        >
           <Link to="/">
             <Box className="flex items-center gap-x-2 ml-6 ">
-            
-            <div className="text-[40px]">
-              <SiYourtraveldottv  style={{ color: "white" }} />
+              <div className="text-[40px]">
+                <SiYourtraveldottv style={{ color: "white" }} />
               </div>
               <Typography
                 className="typo"
-                style={{ color: "white" ,userSelect:"none"}}
+                style={{ color: "white", userSelect: "none" }}
                 fontSize={"20px"}
               >
                 Nomad_Trakker
               </Typography>
-  
             </Box>
           </Link>
           {/* flex mtlb ek hi row mai krdo flex column ek ke niche ek */}
@@ -91,15 +88,14 @@ const Header = ({ setcoordinating }) => {
                 onLoad={onloading}
                 onPlaceChanged={handlePlaceSelected}
               >
-              {/* maxWidth means itna hi highest jaega agr 800px se jyada hogya */}
-              <div className="">
-                <InputBase
-                  className="inputBase"
-                  placeholder="Search..................."
-                  style={{ color: "black",width:"full" ,maxWidth: "600px" }}
-                  
-                  id="input"
-                />
+                {/* maxWidth means itna hi highest jaega agr 800px se jyada hogya */}
+                <div className="">
+                  <InputBase
+                    className="inputBase"
+                    placeholder="Search..................."
+                    style={{ color: "black", width: "full", maxWidth: "600px" }}
+                    id="input"
+                  />
                 </div>
               </Autocomplete>
             </div>
@@ -133,9 +129,11 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative kitty">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {totalItems.length>0 && (
-                        <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
-                    justify-center items-center animate-bounce rounded-full text-white " >
+                      {totalItems.length > 0 && (
+                        <span
+                          className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
+                    justify-center items-center animate-bounce rounded-full text-white "
+                        >
                           {totalItems.length}
                         </span>
                       )}
