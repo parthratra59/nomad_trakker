@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setProgress } from "../redux/slices/Progress";
 import { login } from "../services/operations/authApi";
+import "./Loginform.css";
 // import { setToken } from "../redux/slices/Authslice";
 
 // import { GlobalContext } from './Home'
@@ -59,10 +60,10 @@ const Loginform = () => {
     <>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col w-full gap-y-4 mt-8"
+        className="flex flex-col w-full gap-y-4 mt-8 lioo"
       >
         <label htmlFor="email" className="w-full">
-          <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          <p className="text-[0.875rem] text-richblack-5 -mb-0.85  leading-[1.375rem]">
             Email Address
             <sup className="text-richblack-5">*</sup>
           </p>
@@ -81,7 +82,7 @@ const Loginform = () => {
 
         {/* dekh bahr vala relative hai and andr vala absolute hai toh isliye toh eye overlab hogya */}
         <label htmlFor="password" className="w-full relative">
-          <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          <p className="text-[0.875rem] text-richblack-5 -mb-0.85 mt-2 leading-[1.375rem]">
             {/* text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem] */}
             Password
             <sup className="text-richblack-5">*</sup>

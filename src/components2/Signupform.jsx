@@ -90,9 +90,9 @@ const Signupform = () => {
     // isme toh form hi bnaega baki color vgrh ka kaam Template component mai horha hai
     <>
       <form onSubmit={submitting}>
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 rachit">
           <label htmlFor="firstName" className="w-full">
-            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+            <p className="text-[0.875rem] text-richblack-5 -mb-0.85  mt-2 leading-[1.375rem]">
               First Name<sup className="text-richblack-5">*</sup>
             </p>
             <input
@@ -103,11 +103,11 @@ const Signupform = () => {
               name="firstName"
               value={formData.firstName}
               onChange={handleinput}
-              className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+              className=" bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
             ></input>
           </label>
           <label htmlFor="lastName" className="w-full ">
-            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+            <p className="text-[0.875rem] text-richblack-5 -mb-0.85 mt-2 leading-[1.375rem]">
               Last Name<sup className="text-richblack-5">*</sup>
             </p>
             <input
@@ -125,7 +125,7 @@ const Signupform = () => {
 
         {/* create email address */}
         <label htmlFor="email">
-          <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          <p className="text-[0.875rem] mt-2 text-richblack-5 -mb-0.85 leading-[1.375rem]">
             Email Address<sup>*</sup>
           </p>
           <input
@@ -144,8 +144,8 @@ const Signupform = () => {
 
         <div className="flex gap-x-4">
           {/* create password */}
-          <label htmlFor="createPassword" className="w-full relative">
-            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          <label htmlFor="createPassword" className="w-full mt-2  relative">
+            <p className="text-[0.875rem] text-richblack-5 -mb-0.85 leading-[1.375rem]">
               {/* text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem] */}
               Create Password
               <sup className="text-richblack-5">*</sup>
@@ -159,7 +159,7 @@ const Signupform = () => {
               onChange={handleinput}
               value={formData.password}
               name="password"
-              className="bg-richblack-800 pr-12 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+              className="technical bg-richblack-800 pr-12 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
             />
             <span
               onClick={() => setshowpassword(!showpassword)}
@@ -175,8 +175,8 @@ const Signupform = () => {
 
           {/* confirm password */}
 
-          <label htmlFor="confirmPassword" className="w-full relative">
-            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          <label htmlFor="confirmPassword" className="w-full relative mt-2">
+            <p className="technical text-[0.875rem]  text-richblack-5 -mb-0.85 leading-[1.375rem]">
               {/* text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem] */}
               Confirm Password
               <sup className="text-richblack-5">*</sup>

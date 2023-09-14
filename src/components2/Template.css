@@ -1,0 +1,46 @@
+.parthratra
+{
+    display: flex;
+   
+    justify-content: space-between; 
+
+}
+
+
+@media screen and (max-width: 750px) {
+    
+    .parthratra{
+        margin: 30px;
+
+        
+       
+      
+        
+       
+    }
+    .giyan{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        
+       
+        
+
+    }
+    .ooof
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* margin: px; */
+        margin:auto
+    }
+    .please{
+      display: none;
+    }
+}
