@@ -44,6 +44,11 @@
   align-items: center;
   gap: 10px;
 }
+.paisa{
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem
+}
 
 @media screen and (max-width: 780px) {
   .typo {
@@ -54,5 +59,17 @@
     position: relative;
     top: 0px;
     left: 0px;
+  }
+  .paisa{
+    display: none;
+    
+  }
+  .keety
+  {
+    margin-right: 23px;
+    display: block;
+  }
+  .hupp{
+    position: fixed;
   }
 }

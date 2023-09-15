@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import "./Header.css";
 import { FcSearch } from "react-icons/fc";
 import { Autocomplete } from "@react-google-maps/api";
@@ -8,15 +8,19 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { InputBase } from "@mui/material";
 import { Link } from "react-router-dom";
 import { fetchCartData } from "../../services/operations/likeApi";
+import { RxCross2 } from "react-icons/rx";
 
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import ProfileDown from "../ProfileDown/ProfileDown";
+import { GlobalContext2 } from "../../App";
 
 const Header = ({ setcoordinating }) => {
   // importing reducers
 
   const { tokenpara } = useSelector((state) => state.auth);
+
+  const {background,setBackground} = useContext(GlobalContext2)
   // YHI CHIJ MAINE CART.JS MAI KRI HAI
   // const [likecart, setlikecart] = useState([]);
   // const [cartItemCount, setCartItemCount] = useState(0);
@@ -24,6 +28,34 @@ const Header = ({ setcoordinating }) => {
   // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai
 
   console.log("tokenpara ehich is token at header", tokenpara);
+
+  const [opening, setopening] = useState(false);
+  // mai khi aur screen ke touch kru toh apne app close hojae
+
+  // useEffect(() => {
+  //   const handleDocumentClick = (event) => {
+  //     if (opening) {
+  //       // Check if the click occurred outside the menu
+  //       if (!event.target.closest(".mobile-menu")) {
+  //         setopening(false);
+  //          // Close the menu
+  //       }
+  //     }
+  //   };
+
+  //   document.body.addEventListener("click", handleDocumentClick);
+
+  //   return () => {
+  //     document.body.removeEventListener("click", handleDocumentClick);
+  //   };
+  // }, [opening]);
+
+  const toggling = () => {
+    setopening(!opening);
+    console.log("background",background)
+    setBackground(!background)
+
+  };
 
   const { likeElemets } = useSelector((state) => state.like);
   const { totalItems } = useSelector((hello) => hello.like);
@@ -104,7 +136,7 @@ const Header = ({ setcoordinating }) => {
           {/**********cart /LOGIN/LOGOUT/DELTEBUTTON */}
 
           <div>
-            <ul className="flex items-center gap-x-2  ">
+            <ul className="paisa">
               {tokenpara === null && (
                 <li>
                   <Link to="/login">
@@ -147,6 +179,47 @@ const Header = ({ setcoordinating }) => {
                 </div>
               )}
             </ul>
+
+            {/* mobile css */}
+            {tokenpara === null && (
+              <>
+                <div
+                  className="mobile-menu  space-y-1 mr-5px  w-5 cursor-pointer z-20 keety lg:hidden md:hidden "
+                  onClick={toggling }
+                  
+
+                >
+                  <div className="w-6 h-0.5 bg-white"></div>
+                  <div className="w-6 h-0.5 bg-white"></div>
+                  <div className="w-6 h-0.5 bg-white"></div>
+                  <ul
+                    className={`${
+                      opening
+                        ? "translate-y-0 opacity-100 transition-transform duration-500 ease-in"
+                        : "-translate-y-full opacity-0 transition-transform duration-500 ease-out"
+                    } absolute -top-1 left-0 w-full   py-20  rounded-b-3xl space-y-10 hupp text-center text-white bg-richblack-800 h-60vh`}
+                  >
+                    <li>
+                      <Link to="/login" onClick={toggling}>
+                        LOGIN
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link to="/signup" onClick={toggling}>
+                        SIGNUP
+                      </Link>
+                    </li>
+                    
+                  </ul>
+                  
+       
+                  
+
+                </div>
+
+              </>
+            )}
           </div>
         </div>
       </div>

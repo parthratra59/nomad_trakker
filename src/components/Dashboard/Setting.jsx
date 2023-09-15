@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
 import { updatePfp } from "../../services/operations/ProfileApi";
@@ -13,6 +13,7 @@ import "./Setting.css";
 const Setting = () => {
   const navigate = useNavigate();
 
+  
   const { tokenpara } = useSelector((state) => state.auth);
 
   const profileImage = useSelector((state) => state.profile.hey.image);
@@ -112,7 +113,7 @@ const Setting = () => {
     <>
       {/* side vala flex-1 lelerha hai  */}
       <div className=" flex-1 ">
-        <div className=" py-6 mx-auto w-11/12 max-w-[1080px] apna ">
+        <div className=" py-6 mx-auto w-11/12 max-w-[1080px] apna">
           <div>
             <h1 className="mb-14 text-3xl font-medium text-richblack-5">
               Edit Profile
@@ -241,7 +242,7 @@ const Setting = () => {
                       name="oldPassword"
                       value={passwordFormData.oldPassword}
                       onChange={handleOnChangePassword}
-                      className="form-style outline-none pr-12"
+                      className="form-style outline-none"
                       required
                     />
 
@@ -281,7 +282,7 @@ const Setting = () => {
                       placeholder="Enter New Password"
                       name="newPassword"
                       value={passwordFormData.newPassword}
-                      className="form-style outline-none pr-12"
+                      className="form-style outline-none"
                       onChange={handleOnChangePassword}
                       required
                     />

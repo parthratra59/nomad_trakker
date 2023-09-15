@@ -4,12 +4,16 @@ import { CircularProgress } from "@mui/material";
 import "./List.css";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import { GlobalContext } from "../../components2/Home";
+import { GlobalContext2 } from "../../App";
 import "../Spinner/Spinner.css";
 const List = ({ places, loadinghorhi }) => {
   // is se pta chl rha left side mai pauch rha ky data
   const { receivekrega, settype, type, ratekro, setrating } =
     useContext(GlobalContext);
   // use context se maine receive kiya vo sab
+  const {background,setBackground} = useContext(GlobalContext2)
+
+  const dynamicBackgroundColor = background ? "invisible" : "";
 
   // yh console maine left side mai click kru toh ride side mai dikhe uske liye hai
   // console.log(receivekrega)
@@ -67,7 +71,7 @@ const List = ({ places, loadinghorhi }) => {
   return (
     <div className="listing" style={{ padding: "10px" }}>
       <span
-        className="heading text-center"
+        className={`heading text-center `} 
         style={{ fontWeight: "bold", fontSize: "26px", userSelect: "none" }}
       >
         Restaurants,Hot
@@ -84,7 +88,7 @@ const List = ({ places, loadinghorhi }) => {
               style={{ margin: "15px", minWidth: 120, marginBottom: "40px" }}
               className="box"
             >
-              <InputLabel style={{ userSelect: "none" }}>Type</InputLabel>
+              <InputLabel style={{ userSelect: "none" }}><span className={`${dynamicBackgroundColor}`}>Type</span></InputLabel>
 
               {/* usecontext use kiya hai dekh */}
 
@@ -94,6 +98,7 @@ const List = ({ places, loadinghorhi }) => {
 
               {/* filterimportant file mai maine yh explain kiya yhi chij  */}
               {/* important->  idhr ek confusion askta hm context hook mai ek child se dusre child mai interaction mai use krte hai but isme aisa ku nhi hua dhyan se dekho hmne kya kiya type hota ho receive krene vala mera short form aisa chlta and settype hota jo send kr rha toh isme do no ek mai hi hai type bhi isme hai settype bhi isme hai  */}
+              <span className={`${dynamicBackgroundColor}`}>
               <Select
                 value={type}
                 onChange={(e) => settype(e.target.value)}
@@ -101,11 +106,15 @@ const List = ({ places, loadinghorhi }) => {
               >
                 {/* restaruants,hotels,attractions api mai small hai isliye 
           small mai liya hai nhi toh match nhi honge */}
-                <MenuItem value="restaurants">Restaurants</MenuItem>
+                <MenuItem value="restaurants">
+                Restaurants
+               </MenuItem>
                 <MenuItem value="hotels">Hotels</MenuItem>
                 <MenuItem value="attractions">Attractions</MenuItem>
               </Select>
+              </span>
             </div>
+            
             <div
               style={{
                 margin: "15px",
@@ -115,6 +124,7 @@ const List = ({ places, loadinghorhi }) => {
               }}
               className="box"
             >
+            <span className={`${dynamicBackgroundColor}`}>
               <InputLabel>Rating</InputLabel>
 
               <Select
@@ -126,7 +136,9 @@ const List = ({ places, loadinghorhi }) => {
                 <MenuItem value={4}>Above 4.0</MenuItem>
                 <MenuItem value={4.5}>Above 4.5</MenuItem>
               </Select>
+              </span>
             </div>
+            
           </div>
           {/* Added a div with ref to target scrolling */}
           <Grid container spacing={3} className="griding">
