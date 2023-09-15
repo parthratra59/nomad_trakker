@@ -90,19 +90,14 @@ const Header = ({ setcoordinating }) => {
 
   return (
     <>
-      <div className="bg-newpink h-14" style={{ userSelect: "none" }}>
-        <div
-          className="flex justify-between w-11/12 max-w-maxContent items-center m-auto select-none  p-2 drop-shadow-2xl pixeling
-        "
-        >
+      <div className="bg-newpink h-14 ">
+        <div className="flex justify-between w-11/12 max-w-maxContent items-center m-auto  p-2 drop-shadow-2xl ">
           <Link to="/">
-            <Box className="flex items-center gap-x-2 ml-6 ">
-              <div className="text-[40px]">
-                <SiYourtraveldottv style={{ color: "white" }} />
-              </div>
+            <Box className="flex items-center gap-x-2 ml-6">
+              <SiYourtraveldottv style={{ fontSize: "40px", color: "white" }} />
               <Typography
                 className="typo"
-                style={{ color: "white", userSelect: "none" }}
+                style={{ color: "white" }}
                 fontSize={"20px"}
               >
                 Nomad_Trakker
@@ -120,34 +115,31 @@ const Header = ({ setcoordinating }) => {
                 onLoad={onloading}
                 onPlaceChanged={handlePlaceSelected}
               >
-                {/* maxWidth means itna hi highest jaega agr 800px se jyada hogya */}
-                <div className="">
-                  <InputBase
-                    className="inputBase"
-                    placeholder="Search..................."
-                    style={{ color: "black", width: "full", maxWidth: "600px" }}
-                    id="input"
-                  />
-                </div>
+                <InputBase
+                  className="inputBase"
+                  placeholder="Search......"
+                  style={{ color: "black" }}
+                  id="input"
+                />
               </Autocomplete>
             </div>
           )}
-
           {/**********cart /LOGIN/LOGOUT/DELTEBUTTON */}
 
+          
           <div>
-            <ul className="paisa">
+            <ul className="flex items-center gap-x-4 ">
               {tokenpara === null && (
-                <li>
+                <li className="paisa">
                   <Link to="/login">
-                    <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] md:py-[8px] sm:px-[12px] rounded-md border border-richblack-700">
+                    <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-md border border-richblack-700">
                       Login
                     </button>
                   </Link>
                 </li>
               )}
               {tokenpara === null && (
-                <li>
+                <li className="paisa">
                   <Link to="/signup">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
                       Signup
@@ -158,15 +150,13 @@ const Header = ({ setcoordinating }) => {
               {tokenpara !== null && (
                 <li>
                   <Link to="/dashboard/cart">
-                    <div className="relative kitty">
+                    <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {totalItems.length > 0 && (
-                        <span
-                          className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
-                    justify-center items-center animate-bounce rounded-full text-white "
-                        >
-                          {totalItems.length}
+                      {likeElemets.length > 0 && (
+                        <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
+                    justify-center items-center animate-bounce rounded-full text-white" >
+                          {likeElemets.length}
                         </span>
                       )}
                     </div>
@@ -174,14 +164,17 @@ const Header = ({ setcoordinating }) => {
                 </li>
               )}
               {tokenpara !== null && (
-                <div className="flex items-center  ">
+                <div className="flex items-center">
                   <ProfileDown />
                 </div>
               )}
             </ul>
 
-            {/* mobile css */}
-            {tokenpara === null && (
+            
+
+
+          </div>
+          {tokenpara === null && (
               <>
                 <div
                   className="mobile-menu  space-y-1 mr-5px  w-5 cursor-pointer z-20 keety lg:hidden md:hidden "
@@ -212,15 +205,11 @@ const Header = ({ setcoordinating }) => {
                     </li>
                     
                   </ul>
-                  
-       
-                  
 
-                </div>
-
+                  </div>
               </>
             )}
-          </div>
+            
         </div>
       </div>
     </>

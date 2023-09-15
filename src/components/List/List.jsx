@@ -13,7 +13,11 @@ const List = ({ places, loadinghorhi }) => {
   // use context se maine receive kiya vo sab
   const {background,setBackground} = useContext(GlobalContext2)
 
-  const dynamicBackgroundColor = background ? "invisible" : "";
+  const dynamicBackgroundColor = background ? "" : "invisible";
+
+
+
+  // const dynamicBackgroundColor = background ? "op" :"";
 
   // yh console maine left side mai click kru toh ride side mai dikhe uske liye hai
   // console.log(receivekrega)
@@ -71,7 +75,7 @@ const List = ({ places, loadinghorhi }) => {
   return (
     <div className="listing" style={{ padding: "10px" }}>
       <span
-        className={`heading text-center `} 
+        className={"heading text-center"}
         style={{ fontWeight: "bold", fontSize: "26px", userSelect: "none" }}
       >
         Restaurants,Hot
@@ -98,6 +102,7 @@ const List = ({ places, loadinghorhi }) => {
 
               {/* filterimportant file mai maine yh explain kiya yhi chij  */}
               {/* important->  idhr ek confusion askta hm context hook mai ek child se dusre child mai interaction mai use krte hai but isme aisa ku nhi hua dhyan se dekho hmne kya kiya type hota ho receive krene vala mera short form aisa chlta and settype hota jo send kr rha toh isme do no ek mai hi hai type bhi isme hai settype bhi isme hai  */}
+              {/* <span className={`${dynamicBackgroundColor}`}> */}
               <span className={`${dynamicBackgroundColor}`}>
               <Select
                 value={type}

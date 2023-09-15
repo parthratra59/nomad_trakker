@@ -121,21 +121,21 @@ const Setting = () => {
 
             {/* update profile */}
             {/* bhar vala box  */}
-            <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 md:p-8 md:px-12 px-3 py-3 text-richblack-5">
+            <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 md:p-8 md:px-12 px-3 py-3 text-richblack-5 ulta ">
               {/* then andr part ko bich mai lekr ao */}
               <div className="flex items-center gap-x-4">
                 {/* then flex kro profileimage and button */}
                 <img
-                  className="aspect-square w-[78px] rounded-full object-cover"
+                  className="aspect-square w-[78px] rounded-full object-cover  mehfil"
                   src={profilePicture}
                   alt="profileimage"
                 ></img>
-                <div className="space-y-2">
+                <div className="space-y-2 bb1">
                   <p>Change Profile Picture</p>
                   <form onSubmit={handleUpload}>
                     <div className="flex gap-3">
                       <label
-                        className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+                        className="cursor-pointer  nahana rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
                         htmlFor="upload"
                       >
                         Select
@@ -143,7 +143,7 @@ const Setting = () => {
                           id="upload"
                           type="file"
                           onChange={handleFileChange}
-                          className="hidden"
+                          className="hidden pagal"
                           accept="image/png, image/gif, image/jpeg"
                         />
                       </label>
@@ -152,7 +152,7 @@ const Setting = () => {
                         type="submit"
                         className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900"
                       >
-                        <span className="false">Upload</span>
+                        <span className="false kuchbhi">Upload</span>
                         <FiUpload />
                       </button>
                     </div>
@@ -163,7 +163,7 @@ const Setting = () => {
 
             {/* 2nd section */}
             <form onSubmit={handelAdditionalDetails}>
-              <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+              <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12 randomm">
                 <h2 className="text-lg font-semibold text-richblack-5">
                   Profile Information
                 </h2>

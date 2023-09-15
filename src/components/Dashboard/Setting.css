@@ -22,6 +22,9 @@
   --tw-text-opacity: 1;
   color: rgb(241 242 255 / var(--tw-text-opacity));
 }
+.pagal{
+  display: none;
+}
 
 @media screen and (max-width: 780px) {
   .apna {
@@ -31,4 +34,21 @@
     max-width: 91.666667%;
     width: 1200vw;
   }
+  
+  .pagal{
+    font-size: small;
+    display: block;
+   
+  }
+  .randomm{
+    margin: auto;
+    margin-right: 20;
+    
+  }
+  .ulta{
+    display: flex;
+    padding: 4px;
+   
+  }
+ 
 }
