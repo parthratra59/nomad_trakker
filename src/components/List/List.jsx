@@ -13,7 +13,7 @@ const List = ({ places, loadinghorhi }) => {
   // use context se maine receive kiya vo sab
   const {background,setBackground} = useContext(GlobalContext2)
 
-  const dynamicBackgroundColor = background ? "" : "invisible";
+  // const dynamicBackgroundColor = background ? "" : "invisible";
 
 
 
@@ -92,7 +92,7 @@ const List = ({ places, loadinghorhi }) => {
               style={{ margin: "15px", minWidth: 120, marginBottom: "40px" }}
               className="box"
             >
-              <InputLabel style={{ userSelect: "none" }}><span className={`${dynamicBackgroundColor}`}>Type</span></InputLabel>
+              <InputLabel style={{ userSelect: "none" }}><span >Type</span></InputLabel>
 
               {/* usecontext use kiya hai dekh */}
 
@@ -103,7 +103,7 @@ const List = ({ places, loadinghorhi }) => {
               {/* filterimportant file mai maine yh explain kiya yhi chij  */}
               {/* important->  idhr ek confusion askta hm context hook mai ek child se dusre child mai interaction mai use krte hai but isme aisa ku nhi hua dhyan se dekho hmne kya kiya type hota ho receive krene vala mera short form aisa chlta and settype hota jo send kr rha toh isme do no ek mai hi hai type bhi isme hai settype bhi isme hai  */}
               {/* <span className={`${dynamicBackgroundColor}`}> */}
-              <span className={`${dynamicBackgroundColor}`}>
+              {/* <span className={`${dynamicBackgroundColor}`}> */}
               <Select
                 value={type}
                 onChange={(e) => settype(e.target.value)}
@@ -117,7 +117,7 @@ const List = ({ places, loadinghorhi }) => {
                 <MenuItem value="hotels">Hotels</MenuItem>
                 <MenuItem value="attractions">Attractions</MenuItem>
               </Select>
-              </span>
+              {/* </span> */}
             </div>
             
             <div
@@ -129,7 +129,7 @@ const List = ({ places, loadinghorhi }) => {
               }}
               className="box"
             >
-            <span className={`${dynamicBackgroundColor}`}>
+            {/* <span className={`${dynamicBackgroundColor}`}> */}
               <InputLabel>Rating</InputLabel>
 
               <Select
@@ -141,7 +141,7 @@ const List = ({ places, loadinghorhi }) => {
                 <MenuItem value={4}>Above 4.0</MenuItem>
                 <MenuItem value={4.5}>Above 4.5</MenuItem>
               </Select>
-              </span>
+              {/* </span> */}
             </div>
             
           </div>
