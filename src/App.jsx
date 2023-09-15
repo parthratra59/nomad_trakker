@@ -17,9 +17,11 @@ import Dashboard from "./components/Dashboard/Dashboard";
 export const GlobalContext2 = createContext({});
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [background, setBackground] = useState(false);
+
 
   return (
-    <GlobalContext2.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <GlobalContext2.Provider value={{ isLoggedIn, setIsLoggedIn,background,setBackground }}>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>

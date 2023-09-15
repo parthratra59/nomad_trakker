@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../redux/slices/Authslice";
 import { sendotp } from "../services/operations/authApi";
+import { GlobalContext2 } from "../App";
 
 import "./Signupform.css";
 
@@ -86,11 +87,14 @@ const Signupform = () => {
     // reset krdo
   };
 
+  const {background}=useContext(GlobalContext2)
+  const dynamicBackgroundColor = background ? "richblack-800" : "richblack-800";
+
   return (
     // isme toh form hi bnaega baki color vgrh ka kaam Template component mai horha hai
     <>
       <form onSubmit={submitting}>
-        <div className="flex gap-x-4 rachit">
+        <div className={`flex gap-x-4  rachit`}>
           <label htmlFor="firstName" className="w-full">
             <p className="text-[0.875rem] text-richblack-5 -mb-0.85  mt-2 leading-[1.375rem]">
               First Name<sup className="text-richblack-5">*</sup>
@@ -118,7 +122,7 @@ const Signupform = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleinput}
-              className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none"
+              className={ `bg-${dynamicBackgroundColor}  rounded-[0.75rem] w-full p-[12px] text-richblack-5 shadow-md outline-none`}
             ></input>
           </label>
         </div>

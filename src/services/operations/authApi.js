@@ -160,14 +160,15 @@ export const login = (email, password, navigate) => {
         dispatch(setLoading(false));
         throw new Error(response.data.message);
       }
-
-      toast.success("Login Successful");
-      // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header
-
       const userImage = response.data?.user?.image
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`;
       dispatch(setUser({ ...response.data.user, image: userImage }));
+     
+      // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header
+
+     
+      // dispatch(setUser({ ...response.data.user, image: userImage }));
 
       // const expirationDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
       // 10 years same use kro jo backend mai expire time lagaya hai
@@ -185,6 +186,7 @@ export const login = (email, password, navigate) => {
 
       dispatch(setToken(response.data.token));
 
+      toast.success("Login Successful"); // Move this line here
       // reload hone ke baad bhi data rhega and jb tk token expire nhi hua and delete nhi kiya vo login rhega
 
       // example
@@ -196,13 +198,13 @@ export const login = (email, password, navigate) => {
       navigate("/");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
-      dispatch(setLoading(false));
       toast.error("Login Failed");
+    } finally {
+      toast.dismiss(toastId);
+      dispatch(setLoading(false)); // Move this line to finally block
     }
-    toast.dismiss(toastId);
-    dispatch(setLoading(false));
-  };
 };
+}
 
 export const resetPassword = (
   password,
