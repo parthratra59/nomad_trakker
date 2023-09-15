@@ -92,7 +92,7 @@ const Header = ({ setcoordinating }) => {
     <>
       <div className="bg-newpink h-14" style={{ userSelect: "none" }}>
         <div
-          className="flex justify-between w-11/12 max-w-maxContent items-center m-auto select-none  p-2 drop-shadow-2xl pixeling
+          className="flex gap-x-4 justify-between w-11/12 max-w-maxContent items-center m-auto select-none  p-2 drop-shadow-2xl pixeling
         "
         >
           <Link to="/">
@@ -136,9 +136,9 @@ const Header = ({ setcoordinating }) => {
           {/**********cart /LOGIN/LOGOUT/DELTEBUTTON */}
 
           <div>
-            <ul className="paisa">
+            <ul >
               {tokenpara === null && (
-                <li>
+                <li className="paisa">
                   <Link to="/login">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] md:py-[8px] sm:px-[12px] rounded-md border border-richblack-700">
                       Login
@@ -147,7 +147,7 @@ const Header = ({ setcoordinating }) => {
                 </li>
               )}
               {tokenpara === null && (
-                <li>
+                <li className="paisa">
                   <Link to="/signup">
                     <button className="text-richblack-5 bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
                       Signup
@@ -155,6 +155,7 @@ const Header = ({ setcoordinating }) => {
                   </Link>
                 </li>
               )}
+              <ul className="flex items-center gap-x-2 mr-2">
               {tokenpara !== null && (
                 <li>
                   <Link to="/dashboard/cart">
@@ -178,6 +179,7 @@ const Header = ({ setcoordinating }) => {
                   <ProfileDown />
                 </div>
               )}
+            </ul>
             </ul>
 
             {/* mobile css */}

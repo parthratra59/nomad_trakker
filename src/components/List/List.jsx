@@ -71,7 +71,7 @@ const List = ({ places, loadinghorhi }) => {
   return (
     <div className="listing" style={{ padding: "10px" }}>
       <span
-        className={`heading text-center `} 
+        className={"heading text-center"}
         style={{ fontWeight: "bold", fontSize: "26px", userSelect: "none" }}
       >
         Restaurants,Hot
