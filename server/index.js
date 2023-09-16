@@ -42,7 +42,7 @@ app.use(
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/jiyan/",
+    tempFileDir: "/tmp",
   })
 );
 // cloudinary se connect kro
