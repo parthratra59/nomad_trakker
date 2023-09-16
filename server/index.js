@@ -38,7 +38,7 @@ app.use(
     credentials: true,
   })
 );
-
+// yh express file upload mai /temp/ hi hai bydefault https://www.npmjs.com/package/express-fileupload toh vohi rhko 
 app.use(
   fileUpload({
     useTempFiles: true,
