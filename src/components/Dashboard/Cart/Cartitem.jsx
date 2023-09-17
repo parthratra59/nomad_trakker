@@ -15,23 +15,21 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin6Line } from "react-icons/ri";
 // import { Link } from "react-router-dom";
-import { deleteItem } from "../../../services/operations/likeApi";
+import { deleteItem } from "../../../services/operations/likeApi";//
 import { useNavigate } from "react-router-dom";
 import { remove } from "../../../redux/slices/Likeslice";
 const Cartitem = ({ item }) => {
   const { tokenpara } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const removefromcart = async () => {
-    try {
+  const removefromcart = () => {
+    
       // Attempt to delete the item
-      await deleteItem(tokenpara, item._id);
+      deleteItem(tokenpara, item._id);
       // If deletion is successful, set the local state to indicate removal
-      dispatch(remove(item._id));
-      console.log(dispatch(remove(item._id)));
-    } catch (error) {
-      toast.error("Error removing item from cart");
-    }
+      dispatch(remove(item.itemId));
+      console.log(dispatch(remove(item.itemId)));
+    
   };
 
   // bda sa function hai yh re rendering vgh mai toh redux use krte hai thik hai

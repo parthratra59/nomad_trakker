@@ -10,8 +10,26 @@
 }
 
 @media screen and (max-width: 1200px) {
+
+  .pakistan{
+    min-height: 100vh;
+   
+  }
+  .handup{
+    margin-left: 25px;
+  }
+  .seam{
+    margin-top: 20px;
+  }
   .heading {
     font-weight: bold;
     font-size: 20px;
   }
+  .groundsman{
+    text-align: center;
+  }
+ 
+  
+ 
+
 }
