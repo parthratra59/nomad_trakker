@@ -29,9 +29,11 @@ export const likeSlice = createSlice({
       // action.payload mai jo hm paas krte na
       // jo bhi hm input parameter send kiya hai na usko hm action.payload se access kr skte
       state.likeElemets.push(action.payload);
+      console.log("state.likeelements",state.likeElemets)
 
       // only set localStorage if the item is not already there
-      if (!state.likeElemets.some((item) => item.location_id === action.payload)) {
+      if (!state.likeElemets.some((item) => item.itemId === action.payload)) {
+        console.log("state.likeelements",state.likeElemets)
         localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
       }
       
@@ -54,14 +56,14 @@ export const likeSlice = createSlice({
       
       // This ensures that the original data structure is not changed, and that the state is always immutable.
       const newLikeElemets = state.likeElemets.filter(
-        (item) => item._id !== action.payload
+        (item) => item.itemId !== action.payload
       );
       console.log("nyiellie",newLikeElemets);
 
       // update state
       state.likeElemets = newLikeElemets;
       // only set localStorage if the item is not already there
-      if (!newLikeElemets.some((item) => item._id === action.payload)) {
+      if (!newLikeElemets.some((item) => item.itemId === action.payload)) {
         localStorage.removeItem("likeElements", JSON.stringify(state.likeElemets));
       }
       console.log("state.likeelements",state.likeElemets)

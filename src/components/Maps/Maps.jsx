@@ -51,7 +51,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
 
   return (
     <div
-      className="google z-40  h-[100vh] w-[100vw]   select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
+      className="google z-40  h-[100vh] w-[100vw] koinhi  select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
       xs={12}
     >
       <GoogleMapReact

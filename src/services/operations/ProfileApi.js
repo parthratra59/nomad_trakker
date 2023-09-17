@@ -61,7 +61,7 @@ export const updatePfp = async (tokenpara, pfp) => {
   const toastId = toast.loading("Uploading...");
   try {
     const formData = new FormData();
-    //  same name hai backend se profilepic toh yh bhi same name rkhna hai
+    //  same name hai backend se "profilepic" toh yh bhi same name rkhna hai
     console.log("profilepic", pfp);
 
     formData.append("profilepic", pfp);

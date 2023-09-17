@@ -42,16 +42,15 @@ const Cart = () => {
   return (
     <>
       {likecart?.length === 0 ? (
-        <div className=" m-auto w-11/12 max-w-[1080px]  flex items-center justify-center">
-          <div className="mt-4">
-            <h1 className="text-gray-700 font-semibold text-xl mb-2 text-white">
-              Your Adventure Awaits! 🌍 Your Wishlist is Ready to Be Filled with
-              Dream Destinations!
+        <div className=" m-auto w-11/12 max-w-[1080px]  pakistan flex items-center justify-center">
+          <div className="mt-2 handup">
+            <h1 className="text-gray-700 font-semibold text-xl mb-2 text-white groundsman">
+            Dream Destinations Await! 🌍 Start Your Adventure Wishlist Now!
             </h1>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center seam">
               <button
                 onClick={back}
-                className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-bold text-richblack-900 undefined"
+                className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-bold text-richblack-900 runs undefined"
               >
                 Explorer Now
               </button>
@@ -68,7 +67,7 @@ const Cart = () => {
                 </h1>
                 <div className="flex flex-col">
                   {likecart?.map((item) => {
-                    return <Cartitem item={item} key={item.location_id} />;
+                    return <Cartitem item={item} key={item.itemId} />;
                   })}
                 </div>
               </div>

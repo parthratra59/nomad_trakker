@@ -29,7 +29,7 @@ const Loginform = () => {
     });
   };
 
-  const { token } = useSelector((state) => state.auth);
+  const { tokenpara } = useSelector((state) => state.auth);
   // const submitting=(e)=>{
   //     e.preventDefault();
   //     navigate('/')
@@ -41,11 +41,10 @@ const Loginform = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formdata.email, formdata.password, navigate));
-    console.log("elements", token);
-    console.log(
-      "hello",
-      dispatch(login(formdata.email, formdata.password, navigate))
-    );
+    console.log("elements", tokenpara);
+    // dont't do this console.log(dispatch(login(formdata.email, formdata.password, navigate)));
+    // because it will again call the function
+    // console.log("hello",dispatch(login(formdata.email, formdata.password, navigate)));
   };
 
   // setformdata({

@@ -38,8 +38,12 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   const addtocart = () => {
     // yh cart ke andr item add krta hai
     dispatch(add(hello));
+    
+    // console.log("kinneaye",dispatch(add(hello)));
+    // like login sam explanation do baar function call hojaega age mai console.log mai bhi likh rha add 
 
     addTocartdb(hello, tokenpara);
+   
   };
   const gotoCart = () => {
     // yh remove krta cart mai se item
