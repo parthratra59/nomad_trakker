@@ -8,7 +8,7 @@ import { fetchCartData } from "../../../services/operations/likeApi";
 import "./Cart.css";
 
 const Cart = () => {
-  const { likeElemets } = useSelector((state) => state.like);
+  // const {likeElements}=useSelector((state)=>state.like)
 
   // fetching krege apiservice se
   const { tokenpara } = useSelector((state) => state.auth);
@@ -67,7 +67,7 @@ const Cart = () => {
                 </h1>
                 <div className="flex flex-col">
                   {likecart?.map((item) => {
-                    return <Cartitem item={item} key={item.itemId} />;
+                    return <Cartitem item={item} key={item.location_id} />;
                   })}
                 </div>
               </div>

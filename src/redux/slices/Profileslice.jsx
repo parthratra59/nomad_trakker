@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 const initialState = {
-  // yh bs variable ka kaam krta hai store krne mai baki logic backend frontend se interact krte yh koi bhi object aisa nhi hai logic ki backend se resembkle kr rhe hey backend mai nhi hai localstorage frontend mai key bnata "hey" name ki aur value mai jo bhi hai vo store krta hai app Application khol skte inspect mai jakr localstorage mai jakr dekh skte hai
+  // yh bs variable ka kaam krta hai store krne mai baki logic backend frontend se interact krte yh koi bhi object aisa nhi hai logic ki backend se resemble kr rhe hey backend mai nhi hai localstorage frontend mai key bnata "hey" name ki aur value mai jo bhi hai vo store krta hai app Application khol skte inspect mai jakr localstorage mai jakr dekh skte hai
   // user:Cookies.get("user") || null,
   hey: localStorage.getItem("hey")
     ? JSON.parse(localStorage.getItem("hey"))
@@ -9,6 +9,8 @@ const initialState = {
 
   loading: false,
 };
+
+
 
 const profileSlice = createSlice({
   name: "profile",

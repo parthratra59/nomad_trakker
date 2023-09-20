@@ -17,6 +17,7 @@ import { GlobalContext2 } from "../../App";
 
 const Header = ({ setcoordinating }) => {
   // importing reducers
+  
 
   const { tokenpara } = useSelector((state) => state.auth);
 
@@ -57,8 +58,9 @@ const Header = ({ setcoordinating }) => {
 
   };
 
-  const { likeElemets } = useSelector((state) => state.like);
-  const { totalItems } = useSelector((hello) => hello.like);
+  // const { likeElemets } = useSelector((state) => state.like);
+  // const { likeElemets} = useSelector((hello) => hello.like);
+  const { cartItems } = useSelector((hello) => hello.like);
 
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
@@ -118,7 +120,7 @@ const Header = ({ setcoordinating }) => {
                 <InputBase
                   className="inputBase"
                   placeholder="Search......"
-                  style={{ color: "black" }}
+                  style={{ color: "black"}}
                   id="input"
                 />
               </Autocomplete>
@@ -153,10 +155,10 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {likeElemets.length > 0 && (
+                      {cartItems.length>0 && (
                         <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
                     justify-center items-center animate-bounce rounded-full text-white" >
-                          {likeElemets.length}
+                          {cartItems.length}
                         </span>
                       )}
                     </div>
@@ -164,10 +166,11 @@ const Header = ({ setcoordinating }) => {
                 </li>
               )}
               {tokenpara !== null && (
-                <div className="flex items-center">
+                <div className="flex items-center ">
                   <ProfileDown />
                 </div>
               )}
+            
             </ul>
 
             

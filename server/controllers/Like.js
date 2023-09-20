@@ -19,6 +19,8 @@ exports.addLike = async (req, res) => {
     } = req.body;
 
     console.log("req.body", req.body);
+  
+
     const thumbnail = req.files.clicks;
     console.log("thumbnail", thumbnail);
 
@@ -28,7 +30,7 @@ exports.addLike = async (req, res) => {
         message: "Please Upload Image",
       });
     }
-
+// req.user.id or {_id} =req.user same hai
     const userId = req.user.id;
     console.log("req.user.id", userId);
     const userDetails = await User.findById(userId);
@@ -41,30 +43,40 @@ exports.addLike = async (req, res) => {
       });
     }
 
+
+
+     // Check if a Like document with the same itemId already exists
+     let existingLike = await Like.findOne({ itemId });
+
     // upload image to cloudinary
     // first parameter file name jo upr likhi hai
-    const uploadDetails = await uploadImageToCloudinary(
-      thumbnail,
-      process.env.FOLDER_NAME1
-    );
-    // console.log("uploadDetails", uploadDetails);
+    if(!existingLike){
 
-    // create an entry for item in database
+      const uploadDetails = await uploadImageToCloudinary(
+        thumbnail,
+        process.env.FOLDER_NAME1
 
-    const newItem = await Like.create({
-      itemId,
-      itemImage: uploadDetails.secure_url,
-      itemName,
-      websiteUrl,
-      tripAdviserUrl,
-      location,
-      ranking,
-      rating,
-      contactNumber,
-      reviews,
-      cuisine,
-    });
-    console.log("newItem", newItem);
+      );
+      existingLike = await Like.create({
+        itemId,
+        itemImage: uploadDetails.secure_url,
+        itemName,
+        websiteUrl,
+        tripAdviserUrl,
+        location,
+        ranking,
+        rating,
+        contactNumber,
+        reviews,
+        cuisine,
+      });
+
+    }
+
+    
+   
+
+
 
     // add item to user's liked items array tbhi toh user ke liked/wishlist dikhegi items mei show hoga
 
@@ -72,15 +84,30 @@ exports.addLike = async (req, res) => {
 
     // $set: This operator is used to update the value of a field or multiple fields in a document. It can be used to modify existing fields or add new fields to a document. When you use $set, it replaces the existing value of a field with a new value. If the field does not exist, it creates the field.
 
-    // $push: This operator is used to add an element to an array field in a document. It does not replace the entire array; instead, it appends a new element to the existing array. If the array field does not exist, $push will create the array and then add the element to it
+    // $push: This operator is used to add an element to an array field in a document. It does not replace the entire array; instead, it appends a new element to the existing array. If the array field does not exist, $push will create the array and then add the elemnt to it
+
+      console.log("userDetails.likeCart",userDetails.likeCart.includes(existingLike.itemId));
+    if(userDetails.likeCart.includes(existingLike.itemId)
+    ){
+
+      return res.status(400).json({
+        success: false,
+        message: "Item already in liked items",
+      });
+    }
+
+    console.log("userDetails.likeCart",typeof userDetails.likeCart)
+
+
     await User.findByIdAndUpdate(
       { _id: userId },
+  
       {
         $push: {
-          likeCart: newItem._id,
+          likeCart: existingLike.itemId,
         },
       },
-      console.log("newItem.itjjemId", newItem.itemId),
+
       {
         new: true,
       }
@@ -89,7 +116,7 @@ exports.addLike = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Item added to liked items",
-      data: newItem,
+      data: existingLike,
     });
   } catch (error) {
     return res.status(500).json({
@@ -126,13 +153,13 @@ exports.deleteLikedItem = async (req, res) => {
     // const id= req.body.id;    // const {id}=req.body;  //const {_id} =req.body;
     // apdono kr skte hai id and _id/id destructure kuch bhi use kr skte hai
     // but mai _id use kr rha muje jyda
-    const { _id } = req.body;
+    const { itemId } = req.body;
 
     console.log("req.body", req.body);
 
     // idhr destructure krlia hai toh bracket mai krne ki need nhi hai
 
-    const deleteItem = await Like.findByIdAndDelete(_id);
+    const deleteItem = await Like.findOneAndDelete(itemId);
 
     if (!deleteItem) {
       // If the item is not found in the database
@@ -153,10 +180,10 @@ exports.deleteLikedItem = async (req, res) => {
       userId,
       {
         $pull: {
-          likeCart: _id,
+          likeCart: itemId,
         },
       },
-      console.log("kasturi", _id),
+   
       {
         new: true,
       }
