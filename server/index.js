@@ -33,7 +33,7 @@ app.use(cookieParser());
 // fir entertain bhi nhi kr paege hm
 app.use(
   cors({
-    origin: [ "http://localhost:3000"],
+    origin: [ "https://parth79.web.app"],
     // 'http://localhost:3000', 
     credentials: true,
   })
