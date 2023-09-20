@@ -25,10 +25,11 @@ const Cartitem = ({ item }) => {
   const removefromcart = () => {
     
       // Attempt to delete the item
-      deleteItem(tokenpara, item._id);
+      // deleteItem(tokenpara, item._id);
       // If deletion is successful, set the local state to indicate removal
-      dispatch(remove(item.itemId));
-      console.log(dispatch(remove(item.itemId)));
+      // yh hi item.location_id action.payload hai
+      dispatch(remove(item.location_id));
+     
     
   };
 

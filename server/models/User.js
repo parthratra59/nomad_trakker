@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema({
   },
   likeCart: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.Mixed,
       ref: "Like",
     },
   ],

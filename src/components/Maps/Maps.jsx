@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Mapstyles from "./Mapstyles";
 import { Typography, Paper, Rating } from "@mui/material";
+import { Marker } from "@react-google-maps/api";
 // import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import "./Maps.css";
 
@@ -51,7 +52,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
 
   return (
     <div
-      className="google z-40  h-[100vh] w-[100vw] koinhi  select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
+      className="google z-10  h-[100vh] w-[100vw] koinhi select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
       xs={12}
     >
       <GoogleMapReact
@@ -111,7 +112,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         <LocationOnOutlinedIcon color="" fontSize="large" />
       ) : ( */}
               {
-                <Paper elevation={3} className="papering">
+                <Paper elevation={4} className="papering" style={{ zIndex: 999 }}>
                   <Typography variant="subtitle2" gutterBottom>
                     {jagah.name}
                   </Typography>
@@ -131,6 +132,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
           );
         })}
         {/* /google map ke andr hi toh krunga */}
+        
       </GoogleMapReact>
     </div>
   );

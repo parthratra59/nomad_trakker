@@ -21,8 +21,8 @@ const { ADD_TO_CART_API, REMOVE_FROM_CART_API, SHOW_ALL_CART_ITEMS_API } =
 
 export const addTocartdb = async (hello, tokenpara) => {
   console.log("tokenpara", tokenpara);
-
-  const toastId = toast.loading("Loading...");
+  let result = null;
+  
 
   try {
     // /image append hokar hota hai formdata mai
@@ -88,13 +88,35 @@ export const addTocartdb = async (hello, tokenpara) => {
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    toast.success("Item added to cart");
+    
+    
+   
+    
+    // result = response?.data?.data;
+    
+    // return result;
+    result = response?.data?.data.itemId;
+    console.log("result", result.itemId);
+    // localStorage.setItem("likeElements", JSON.stringify(result));
+    //that's why it is not getitem krege kuki vo state hai yh setitem add krne The localStorage.setItem method does not return a value; it returns undefined. It's designed to store a key-value pair in the web browser's local storage. The localStorage API does not provide any feedback about the success or failure of the operation, 
+    if(result>0) {
+     
+      return
+    }
+ 
+    console.log("result", result);
+  
+    
+    
+    
+   
   } catch (error) {
     console.log(error);
     console.log("SENDING_DATA_TO_CART............", error);
-    toast.error(error.response.data.message);
+   
   }
-  toast.dismiss(toastId);
+  
+  return result;
 };
 
 // fetching the data by GET request

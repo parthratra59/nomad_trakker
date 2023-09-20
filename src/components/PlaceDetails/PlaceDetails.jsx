@@ -30,14 +30,31 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   const navigate = useNavigate();
 
   // likecart mai jarha hai usdr se cart item vala and cart vala fetch krega ya delte krega dependency hi khtm hogyi
-  const { likeElemets } = useSelector((state) => state.like);
+  const {cartItems}=useSelector((state)=>state.like)
   const { tokenpara } = useSelector((state) => state.auth);
   // mujeab removefromcart and add to cart function create krne vo dispatch function ke through kr skte
   const dispatch = useDispatch();
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
-    dispatch(add(hello));
+    dispatch(add({
+      itemId: hello.location_id || "",
+      itemName:hello.name || "",
+      itemImage:hello.photo.images.large.url || "",
+      websiteUrl: hello.website || "",
+      tripAdviserUrl: hello.web_url || "",
+      itemRating: hello.rating || "",
+      itemRanking: hello.ranking ? hello.ranking.replace(/#/g, "") : "",
+      itemContactNumber: hello.phone || "",
+      itemCuisine: hello.cuisine
+        ? hello.cuisine.map((item) => item.name).join(", ")
+        : "",
+      itemReviews: hello.num_reviews || "",
+      itemLocation: hello.address || "",
+
+
+      
+    }));
     
     // console.log("kinneaye",dispatch(add(hello)));
     // like login sam explanation do baar function call hojaega age mai console.log mai bhi likh rha add 
@@ -103,6 +120,10 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
   //         toast.success("Liked Successfully")
   //     }
   // }
+
+
+
+  
 
   return (
     <>
@@ -214,23 +235,12 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
               >
                 {tokenpara ? (
                   <>
-                    {likeElemets.some(
-                      (current) => current.location_id === hello.location_id
-                    ) ? (
-                      <button
-                        className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
-                        onClick={gotoCart}
-                      >
-                        Go to Wishlist
-                      </button>
-                    ) : (
                       <button
                         className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
                         onClick={addtocart}
                       >
                         Add Item
                       </button>
-                    )}
                   </>
                 ) : (
                   <button className="hidden"></button>

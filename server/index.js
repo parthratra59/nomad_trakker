@@ -33,16 +33,16 @@ app.use(cookieParser());
 // fir entertain bhi nhi kr paege hm
 app.use(
   cors({
-    origin: [ "https://parth79.web.app"],
+    origin: [ "http://localhost:3000"],
     // 'http://localhost:3000', 
     credentials: true,
   })
 );
-// yh express file upload mai /temp/ hi hai bydefault https://www.npmjs.com/package/express-fileupload toh vohi rhko 
+
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp/",
+    tempFileDir: "/jiyan/",
   })
 );
 // cloudinary se connect kro
