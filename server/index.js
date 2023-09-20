@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [ "https://parth79.web.app"],
-    // 'http://localhost:3000', 
+    // '', 
     credentials: true,
   })
 );
