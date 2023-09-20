@@ -20,6 +20,7 @@ const { ADD_TO_CART_API, REMOVE_FROM_CART_API, SHOW_ALL_CART_ITEMS_API } =
   cartEndpoints;
 
 export const addTocartdb = async (hello, tokenpara) => {
+
   console.log("tokenpara", tokenpara);
   let result = null;
   
@@ -95,12 +96,13 @@ export const addTocartdb = async (hello, tokenpara) => {
     // result = response?.data?.data;
     
     // return result;
+    
     result = response?.data?.data.itemId;
-    console.log("result", result.itemId);
+    console.log("result", result);
     // localStorage.setItem("likeElements", JSON.stringify(result));
     //that's why it is not getitem krege kuki vo state hai yh setitem add krne The localStorage.setItem method does not return a value; it returns undefined. It's designed to store a key-value pair in the web browser's local storage. The localStorage API does not provide any feedback about the success or failure of the operation, 
     if(result>0) {
-     
+    
       return
     }
  
@@ -115,7 +117,7 @@ export const addTocartdb = async (hello, tokenpara) => {
     console.log("SENDING_DATA_TO_CART............", error);
    
   }
-  
+ 
   return result;
 };
 
@@ -135,7 +137,7 @@ export const fetchCartData = async (tokenpara) => {
     console.log("response.data.data", response.data.data);
     // PURA DATA CHAIYE NA ISLIYE SPREAD OPERATOR LGA RHE HAI
     result.push(...response.data.data);
-    console.log("result", result);
+    console.log("resultnfnf", result);
     return result;
   } catch (error) {
     console.log("COURSE_CATEGORY_API API ERROR............", error);
@@ -143,12 +145,14 @@ export const fetchCartData = async (tokenpara) => {
   }
 };
 
-export const deleteItem = async (tokenpara, _id) => {
+
+// { _id }, jb apko uniqueid ke sath khelna hota na toh ap _id use krte hai {_id } us krlete
+export const deleteItem = async (tokenpara, itemId) => {
   try {
     const response = await apiConnector(
       "DELETE",
       REMOVE_FROM_CART_API,
-      { _id },
+      { itemId},
       {
         Authorisation: `Bearer ${tokenpara}`,
       }
@@ -157,7 +161,8 @@ export const deleteItem = async (tokenpara, _id) => {
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    toast.success("Item deleted from cart");
+   
+   
   } catch (error) {
     console.error("Error fetching cart data:", error);
     toast.error(error.response.data.message);

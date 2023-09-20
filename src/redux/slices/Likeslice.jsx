@@ -63,46 +63,49 @@ export const likeSlice = createSlice({
 
      
     },
-    // remove: (state, action) => {
-    //   // remove mai toh hm filtering krna chate hai
-    //   // state ke andr vo hi vale element ko retain nhi krna jiski id
-    //   // ayi hai because filter hai yh
-    //   // Productitems se arha hai na
-    //   // action.payload mai vo hai jo udhr pass kiya hai
-    //   // Productitem mai
-    //   // action.payload mai id hi arhi hai toh action.payload.id likhne ki need nhi
-    //   console.log(action.payload);
+    remove: (state, action) => {
+      // remove mai toh hm filtering krna chate hai
+      // state ke andr vo hi vale element ko retain nhi krna jiski id
+      // ayi hai because filter hai yh
+      // Productitems se arha hai na
+      // action.payload mai vo hai jo udhr pass kiya hai
+      // Productitem mai
+      // action.payload mai id hi arhi hai toh action.payload.id likhne ki need nhi
+      console.log(action.payload);
 
-    //   // please refer this
-    //   // https://chat.openai.com/?model=text-davinci-002-render-sha
-    //   // agr mai direct flter lagaunga then vo pura object filter kr dega 0 aray aega that's why phele ...
-    //   // ...state se copy kro then filter kro ya fir niche jaise kra hai vaise krdo
-    //   // but kb bhi return state.kuch/filter = action.filter nhi krege toh usi line mai return nhi krte
-    //   // because of immutability
+      // please refer this
+      // https://chat.openai.com/?model=text-davinci-002-render-sha
+      // agr mai direct flter lagaunga then vo pura object filter kr dega 0 aray aega that's why phele ...
+      // ...state se copy kro then filter kro ya fir niche jaise kra hai vaise krdo
+      // but kb bhi return state.kuch/filter = action.filter nhi krege toh usi line mai return nhi krte
+      // because of immutability
 
-    //   // This ensures that the original data structure is not changed, and that the state is always immutable.
-    //   // idhr apko yh krne ki need nhi hai idhr hmne phele  filter vala apne aap new array crete krta hai
-    //   // toh immutaibity follow krta hai
-    //   //     //     const newState = {
-    //   //   ...state,
-    //   //   likeElemets: state.likeElemets.filter(
-    //   //     (item) => item.location_id !== action.payload
-    //   //   ),
-    //   // };
+      // This ensures that the original data structure is not changed, and that the state is always immutable.
+      // idhr apko yh krne ki need nhi hai idhr hmne phele  filter vala apne aap new array crete krta hai
+      // toh immutaibity follow krta hai
+      //     //     const newState = {
+      //   ...state,
+      //   likeElemets: state.likeElemets.filter(
+      //     (item) => item.location_id !== action.payload
+      //   ),
+      // };
 
-    //   // 1st way
-    //   // return state.like.filter((item) => item.location_id !== action.payload);
+      // 1st way
+      // return state.like.filter((item) => item.location_id !== action.payload);
 
-    //   // 2nd way
-    //   // ...state krne ke baad hi krege hm kbhi bhi original data ke sath ched chad nhi krege newstate ... kreke copy krne ke baad hi purana data usme changes kre
-    //   const newState = {
-    //     ...state, //shallow copy krne ke liye immutaiblity follow krne ke liye
-    //     likeElemets: state.likeElemets.filter(
-    //       (item) => item.location_id !== action.payload
-    //     ),
-    //   };
-    //   return newState;
-    // },
+      // 2nd way
+      // ...state krne ke baad hi krege hm kbhi bhi original data ke sath ched chad nhi krege newstate ... kreke copy krne ke baad hi purana data usme changes kre
+      const cartId= action.payload
+      const index= state.cartItems.findIndex((samaya)=>samaya.itemId===cartId)
+     
+      console.log("indexing",cartId)
+      if(index>=0){
+        // If the course is found in the cart, remove it
+        state.cartItems.splice(index,1)
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+        toast.success("Item deleted from cart");
+      }
+    },
   },
 });
 // destructure krlia

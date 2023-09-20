@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom"; // Don't forget to import NavLink
 import { useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import Cartitem from "../Cart/Cartitem";
 import { fetchCartData } from "../../../services/operations/likeApi";
+import { GlobalContext2 } from "../../../App";
+// import { GlobalContext } from "../../../components2/Home";
 import "./Cart.css";
 
 const Cart = () => {
@@ -12,23 +14,28 @@ const Cart = () => {
 
   // fetching krege apiservice se
   const { tokenpara } = useSelector((state) => state.auth);
-  const [likecart, setlikecart] = useState([]);
+  // const[databasecart, setlikedatabasecart ]=useState([])
+  const {cartItems}=useSelector((state)=>state.like)
+  // isko line ko mai App.js mai bhej rha hu kuki header mai bhi chaniye count muje
+  // const [likecart, setlikecart] = useState([]);
 
   // here mai axios.get and .fetch isliye nhi use kr rhe because vo hm function mai kr ke aye hia apiservice mai
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const datacartfetch = async () => {
-    try {
-      const response = await fetchCartData(tokenpara);
-      setlikecart(response);
-      console.log(response);
-    } catch (error) {
-      console.error("Error fetching cart data:", error);
-    }
-  };
 
-  useEffect(() => {
-    datacartfetch();
-  }, []);
+  // fetch vala abhi concept use nhi horha hai fetch hoache se rha hai but comcept sikhna pdega
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // const datacartfetch = async () => {
+  //   try {
+  //     const response = await fetchCartData(tokenpara);
+  //     setlikedatabasecart(response);
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("Error fetching cart data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   datacartfetch();
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -41,7 +48,7 @@ const Cart = () => {
 
   return (
     <>
-      {likecart?.length === 0 ? (
+      {cartItems?.length === 0 ? (
         <div className=" m-auto w-11/12 max-w-[1080px]  pakistan flex items-center justify-center">
           <div className="mt-2 handup">
             <h1 className="text-gray-700 font-semibold text-xl mb-2 text-white groundsman">
@@ -66,8 +73,8 @@ const Cart = () => {
                   My Wishlist
                 </h1>
                 <div className="flex flex-col">
-                  {likecart?.map((item) => {
-                    return <Cartitem item={item} key={item.location_id} />;
+                  {cartItems?.map((item) => {
+                    return <Cartitem item={item} key={item.itemId} />;
                   })}
                 </div>
               </div>

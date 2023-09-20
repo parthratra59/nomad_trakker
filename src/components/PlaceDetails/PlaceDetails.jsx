@@ -37,6 +37,14 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
 
   const addtocart = () => {
     // yh cart ke andr item add krta hai
+
+
+    if(!tokenpara)
+    {
+      toast.error("Please Login to add to Wishlist")
+      return
+    }
+    else{
     dispatch(add({
       itemId: hello.location_id || "",
       itemName:hello.name || "",
@@ -60,6 +68,7 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
     // like login sam explanation do baar function call hojaega age mai console.log mai bhi likh rha add 
 
     addTocartdb(hello, tokenpara);
+  }
    
   };
   const gotoCart = () => {
@@ -233,18 +242,31 @@ const PlaceDetails = ({ hello, refprop, selectkiya }) => {
                   transform: "translateY(-50%)",
                 }}
               >
+              {/* current means cartItemId mai itemId ke name se hai na isliye */}
                 {tokenpara ? (
                   <>
+                    {cartItems.some(
+                      (current) => current.itemId === hello.location_id
+                    ) ? (
+                      <button
+                        className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
+                        onClick={gotoCart}
+                      >
+                        Go to Wishlist
+                      </button>
+                    ) : (
                       <button
                         className="flex items-center text-white bg-newpink cursor-pointer gap-x-2 rounded-md py-2 px-2 font-semibold  transition duration-300 ease-in hover:bg-newpink-300"
                         onClick={addtocart}
                       >
                         Add Item
                       </button>
+                    )}
                   </>
                 ) : (
                   <button className="hidden"></button>
                 )}
+                
               </div>
             </Typography>
           </Box>
