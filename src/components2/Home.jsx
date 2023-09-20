@@ -37,6 +37,11 @@ const Home = () => {
 
   const [filtered, setfilteredplaces] = useState([]);
 
+
+
+
+  
+
  
   
   // login not login concept

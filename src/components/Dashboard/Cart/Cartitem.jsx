@@ -28,11 +28,17 @@ const Cartitem = ({ item }) => {
       // deleteItem(tokenpara, item._id);
       // If deletion is successful, set the local state to indicate removal
       // yh hi item.location_id action.payload hai
-      dispatch(remove(item.location_id));
+      dispatch(remove(item.itemId));
+
+      deleteItem(tokenpara, item.itemId);
+
+
      
     
   };
 
+
+  console.log("nextlevel", item);
   // bda sa function hai yh re rendering vgh mai toh redux use krte hai thik hai
 
   // SPLIT FUNCTION TO CONVERT STRING INTO ARRAY
@@ -71,16 +77,18 @@ const Cartitem = ({ item }) => {
               {item.itemName}
             </Typography>
             <div className="media">
-              <Rating value={Number(item.rating)} readOnly />
+              <Rating value={Number(item.itemRating
+)} readOnly />
               <Typography gutterBottom variant="subtitle1">
                 {" "}
-                out of {item.reviews} reviews
+                out of {item.itemReviews
+} reviews
               </Typography>
             </div>
             <div className="media">
               <Typography variant="subtitle1">Ranking</Typography>
               <Typography gutterBottom variant="subtitle1">
-                {item.ranking}
+                {item.itemRanking}
               </Typography>
             </div>
 
@@ -88,7 +96,8 @@ const Cartitem = ({ item }) => {
               {item.location ? (
                 <div>
                   <LocationOnIcon />
-                  {item.location}
+                  {item.itemLocation
+}
                 </div>
               ) : (
                 <div className="hidden">""</div>

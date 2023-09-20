@@ -14,14 +14,22 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import ProfileDown from "../ProfileDown/ProfileDown";
 import { GlobalContext2 } from "../../App";
+import { GlobalContext } from "../../components2/Home";
 
 const Header = ({ setcoordinating }) => {
   // importing reducers
   
 
   const { tokenpara } = useSelector((state) => state.auth);
+  const {databasecart} = useContext(GlobalContext2)
+
+
+  
+
 
   const {background,setBackground} = useContext(GlobalContext2)
+
+  const {cartItems}=useSelector((state)=>state.like)
   // YHI CHIJ MAINE CART.JS MAI KRI HAI
   // const [likecart, setlikecart] = useState([]);
   // const [cartItemCount, setCartItemCount] = useState(0);
@@ -60,8 +68,10 @@ const Header = ({ setcoordinating }) => {
 
   // const { likeElemets } = useSelector((state) => state.like);
   // const { likeElemets} = useSelector((hello) => hello.like);
-  const { cartItems } = useSelector((hello) => hello.like);
+  // const { cartItems } = useSelector((hello) => hello.like);
+  const {totalItems} = useSelector((hello) => hello.like);
 
+  console.log("totalItems",totalItems)
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
     setAutocomplete(autoC);
@@ -158,7 +168,7 @@ const Header = ({ setcoordinating }) => {
                       {cartItems.length>0 && (
                         <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
                     justify-center items-center animate-bounce rounded-full text-white" >
-                          {cartItems.length}
+                           {cartItems.length}
                         </span>
                       )}
                     </div>
