@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [ "https://parth79.web.app"],
-    // 'http://localhost:3000', 
+    // '', 
     credentials: true,
   })
 );
@@ -42,7 +42,7 @@ app.use(
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/jiyan/",
+    tempFileDir: "/temp/",
   })
 );
 // cloudinary se connect kro

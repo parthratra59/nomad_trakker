@@ -9,7 +9,8 @@
   font-size: "26px";
 }
 
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 820px) {
 
   .pakistan{
     min-height: 100vh;
@@ -28,8 +29,43 @@
   .groundsman{
     text-align: center;
   }
- 
-  
- 
+  .khatam{
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .international{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+ .subscribe{
 
+  height: 100vh;
+ }
+ 
+  .english{
+    text-align: center;
+
+  }
+  
+  .better{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .kaliyan{
+    size: 6px;
+  }
+
+  
+  .move{
+    display: flex;
+  }
 }
