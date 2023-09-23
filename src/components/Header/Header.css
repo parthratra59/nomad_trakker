@@ -23,15 +23,15 @@
   user-select: none;
 }
 
+.inputBase{
+  width: 600px;
+  max-width: 480px;
+}
 .inputBase::placeholder {
   color: #8e3a52;
 }
 @media (max-width: 600px) {
-  .inputBase {
-    width: 100%; /* Full width on smaller screens */
-    max-width: none; /* Remove the maximum width constraint */
-    /* Add additional styles specific to smaller screens here */
-  }
+  
 }
 .avatar {
   display: flex;
@@ -74,4 +74,15 @@
   .hupp{
     position: fixed;
   }
+  
 }
+
+@media screen and (max-width: 1200px) {
+  
+    .inputBase{
+      width: 100%;
+      max-width: 200px;
+    }
+}
+  
+

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setProgress } from "../redux/slices/Progress";
+
 import { login } from "../services/operations/authApi";
 import "./Loginform.css";
 // import { setToken } from "../redux/slices/Authslice";
@@ -125,9 +125,6 @@ const Loginform = () => {
             </Link> */}
 
         <button
-          onClick={() => {
-            dispatch(setProgress(60));
-          }}
           className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
           type="submit"
         >

@@ -8,17 +8,19 @@ import { toast } from "react-hot-toast";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
 import { updatePassword } from "../../services/operations/ProfileApi";
+import { useDispatch } from "react-redux";
 import "./Setting.css";
 
 const Setting = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   
+ 
+  const hey  = useSelector((state) => state.profile.hey);
+  const pfp = useSelector((state) => state.profile.hey.image);
+  
+  const [profilePicture, setprofilePicture] = useState(pfp);
   const { tokenpara } = useSelector((state) => state.auth);
-
-  const profileImage = useSelector((state) => state.profile.hey.image);
-  const { hey } = useSelector((state) => state.profile);
-  const [profilePicture, setprofilePicture] = useState(profileImage);
 
   // jb ek file/image chaiye hoti then files[0] use krte agr multiple files hota hai toh
   // e.target.file kuch nhi hota files hi use hota
@@ -49,12 +51,16 @@ const Setting = () => {
     e.preventDefault();
     const picture = e.target[0].files[0];
     console.log("picture", picture);
-    updatePfp(tokenpara, picture);
+
+    updatePfp(tokenpara,dispatch, picture);
   };
+
+ 
+  
 
   const handelAdditionalDetails = (e) => {
     e.preventDefault();
-    update_names(tokenpara, formData);
+    update_names(tokenpara,dispatch, formData);
   };
 
   // regex
@@ -97,6 +103,8 @@ const Setting = () => {
         </div>
       );
     }
+
+  
     if (passwordFormData.oldPassword === passwordFormData.newPassword) {
       toast.error("Old password and new password cannot be same");
       return;
@@ -152,7 +160,7 @@ const Setting = () => {
                         type="submit"
                         className="flex items-center bg-yellow-50 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900"
                       >
-                        <span className="false kuchbhi">Upload</span>
+                        Upload
                         <FiUpload />
                       </button>
                     </div>

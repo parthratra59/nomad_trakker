@@ -11,6 +11,7 @@ const Myprofile = () => {
   const { tokenpara } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+
   // call back funtion ga diya kro kuck dunction chalana
   const onDeleteAccount = () => {
     if (window.confirm("Are you sure you want to delete your account?")) {

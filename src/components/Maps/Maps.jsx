@@ -14,6 +14,8 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
   // const isDesktop=useMediaQuery('(min-width:700px)');
   const { sendkrega } = useContext(GlobalContext);
   // eslint-disable-next-line
+
+  // iska use nhi hai abhi
   const [restaurant, setrestaurant] = useState("");
   useEffect(() => {
     randomimage();

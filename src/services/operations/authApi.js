@@ -2,10 +2,9 @@ import { toast } from "react-hot-toast";
 import { endpoints } from "../apiservice";
 import { apiConnector } from "../apiconnector";
 import { setLoading, setToken } from "../../redux/slices/Authslice";
-import { setProgress } from "../../redux/slices/Progress";
+
 import { setUser } from "../../redux/slices/Profileslice";
-import { useDispatch } from "react-redux";
-import Cookies from "js-cookie";
+
 
 // there are two ways fetch and axios to make api calls CRUD operations ke liye
 // fetch is a browser api and axios is a library

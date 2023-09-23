@@ -55,7 +55,7 @@ const Cartitem = ({ item }) => {
 
   return (
     <>
-      <div className="flex w-full flex-wrap items-start justify-between gap-6 border-b border-white pb-6 false pt-6 p-14 shihai">
+      <div className="flex w-full flex-wrap items-start justify-between gap-6 border-b border-white pb-6 false pt-6 p-4 shihai">
         <div className="flex flex-1 flex-col gap-4 xl:flex-row p-2 khatam ">
           <img
             className="md:h-[148px] md:w-[220px] h-[100px] w-[180px]  rounded-lg object-cover subscribe"
