@@ -5,8 +5,11 @@ import "./List.css";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import { GlobalContext } from "../../components2/Home";
 import { GlobalContext2 } from "../../App";
-import Loader from "./Loader";
-const List = ({ places, loadinghorhi }) => {
+// import Spinner from "../Spinner/Spinner"
+import "./Minutes.css"
+
+// import Loader from "./Loader";
+const List = ({ places, isLoading }) => {
   // is se pta chl rha left side mai pauch rha ky data
   const { receivekrega, settype, type, ratekro, setrating } =
     useContext(GlobalContext);
@@ -83,9 +86,11 @@ const List = ({ places, loadinghorhi }) => {
       </span>
 
       {/* line mai lane ke liye do select choose vale */}
-      {loadinghorhi ? (
-
-        <Loader/>
+      {isLoading ? (
+        <div className="h-[calc(100vh-3.5rem)] m-auto flex items-center justify-center w-11/12 max-w-[1080px] minutes">
+        <CircularProgress/>
+        </div>
+      
         
       ) : (
         <>
