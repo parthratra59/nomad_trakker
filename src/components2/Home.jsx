@@ -4,6 +4,7 @@ import Maps from "../components/Maps/Maps";
 import Getplacesdata from "../api/api";
 import List from "../components/List/List";
 
+
 // import './index.css'
 
 // import './App.css'
@@ -139,6 +140,7 @@ const Home = () => {
         {/* places toh same hi jarhi hai  filter ke baad bbhi vo bhi apni place bdl rhi */}
 
         <Header setcoordinating={setcoordinates} />
+        
         {/* <Header/> */}
         <div className="flex h-100vh w-100%">
         <Grid container spacing={3} >
