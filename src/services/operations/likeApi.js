@@ -157,7 +157,7 @@ export const deleteItem = async (tokenpara, itemId) => {
         Authorisation: `Bearer ${tokenpara}`,
       }
     );
-    console.log("response.data.data", response.data.data);
+    // console.log("response.data.data", response.data.data);
     if (!response.data.success) {
       throw new Error(response.data.message);
     }

@@ -1,11 +1,11 @@
 import React, { useContext, useState, createRef, useEffect } from "react";
-import { Grid, InputLabel, Select, MenuItem } from "@mui/material";
-import { CircularProgress } from "@mui/material";
+import { Grid, InputLabel, Select, MenuItem,CircularProgress } from "@mui/material";
+
 import "./List.css";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import { GlobalContext } from "../../components2/Home";
 import { GlobalContext2 } from "../../App";
-import "../Spinner/Spinner.css";
+import Loader from "./Loader";
 const List = ({ places, loadinghorhi }) => {
   // is se pta chl rha left side mai pauch rha ky data
   const { receivekrega, settype, type, ratekro, setrating } =
@@ -84,7 +84,9 @@ const List = ({ places, loadinghorhi }) => {
 
       {/* line mai lane ke liye do select choose vale */}
       {loadinghorhi ? (
-        <div class="custom-loader"></div>
+
+        <Loader/>
+        
       ) : (
         <>
           <div className="line" style={{ display: "flex" }}>

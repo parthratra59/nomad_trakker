@@ -34,7 +34,7 @@ const Getplacesdata = async (type, sw, ne) => {
         // parth
         headers: {
           "X-RapidAPI-Key":
-            "dcc28bb87fmsh7974b38ff02ecd0p11a003jsn9ce8434ef4ba",
+            "c9c1eb85f3msha209fed59fee767p1c64e2jsn0b17ff0a9386",
           "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
         },
       }
