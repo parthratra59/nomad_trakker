@@ -16,6 +16,7 @@ import ProfileDown from "../ProfileDown/ProfileDown";
 import { GlobalContext2 } from "../../App";
 import { GlobalContext } from "../../components2/Home";
 
+
 const Header = ({ setcoordinating }) => {
   // importing reducers
   
@@ -177,6 +178,8 @@ const Header = ({ setcoordinating }) => {
               )}
               {tokenpara !== null && (
                 <div className="flex items-center ">
+        
+                  
                   <ProfileDown />
                 </div>
               )}
