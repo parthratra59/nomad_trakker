@@ -1,12 +1,18 @@
 import React, { useContext, useState, createRef, useEffect } from "react";
-import { Grid, InputLabel, Select, MenuItem,CircularProgress } from "@mui/material";
+import {
+  Grid,
+  InputLabel,
+  Select,
+  MenuItem,
+  CircularProgress,
+} from "@mui/material";
 
 import "./List.css";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import { GlobalContext } from "../../components2/Home";
 import { GlobalContext2 } from "../../App";
 // import Spinner from "../Spinner/Spinner"
-import "./Minutes.css"
+import "./Minutes.css";
 
 // import Loader from "./Loader";
 const List = ({ places, isLoading }) => {
@@ -14,11 +20,9 @@ const List = ({ places, isLoading }) => {
   const { receivekrega, settype, type, ratekro, setrating } =
     useContext(GlobalContext);
   // use context se maine receive kiya vo sab
-  const {background,setBackground} = useContext(GlobalContext2)
+  const { background, setBackground } = useContext(GlobalContext2);
 
   // const dynamicBackgroundColor = background ? "" : "invisible";
-
-
 
   // const dynamicBackgroundColor = background ? "op" :"";
 
@@ -88,10 +92,8 @@ const List = ({ places, isLoading }) => {
       {/* line mai lane ke liye do select choose vale */}
       {isLoading ? (
         <div className="h-[calc(100vh-3.5rem)] m-auto flex items-center justify-center w-11/12 max-w-[1080px] minutes">
-        <CircularProgress/>
+          <CircularProgress />
         </div>
-      
-        
       ) : (
         <>
           <div className="line" style={{ display: "flex" }}>
@@ -99,7 +101,9 @@ const List = ({ places, isLoading }) => {
               style={{ margin: "15px", minWidth: 120, marginBottom: "40px" }}
               className="box"
             >
-              <InputLabel style={{ userSelect: "none" }}><span >Type</span></InputLabel>
+              <InputLabel style={{ userSelect: "none" }}>
+                <span>Type</span>
+              </InputLabel>
 
               {/* usecontext use kiya hai dekh */}
 
@@ -118,15 +122,13 @@ const List = ({ places, isLoading }) => {
               >
                 {/* restaruants,hotels,attractions api mai small hai isliye 
           small mai liya hai nhi toh match nhi honge */}
-                <MenuItem value="restaurants">
-                Restaurants
-               </MenuItem>
+                <MenuItem value="restaurants">Restaurants</MenuItem>
                 <MenuItem value="hotels">Hotels</MenuItem>
                 <MenuItem value="attractions">Attractions</MenuItem>
               </Select>
               {/* </span> */}
             </div>
-            
+
             <div
               style={{
                 margin: "15px",
@@ -136,7 +138,7 @@ const List = ({ places, isLoading }) => {
               }}
               className="box"
             >
-            {/* <span className={`${dynamicBackgroundColor}`}> */}
+              {/* <span className={`${dynamicBackgroundColor}`}> */}
               <InputLabel>Rating</InputLabel>
 
               <Select
@@ -150,7 +152,6 @@ const List = ({ places, isLoading }) => {
               </Select>
               {/* </span> */}
             </div>
-            
           </div>
           {/* Added a div with ref to target scrolling */}
           <Grid container spacing={3} className="griding">

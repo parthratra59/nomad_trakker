@@ -1,13 +1,12 @@
 @media screen and (max-width: 780px) {
-    .minutes{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: calc(75vh - 3.5rem);
-        /* margin-top: 25px; */
-        margin: auto;
-        width: 91.666667%;
-        max-width: 1080px;
-        
-    }
+  .minutes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(75vh - 3.5rem);
+    /* margin-top: 25px; */
+    margin: auto;
+    width: 91.666667%;
+    max-width: 1080px;
+  }
 }

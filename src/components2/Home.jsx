@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Maps from "../components/Maps/Maps";
 import Getplacesdata from "../api/api";
 import List from "../components/List/List";
+import "./Home.css"
 
 
 // import './index.css'
@@ -142,7 +143,7 @@ const Home = () => {
         <Header setcoordinating={setcoordinates} />
         
         {/* <Header/> */}
-        <div className="flex h-100vh w-100%">
+        <div className="flex h-100vh w-100% cricket">
         <Grid container spacing={3} >
           <Grid item xs={12} md={4}>
             {/*  */}

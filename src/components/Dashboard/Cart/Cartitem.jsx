@@ -136,4 +136,3 @@ const Cartitem = ({ item }) => {
 };
 
 export default Cartitem;
-

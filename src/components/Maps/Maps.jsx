@@ -112,7 +112,11 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
         <LocationOnOutlinedIcon color="" fontSize="large" />
       ) : ( */}
               {
-                <Paper elevation={4} className="papering" style={{ zIndex: 999 }}>
+                <Paper
+                  elevation={4}
+                  className="papering"
+                  style={{ zIndex: 999 }}
+                >
                   <Typography variant="subtitle2" gutterBottom>
                     {jagah.name}
                   </Typography>
@@ -132,7 +136,6 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
           );
         })}
         {/* /google map ke andr hi toh krunga */}
-        
       </GoogleMapReact>
     </div>
   );

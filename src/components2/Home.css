@@ -1,0 +1,20 @@
+.cricket{
+    scroll-behavior: smooth;
+}
+
+.cricket::-webkit-scrollbar {
+    width: -1.0rem; /* Adjust the width as needed */
+    background-color: transparent; /* Hide the background */
+  }
+
+
+@media screen and (max-width)
+{
+    .cricket{
+        scroll-behavior: smooth;
+    }
+    .cricket::-webkit-scrollbar {
+        width: -1.0rem; /* Adjust the width as needed */
+        background-color: transparent; /* Hide the background */
+      }
+}

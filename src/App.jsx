@@ -19,11 +19,19 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [background, setBackground] = useState(false);
 
-  const [ databasecart, setlikedatabasecart ] = useState([]);
-
+  const [databasecart, setlikedatabasecart] = useState([]);
 
   return (
-    <GlobalContext2.Provider value={{ isLoggedIn, setIsLoggedIn,background,setBackground, databasecart, setlikedatabasecart  }}>
+    <GlobalContext2.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        background,
+        setBackground,
+        databasecart,
+        setlikedatabasecart,
+      }}
+    >
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>

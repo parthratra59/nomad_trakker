@@ -8,64 +8,74 @@
   font-weight: "bold";
   font-size: "26px";
 }
-
+.tapu {
+  scroll-behavior: smooth;
+}
+.tapu::-webkit-scrollbar {
+  width: 0.5rem; /* Adjust the width as needed */
+  background-color: transparent;
+  scroll-behavior: smooth; /* Hide the background */
+}
 
 @media screen and (max-width: 820px) {
-
-  .pakistan{
+  .pakistan {
     min-height: 100vh;
-   
   }
-  .handup{
+  .handup {
     margin-left: 25px;
   }
-  .seam{
+  .seam {
     margin-top: 20px;
   }
   .heading {
     font-weight: bold;
     font-size: 20px;
   }
-  .groundsman{
+  .groundsman {
     text-align: center;
   }
-  .khatam{
+  .khatam {
     display: flex;
-   
+
     justify-content: center;
     align-items: center;
-   
   }
-  .international{
+  .international {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
- .subscribe{
-
-  height: 100vh;
- }
- 
-  .english{
-    text-align: center;
-
+  .subscribe {
+    height: 100vh;
   }
-  
-  .better{
+
+  .english {
+    text-align: center;
+  }
+
+  .better {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
-  
-  .kaliyan{
+
+  .kaliyan {
     size: 6px;
   }
 
-  
-  .move{
+  .tapu {
+    height: 100vh;
+    overflow: scroll;
+    scroll-behavior: smooth;
+  }
+  .tapu::-webkit-scrollbar {
+    width: 0.5rem; /* Adjust the width as needed */
+    background-color: transparent; /* Hide the background */
+  }
+
+  .move {
     display: flex;
   }
 }

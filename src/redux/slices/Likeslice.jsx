@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
-  ? JSON.parse(localStorage.getItem("cartItems"))
-  : [],
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
   // likeElemets: [],
- 
 };
 
 export const likeSlice = createSlice({
@@ -41,27 +40,24 @@ export const likeSlice = createSlice({
       //   localStorage.setItem("likeElements", JSON.stringify(state.likeElemets));
       // }
 
-      const items= action.payload
-      const index= state.cartItems.findIndex((samaya)=>samaya.itemId===items.itemId)
-      console.log("indexing",items.itemId)
-      if(index>=0){
-        toast.error("Course already in Wishlist")
-        return 
+      const items = action.payload;
+      const index = state.cartItems.findIndex(
+        (samaya) => samaya.itemId === items.itemId
+      );
+      console.log("indexing", items.itemId);
+      if (index >= 0) {
+        toast.error("Course already in Wishlist");
+        return;
       }
-      
-      const addingstate={
+
+      const addingstate = {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-      }
+      };
 
       localStorage.setItem("cartItems", JSON.stringify(addingstate.cartItems));
-      toast.success("Item added to  Wishlist")
+      toast.success("Item added to  Wishlist");
       return addingstate;
-
-
-
-
-     
     },
     remove: (state, action) => {
       // remove mai toh hm filtering krna chate hai
@@ -95,13 +91,15 @@ export const likeSlice = createSlice({
 
       // 2nd way
       // ...state krne ke baad hi krege hm kbhi bhi original data ke sath ched chad nhi krege newstate ... kreke copy krne ke baad hi purana data usme changes kre
-      const cartId= action.payload
-      const index= state.cartItems.findIndex((samaya)=>samaya.itemId===cartId)
-     
-      console.log("indexing",cartId)
-      if(index>=0){
+      const cartId = action.payload;
+      const index = state.cartItems.findIndex(
+        (samaya) => samaya.itemId === cartId
+      );
+
+      console.log("indexing", cartId);
+      if (index >= 0) {
         // If the course is found in the cart, remove it
-        state.cartItems.splice(index,1)
+        state.cartItems.splice(index, 1);
         localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         toast.success("Item deleted from cart");
       }
@@ -112,8 +110,6 @@ export const likeSlice = createSlice({
 export const { add, remove } = likeSlice.actions;
 
 export default likeSlice.reducer;
-
-
 
 // //       const newLikeElements = [...state.cartItems]; // Create a copy of the existing array
 //       newLikeElements.push(action.payload); // Add the new element to the copy

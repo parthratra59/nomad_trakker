@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
 import { updatePfp } from "../../services/operations/ProfileApi";
@@ -14,11 +14,10 @@ import "./Setting.css";
 const Setting = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
- 
-  const hey  = useSelector((state) => state.profile.hey);
+
+  const hey = useSelector((state) => state.profile.hey);
   const pfp = useSelector((state) => state.profile.hey.image);
-  
+
   const [profilePicture, setprofilePicture] = useState(pfp);
   const { tokenpara } = useSelector((state) => state.auth);
 
@@ -52,15 +51,12 @@ const Setting = () => {
     const picture = e.target[0].files[0];
     console.log("picture", picture);
 
-    updatePfp(tokenpara,dispatch, picture);
+    updatePfp(tokenpara, dispatch, picture);
   };
-
- 
-  
 
   const handelAdditionalDetails = (e) => {
     e.preventDefault();
-    update_names(tokenpara,dispatch, formData);
+    update_names(tokenpara, dispatch, formData);
   };
 
   // regex
@@ -104,7 +100,6 @@ const Setting = () => {
       );
     }
 
-  
     if (passwordFormData.oldPassword === passwordFormData.newPassword) {
       toast.error("Old password and new password cannot be same");
       return;
