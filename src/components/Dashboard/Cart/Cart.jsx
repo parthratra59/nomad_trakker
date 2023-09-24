@@ -72,7 +72,7 @@ const Cart = () => {
                 <h1 className="mb-14 text-3xl font-medium text-richblack-5">
                   My Wishlist
                 </h1>
-                <div className="flex flex-col bg-richblack-800 rounded-md">
+                <div className="flex flex-col bg-richblack-800 md">
                   {cartItems?.map((item) => {
                     return <Cartitem item={item} key={item.itemId} />;
                   })}

@@ -5,7 +5,10 @@
     justify-content: space-between; 
 
 }
-
+.custom-marker {
+    background-color: #161D29;
+    /* Add any other styles you want for the marker */
+  }
 
 @media screen and (max-width: 750px) {
     

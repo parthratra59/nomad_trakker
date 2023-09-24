@@ -14,8 +14,6 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
   // const isDesktop=useMediaQuery('(min-width:700px)');
   const { sendkrega } = useContext(GlobalContext);
   // eslint-disable-next-line
-
-  // iska use nhi hai abhi
   const [restaurant, setrestaurant] = useState("");
   useEffect(() => {
     randomimage();
@@ -54,7 +52,7 @@ const Maps = ({ setcoordinates, setbounds, coordinates, places }) => {
 
   return (
     <div
-      className="google z-10  h-[100vh] w-[100vw] koinhi select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
+      className="google z-10  h-[100vh] w-[100vw] koinhi mt-18 select-none md:h-[100vh] md:w-[100vw]  sm:p-1"
       xs={12}
     >
       <GoogleMapReact
