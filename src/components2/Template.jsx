@@ -18,7 +18,7 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
 
   
 
-  const [coordinates, setCoordinates] = useState({});
+  const [coordinates, setCoordinates] = useState({lat:0,lng:0});
   // const [bounds, setbounds] = useState({});
 
   useEffect(() => {
@@ -39,6 +39,8 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
     fullscreenControl: false,
     mapTypeControl: false,
     styles: Mapstyles, // Assign the sty prop directly to styles
+    streetViewControl: false,
+                        
   };
 
  
