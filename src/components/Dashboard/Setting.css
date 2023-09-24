@@ -22,8 +22,13 @@
   --tw-text-opacity: 1;
   color: rgb(241 242 255 / var(--tw-text-opacity));
 }
-.pagal{
+.pagal {
   display: none;
+}
+.apna::-webkit-scrollbar {
+  scroll-behavior: smooth;
+  width: -1rem; /* Adjust the width as needed */
+  background-color: transparent; /* Hide the background */
 }
 
 @media screen and (max-width: 780px) {
@@ -33,22 +38,24 @@
     padding-bottom: 1.5rem;
     max-width: 91.666667%;
     width: 1200vw;
+    scroll-behavior: smooth;
   }
-  
-  .pagal{
+  .apna::-webkit-scrollbar {
+    scroll-behavior: smooth;
+    width: -1rem; /* Adjust the width as needed */
+    background-color: transparent; /* Hide the background */
+  }
+
+  .pagal {
     font-size: small;
     display: block;
-   
   }
-  .randomm{
+  .randomm {
     margin: auto;
     margin-right: 20;
-    
   }
-  .ulta{
+  .ulta {
     display: flex;
     padding: 4px;
-   
   }
- 
 }

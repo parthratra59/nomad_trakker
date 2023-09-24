@@ -5,7 +5,6 @@ import { setLoading, setToken } from "../../redux/slices/Authslice";
 
 import { setUser } from "../../redux/slices/Profileslice";
 
-
 // there are two ways fetch and axios to make api calls CRUD operations ke liye
 // fetch is a browser api and axios is a library
 // fetch is a promise based api and axios is a promise based library
@@ -163,10 +162,9 @@ export const login = (email, password, navigate) => {
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`;
       dispatch(setUser({ ...response.data.user, image: userImage }));
-     
+
       // token chla gya store mai action.payload mai now ab sb access kr Skate as a statecahnge mai like header
 
-     
       // dispatch(setUser({ ...response.data.user, image: userImage }));
 
       // const expirationDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
@@ -202,8 +200,8 @@ export const login = (email, password, navigate) => {
       toast.dismiss(toastId);
       dispatch(setLoading(false)); // Move this line to finally block
     }
+  };
 };
-}
 
 export const resetPassword = (
   password,

@@ -6,6 +6,10 @@
   /* agr height ka hota vo apne dekhleta overflow mai */
   overflow: auto;
 }
+.griding::-webkit-scrollbar {
+  width: 0.5rem; /* Adjust the width as needed */
+  background-color: transparent; /* Hide the background */
+}
 .loading {
   height: 600px;
   display: flex;

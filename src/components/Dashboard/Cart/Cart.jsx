@@ -15,7 +15,7 @@ const Cart = () => {
   // fetching krege apiservice se
   const { tokenpara } = useSelector((state) => state.auth);
   // const[databasecart, setlikedatabasecart ]=useState([])
-  const {cartItems}=useSelector((state)=>state.like)
+  const { cartItems } = useSelector((state) => state.like);
   // isko line ko mai App.js mai bhej rha hu kuki header mai bhi chaniye count muje
   // const [likecart, setlikecart] = useState([]);
 
@@ -52,7 +52,7 @@ const Cart = () => {
         <div className=" m-auto w-11/12 max-w-[1080px]  pakistan flex items-center justify-center">
           <div className="mt-2 handup">
             <h1 className="text-gray-700 font-semibold text-xl mb-2 text-white groundsman">
-            Dream Destinations Await! 🌍 Start Your Adventure Wishlist Now!
+              Dream Destinations Await! 🌍 Start Your Adventure Wishlist Now!
             </h1>
             <div className="flex justify-center items-center seam">
               <button
@@ -66,7 +66,7 @@ const Cart = () => {
         </div>
       ) : (
         <>
-          <div className="flex-1 ">
+          <div className="flex-1 tapu">
             <div className="py-6  m-auto w-11/12 max-w-[1080px] ">
               <div>
                 <h1 className="mb-14 text-3xl font-medium text-richblack-5">

@@ -10,15 +10,13 @@ const initialState = {
   loading: false,
 };
 
-
-
 const profileSlice = createSlice({
   name: "profile",
   initialState: initialState,
   reducers: {
     setUser(state, value) {
       state.hey = value.payload;
-      localStorage.setItem("hey",JSON.stringify(value.payload));
+      localStorage.setItem("hey", JSON.stringify(value.payload));
     },
     setLoading(state, value) {
       state.loading = value.payload;

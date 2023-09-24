@@ -23,7 +23,7 @@
   user-select: none;
 }
 
-.inputBase{
+.inputBase {
   width: 600px;
   max-width: 480px;
 }
@@ -31,7 +31,6 @@
   color: #8e3a52;
 }
 @media (max-width: 600px) {
-  
 }
 .avatar {
   display: flex;
@@ -44,10 +43,10 @@
   align-items: center;
   gap: 10px;
 }
-.paisa{
+.paisa {
   display: flex;
   align-items: center;
-  column-gap: 0.5rem
+  column-gap: 0.5rem;
 }
 
 @media screen and (max-width: 780px) {
@@ -57,32 +56,26 @@
   }
   .pixeling {
     position: relative;
-    
+
     top: 0px;
     left: 0px;
   }
-  .paisa{
+  .paisa {
     display: none;
-    
   }
- 
-  .keety
-  {
+
+  .keety {
     margin-right: 23px;
     display: block;
   }
-  .hupp{
+  .hupp {
     position: fixed;
   }
-  
 }
 
 @media screen and (max-width: 1200px) {
-  
-    .inputBase{
-      width: 100%;
-      max-width: 200px;
-    }
+  .inputBase {
+    width: 100%;
+    max-width: 200px;
+  }
 }
-  
-

@@ -16,21 +16,15 @@ import ProfileDown from "../ProfileDown/ProfileDown";
 import { GlobalContext2 } from "../../App";
 import { GlobalContext } from "../../components2/Home";
 
-
 const Header = ({ setcoordinating }) => {
   // importing reducers
-  
 
   const { tokenpara } = useSelector((state) => state.auth);
-  const {databasecart} = useContext(GlobalContext2)
+  const { databasecart } = useContext(GlobalContext2);
 
+  const { background, setBackground } = useContext(GlobalContext2);
 
-  
-
-
-  const {background,setBackground} = useContext(GlobalContext2)
-
-  const {cartItems}=useSelector((state)=>state.like)
+  const { cartItems } = useSelector((state) => state.like);
   // YHI CHIJ MAINE CART.JS MAI KRI HAI
   // const [likecart, setlikecart] = useState([]);
   // const [cartItemCount, setCartItemCount] = useState(0);
@@ -62,17 +56,16 @@ const Header = ({ setcoordinating }) => {
 
   const toggling = () => {
     setopening(!opening);
-    console.log("background",background)
-    setBackground(!background)
-
+    console.log("background", background);
+    setBackground(!background);
   };
 
   // const { likeElemets } = useSelector((state) => state.like);
   // const { likeElemets} = useSelector((hello) => hello.like);
   // const { cartItems } = useSelector((hello) => hello.like);
-  const {totalItems} = useSelector((hello) => hello.like);
+  const { totalItems } = useSelector((hello) => hello.like);
 
-  console.log("totalItems",totalItems)
+  console.log("totalItems", totalItems);
   const [Autocompleting, setAutocomplete] = useState(null);
   const onloading = (autoC) => {
     setAutocomplete(autoC);
@@ -131,7 +124,7 @@ const Header = ({ setcoordinating }) => {
                 <InputBase
                   className="inputBase"
                   placeholder="Search......"
-                  style={{ color: "black"}}
+                  style={{ color: "black" }}
                   id="input"
                 />
               </Autocomplete>
@@ -139,7 +132,6 @@ const Header = ({ setcoordinating }) => {
           )}
           {/**********cart /LOGIN/LOGOUT/DELTEBUTTON */}
 
-          
           <div>
             <ul className="flex items-center gap-x-4 ">
               {tokenpara === null && (
@@ -166,10 +158,12 @@ const Header = ({ setcoordinating }) => {
                     <div className="relative">
                       <BsFillHeartFill className="text-2xl text-white" />
                       {/* nhi toh 0 bhi show hoga */}
-                      {cartItems.length>0 && (
-                        <span  className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
-                    justify-center items-center animate-bounce rounded-full text-white" >
-                           {cartItems.length}
+                      {cartItems.length > 0 && (
+                        <span
+                          className="absolute -top-1 -right-2 bg-red-500 text-xs w-5 h-5 flex 
+                    justify-center items-center animate-bounce rounded-full text-white"
+                        >
+                          {cartItems.length}
                         </span>
                       )}
                     </div>
@@ -178,54 +172,42 @@ const Header = ({ setcoordinating }) => {
               )}
               {tokenpara !== null && (
                 <div className="flex items-center ">
-        
-                  
                   <ProfileDown />
                 </div>
               )}
-            
             </ul>
-
-            
-
-
           </div>
           {tokenpara === null && (
-              <>
-                <div
-                  className="mobile-menu  space-y-1 mr-5px  w-5 cursor-pointer z-20 keety lg:hidden md:hidden "
-                  onClick={toggling }
-                  
-
+            <>
+              <div
+                className="mobile-menu  space-y-1 mr-5px  w-5 cursor-pointer z-20 keety lg:hidden md:hidden "
+                onClick={toggling}
+              >
+                <div className="w-6 h-0.5 bg-white"></div>
+                <div className="w-6 h-0.5 bg-white"></div>
+                <div className="w-6 h-0.5 bg-white"></div>
+                <ul
+                  className={`${
+                    opening
+                      ? "translate-y-0 opacity-100 transition-transform duration-500 ease-in"
+                      : "-translate-y-full opacity-0 transition-transform duration-500 ease-out"
+                  } absolute -top-1 left-0 w-full   py-20  rounded-b-3xl space-y-10 hupp text-center text-white bg-richblack-800 h-60vh`}
                 >
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <div className="w-6 h-0.5 bg-white"></div>
-                  <ul
-                    className={`${
-                      opening
-                        ? "translate-y-0 opacity-100 transition-transform duration-500 ease-in"
-                        : "-translate-y-full opacity-0 transition-transform duration-500 ease-out"
-                    } absolute -top-1 left-0 w-full   py-20  rounded-b-3xl space-y-10 hupp text-center text-white bg-richblack-800 h-60vh`}
-                  >
-                    <li>
-                      <Link to="/login" onClick={toggling}>
-                        LOGIN
-                      </Link>
-                    </li>
+                  <li>
+                    <Link to="/login" onClick={toggling}>
+                      LOGIN
+                    </Link>
+                  </li>
 
-                    <li>
-                      <Link to="/signup" onClick={toggling}>
-                        SIGNUP
-                      </Link>
-                    </li>
-                    
-                  </ul>
-
-                  </div>
-              </>
-            )}
-            
+                  <li>
+                    <Link to="/signup" onClick={toggling}>
+                      SIGNUP
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

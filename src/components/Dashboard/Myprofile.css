@@ -1,9 +1,22 @@
+.motog::-webkit-scrollbar {
+  scroll-behavior: smooth;
+  width: -1rem; /* Adjust the width as needed */
+  background-color: transparent; /* Hide the background */
+}
+
 @media screen and (max-width: 780px) {
   .motog {
     max-width: 100%;
+    scroll-behavior: smooth;
 
     height: calc(100vh - 3.5rem);
+
     margin: auto;
+  }
+  .motog::-webkit-scrollbar {
+    scroll-behavior: smooth;
+    width: -1rem; /* Adjust the width as needed */
+    background-color: transparent; /* Hide the background */
   }
   .kaksha {
     /* padding: 5px; */
