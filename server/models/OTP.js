@@ -31,7 +31,7 @@ const sendverificationEmail = async (email, otp) => {
       "Verification Email from Nomad Trakker",
       otpTemplate(otp)
     );
-    console.log("email sent successfully", mailresponse);
+    return mailresponse;
   } catch (err) {
     console.log("error occured while sending email");
     throw err;

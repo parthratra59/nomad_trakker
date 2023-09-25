@@ -7,6 +7,7 @@ import { setSignupData } from "../redux/slices/Authslice";
 import { sendotp } from "../services/operations/authApi";
 import { GlobalContext2 } from "../App";
 
+
 import "./Signupform.css";
 
 const Signupform = () => {
@@ -76,11 +77,8 @@ const Signupform = () => {
     dispatch(
       setSignupData({ firstName, lastName, email, password, confirmPassword })
     );
-    console.log(
-      dispatch(
-        setSignupData({ firstName, lastName, email, password, confirmPassword })
-      )
-    );
+   
+  
     // hme email chaiye and navigate hi toh chaiye hme usme apne aap loading ke baad write otp vale function page pr redirect krna
     dispatch(sendotp(formData.email, navigate));
 
@@ -212,6 +210,7 @@ const Signupform = () => {
         <button
           type="submit"
           className="bg-yellow-50 py-[8px] px-[12px]  rounded-[8px] mt-6 font-medium text-richblack-900 w-full"
+          
         >
           Create Account
         </button>

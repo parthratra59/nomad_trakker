@@ -8,7 +8,7 @@ import "./Verify.css";
 
 import { signup } from "../../services/operations/authApi";
 import { sendotp } from "../../services/operations/authApi"; // Make sure to import correctly
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const VerifyOTP = () => {
   const { loading, signupData } = useSelector((state) => state.auth);
@@ -129,7 +129,7 @@ const VerifyOTP = () => {
                   </div>
                   <div>
                     <span
-                      onClick={() => dispatch(sendotp(signupData.email))}
+                      onClick={() => dispatch(sendotp(signupData.email,navigate))}
                       className="flex items-center gap-x-1 text-richblack-5 cursor-pointer"
                     >
                       <RxCountdownTimer />
