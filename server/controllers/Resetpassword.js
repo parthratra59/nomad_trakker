@@ -61,8 +61,8 @@ exports.resetPasswordToken = async (req, res) => {
     );
 
     // 5. create url
-    const url = `https://parth79.web.app/resetpassword/${token}`;
-    // const url = `https://parth79.web.app/resetpassword/${token}`;
+    const url = `http://localhost:3000/resetpassword/${token}`;
+    
 
     // 6. send email with above url
     await mailSender(

@@ -37,6 +37,8 @@ const {
 
 export const sendotp = (email, navigate) => {
   return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    // state bhi toh change kr na hia isliye dispatch use kr rhe hai unload se load kr diya state ko
     dispatch(setLoading(true));
     // setLoading true se spinner dikhne lg jaega
     try {
@@ -45,7 +47,7 @@ export const sendotp = (email, navigate) => {
         email,
         checkUserPresent: true,
       });
-
+      // dispatch(setProgress(100));
       console.log("SENDOTP API RESPONSE............", response);
       // sb backend mai jo hmne api bnai hai uske according .status likh likh kr
       // response.data means backend se response aya vo pura json mai jo jo jo object hai then .success usme particular success object ki baat kr rhe hai
@@ -64,10 +66,14 @@ export const sendotp = (email, navigate) => {
     } catch (error) {
       console.log("SENDOTP API ERROR............", error);
       // error?.response agr maine .data frontend se dekho  maine yh likha hua hai toh ?. ke baad vala chlega message backend mai likha
-      toast.error(error?.response?.data?.message || "Could not send OTP");
+      toast.error(error?.response?.data?.message);
+      // toast.error("Failed To Send OTP");
+      toast.dismiss(toastId);
+    
       // progrees pura kr lo 100 hojaeaga toh error ajaega
     }
     dispatch(setLoading(false));
+    toast.dismiss(toastId);
   };
 };
 

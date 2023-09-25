@@ -18,7 +18,7 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
 
   
 
-  const [coordinates, setCoordinates] = useState({lat:0,lng:0});
+  const [coordinates, setCoordinates] = useState(null);
   // const [bounds, setbounds] = useState({});
 
   useEffect(() => {
@@ -102,11 +102,11 @@ const Template = ({ title, desc1, desc2, image, formType }) => {
             {isLoaded ? (
                 <GoogleMap
                   mapContainerStyle={{ width: "100%", height: "100%" }}
-                  zoom={18}
+                  zoom={16}
                   center={coordinates}
                   options={mapOptions}
                 >
-                  <Marker  position={coordinates}  />
+                  <Marker  position={coordinates}   />
                 </GoogleMap>
               ) : (
                 <p>Loading Google Maps...</p>

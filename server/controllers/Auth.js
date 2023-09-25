@@ -4,7 +4,7 @@ const OTP = require("../models/OTP");
 const otpgenerator = require("otp-generator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { mailSender } = require("../utils/mailsender");
+// const { mailSender } = require("../utils/mailsender");
 // send otp
 // phele toh sendOTP ka function call krna hota hai fir vo otp generate krta hai fir vo otp ko mail mai send krta hai fir vo otp ke database se email nikalte hai
 exports.sendOTP = async (req, res) => {
@@ -21,15 +21,8 @@ exports.sendOTP = async (req, res) => {
       });
     }
 
-    // regex se valid kro more validation bdao
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.match(emailRegex)) {
-      return res.status(403).json({
-        success: false,
-        message:
-          "Invalid email format. Please provide a valid email address in the format user@example.com.",
-      });
-    }
+   
+
     // check if user already exist
     // console.log("parth")
 
@@ -85,6 +78,16 @@ exports.sendOTP = async (req, res) => {
 
     // const otpPayload = { email, otp };
     const otpBody = await OTP.create(otpPayload);
+    //upsert-> update(), findAndModify(), etc. Or in other words, upsert is a combination of update and insert (update + insert = upsert).
+    // resend otp ke baad jo otp generate hua hai usko update krna hai db mai nhi toh purana otp lega
+    // isliye hm findOneAndUpdate use kr rhe hai
+    // findOneAndUpdate mai 3 argument pass krte hai
+    // 1st jo hm search kr rhe hai
+    // 2nd jo hm update kr rhe hai
+    // 3rd options
+    // upsert true krdo
+
+    await OTP.findOneAndUpdate({ email }, otpPayload, { upsert: true });
     // otppayload database mai gya and and fir udhr sendotpverification mail run hua
     console.log("OTP Body", otpBody);
 
@@ -98,7 +101,9 @@ exports.sendOTP = async (req, res) => {
       success: "true",
       message: "OTP send successfully",
       otp: otp,
-    });
+    }
+    );
+
   } catch (error) {
     console.log(error);
     res.status(400).json({
