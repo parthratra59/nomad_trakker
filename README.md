@@ -66,7 +66,7 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/ParthRatra/CamConnect.git
+https://github.com/ParthRatra/nomad_trakker.git
 ```
 
 2. Navigate to the project directory:
@@ -75,19 +75,19 @@ git clone https://github.com/ParthRatra/CamConnect.git
 cd <projectdictonary>
 ```
 
-3. Install the required dependencies:
+3. Install the required dependencies for both the frontend and backend.:
 
 ```bash
 npm install
 ```
 
-4. Start the project locally:
+4. Configure your environment variables, including API keys and database connections.
+
+5. Start the project locally (Run the frontend and backend servers):
 
 ```bash
-npm start
+npm run dev
 ```
 
 
-
-
-  
+Nomad Trakker is the perfect travel companion, offering essential features for travelers to plan and enjoy their adventures. 🌟🌴
