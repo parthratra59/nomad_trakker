@@ -5,7 +5,7 @@
 Nomad Trakker is a responsive Travel Advisor web application that helps you plan your trips and explore destinations with ease. It offers a range of features to enhance your travel experience. Below is a summary of the application and the technologies used.
 
 
-#### Features 🏞️🏨🍽️
+### Features 🏞️🏨🍽️
 1. Filter for Top Places: Nomad Trakker allows users to filter top restaurants, hotels, and attractions at their chosen destination.
 
 2. Customizable Maps: Explore your destination with customizable maps that help you navigate and discover new places.
