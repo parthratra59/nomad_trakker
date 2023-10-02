@@ -19,7 +19,7 @@ Nomad Trakker is a responsive Travel Advisor web application that helps you plan
 6. Avatar Upload: Users can upload and update their avatars to personalize their profiles 📷.
 
 
-## 🚀 Live Deployed Link: https://camconnect-2064e.web.app/
+## 🚀 Live Deployed Link: https://parth79.web.app/
 
 
 ## 📽️ Demo Video: 
