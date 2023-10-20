@@ -20,6 +20,8 @@ Nomad Trakker is a responsive Travel Advisor web application that helps you plan
 
 
 ## 🚀 Live Deployed Link: https://parth79.web.app/
+### Test user emailid:- curiouspeeps1@gmail.com
+### password :- Nomadtrakker@1234
 
 
 ## 📽️ Demo Video: 
