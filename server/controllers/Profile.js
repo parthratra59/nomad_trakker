@@ -11,7 +11,7 @@ exports.updateProfile = async (req, res) => {
     const { firstName, lastName } = req.body;
 
     //  validation
-
+      
     // jb hm autherazation use nhi krte toh aisa hota code
     // const{_id}   = req.params;
     // but hmne authorization use kiya
@@ -71,6 +71,9 @@ exports.deleteAccount = async (req, res) => {
     // or (params mtlb jo databse mai store hai )
     // const {_id} =req.params;   // Extract user's _id from URL parameter yh vo id hai jo apne app bnti hai mongodb mai
 
+      // jha khi bhi req.user user variable hai jo middleware mai bnaya hia toh uska use horha hota hai 
+      // authorize hoga toh isliye best yh hai ki req.user se nikale 
+    
     // with authorization ka logic
     // logib tha toh id bhi mil gyi
     // console.log(req.user)
