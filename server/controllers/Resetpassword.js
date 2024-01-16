@@ -27,6 +27,12 @@ exports.resetPasswordToken = async (req, res) => {
     // const email=req.body.email;
     // / const CheckuserPresent = await User.findOne({email:email})
 
+
+
+    // /req.user isliye nhi liya because mere pass token thodi andr login ka token nhi hai toh autorization nhi hoga middleware se toh 
+    // req.user nhi use kr skta mai 
+    // that's why req.body se nikala
+
     const { email } = req.body;
 
     // 2. check if user exist with that email(VALIDATION KRO)
