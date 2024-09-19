@@ -33,7 +33,7 @@ app.use(cookieParser());
 // fir entertain bhi nhi kr paege hm
 app.use(
   cors({
-    origin: ["https://parth79.web.app"],
+    origin: ["https://parth79.web.app", "https://nomad-trakker.web.app/"],
     // '', 
     credentials: true,
   })
